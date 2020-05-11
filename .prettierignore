@@ -3,3 +3,4 @@ yarn.lock
 .svg
 .png
 .jpg
+yarn-error.log
