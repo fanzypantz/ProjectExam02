@@ -1,0 +1,17 @@
+<nav class="nav">
+  <div class="nav-container">
+    <a routerLink="">Home</a>
+    <a *ngIf="auth.isAdmin(user)" routerLink="/admin">Admin</a>
+  </div>
+
+  <div class="user-login">
+    <div *ngIf="auth.user$ | async as user; else login">
+      <button class="button" (click)="auth.signOut()">Sign Out</button>
+    </div>
+    <ng-template #login>
+      <button class="button" (click)="auth.googleSignIn()">
+        Login with Google
+      </button>
+    </ng-template>
+  </div>
+</nav>
