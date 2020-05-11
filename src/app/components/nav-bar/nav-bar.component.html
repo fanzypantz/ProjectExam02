@@ -1,17 +1,23 @@
 <nav class="nav">
   <div class="nav-container">
     <a routerLink="">Home</a>
-    <a *ngIf="auth.isAdmin(user)" routerLink="/admin">Admin</a>
   </div>
 
-  <div class="user-login">
-    <div *ngIf="auth.user$ | async as user; else login">
-      <button class="button" (click)="auth.signOut()">Sign Out</button>
+  <div *ngIf="auth.user$ | async as user; else login">
+    <div class="nav-item">
+      <a *ngIf="auth.isAdmin(user)" routerLink="/admin">Admin</a>
     </div>
-    <ng-template #login>
-      <button class="button" (click)="auth.googleSignIn()">
-        Login with Google
-      </button>
-    </ng-template>
+
+    <div class="nav-item">
+      <a class="button" (click)="auth.signOut()">Sign Out</a>
+    </div>
   </div>
+
+  <ng-template class="user-login" #login>
+    <div class="nav-item">
+      <a class="button" (click)="auth.googleSignIn()">
+        Login with Google
+      </a>
+    </div>
+  </ng-template>
 </nav>
