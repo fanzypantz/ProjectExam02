@@ -4,13 +4,13 @@ import { Observable } from 'rxjs';
 import { Establishment } from '../../../shared/models/establisment.model';
 
 @Component({
-  selector: 'app-read',
+  selector: 'app-read-establishments',
   templateUrl: './read.component.html',
   styleUrls: ['./read.component.scss'],
 })
 export class ReadComponent implements OnInit {
   @Input() model: string;
-  collections: Observable<Establishment[]>;
+  collections: Observable<Array<Establishment>>;
 
   constructor(private afs: AngularFirestore) {}
 

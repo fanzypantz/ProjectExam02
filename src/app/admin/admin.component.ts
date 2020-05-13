@@ -23,15 +23,18 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  private seedDatabase() {
+  seedDatabase() {
     function getRandomInt(min, max) {
       min = Math.ceil(min);
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
+    const id = this.afs.createId();
+
     for (const item of defaultEstablishments) {
       const data = {
+        id,
         establishmentName: item.establishmentName,
         establishmentEmail: item.establishmentEmail,
         imageUrl: [item.imageUrl],
@@ -46,6 +49,10 @@ export class AdminComponent implements OnInit {
         selfCatering: item.selfCatering,
         createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
         updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
+        bookingStart: firebase.firestore.Timestamp.fromDate(new Date()),
+        bookingEnd: firebase.firestore.Timestamp.fromDate(
+          new Date(new Date().getTime() + 60 * 60 * 24 * 1000)
+        ),
       };
       this.createNewEntry(data).then((r) => {});
     }

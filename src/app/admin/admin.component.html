@@ -1,3 +1,27 @@
 <button (click)="seedDatabase()">Put the seed in me</button>
+<div>
+  <a
+    [routerLink]="'/admin'"
+    [queryParams]="{ model: 'establishments', mode: 'read' }"
+    >Establishments</a
+  >
+  <a
+    [routerLink]="'/admin'"
+    [queryParams]="{ model: 'enquiries', mode: 'read' }"
+    >Enquiries</a
+  >
+  <a [routerLink]="'/admin'" [queryParams]="{ model: 'messages', mode: 'read' }"
+    >Messages</a
+  >
+  <a [routerLink]="'/admin'" [queryParams]="{ model: 'posts', mode: 'read' }"
+    >Posts</a
+  >
+  <a [routerLink]="'/admin'" [queryParams]="{ model: 'users', mode: 'read' }"
+    >Users</a
+  >
+</div>
 
-<app-read *ngIf="mode === 'read'" [model]="model"></app-read>
+<app-read-establishments
+  *ngIf="mode === 'read'"
+  [model]="model"
+></app-read-establishments>

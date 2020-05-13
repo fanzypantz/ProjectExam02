@@ -15,7 +15,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AuthModule } from './auth/auth.module';
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import { firebaseConfig } from './shared/app.config';
-import { ReadComponent } from './admin/components/read/read.component';
+import { ReadComponent } from './admin/establishments/read/read.component';
 import { EditComponent } from './admin/components/edit/edit.component';
 
 @NgModule({
