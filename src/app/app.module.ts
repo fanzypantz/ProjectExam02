@@ -13,11 +13,20 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AdminComponent } from './admin/admin.component';
 import { AuthModule } from './auth/auth.module';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { firebaseConfig } from './app.config';
+import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
+import { firebaseConfig } from './shared/app.config';
+import { ReadComponent } from './admin/components/read/read.component';
+import { EditComponent } from './admin/components/edit/edit.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AdminComponent, NavBarComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    AdminComponent,
+    NavBarComponent,
+    ReadComponent,
+    EditComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -11,7 +11,7 @@ import {
 
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { User } from '../models/user.model';
+import { User } from '../shared/models/user.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -91,7 +91,7 @@ export class AuthService {
     return this.checkAuth(user, allowed);
   }
 
-  private checkAuth(user: User, allowedRoles: string[]): boolean {
+  checkAuth(user: User, allowedRoles: string[]): boolean {
     if (!user) {
       return false;
     }

@@ -4,13 +4,12 @@ import { Observable, of } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
 import { DebugElement } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
-import { firebaseConfig } from '../../app.config';
+import { firebaseConfig } from '../app.config';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { NavBarComponent } from './nav-bar.component';
-import { userError } from '@angular/compiler-cli/src/transformers/util';
 
 describe('NavBarComponent', () => {
   let component: NavBarComponent;

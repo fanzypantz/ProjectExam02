@@ -5,7 +5,12 @@
 
   <div *ngIf="auth.user$ | async as user; else login">
     <div class="nav-item">
-      <a *ngIf="auth.isAdmin(user)" routerLink="/admin">Admin</a>
+      <a
+        *ngIf="auth.isAdmin(user)"
+        [routerLink]="'/admin'"
+        [queryParams]="{ model: 'establishments', mode: 'read' }"
+        >Admin</a
+      >
     </div>
 
     <div class="nav-item">
