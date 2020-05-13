@@ -17,3 +17,14 @@ export const adminConfig = {
     ],
   },
 };
+
+export interface AdminLayouts {
+  type: string;
+  key?: string;
+  keys?: string[];
+}
+
+export interface ReadLayout {
+  name: string;
+  layout: AdminLayouts;
+}

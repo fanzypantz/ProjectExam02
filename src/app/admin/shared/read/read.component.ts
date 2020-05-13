@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Establishment } from '../../../shared/models/establisment.model';
 
-import { adminConfig } from '../../admin.config';
+import { adminConfig, ReadLayout, AdminLayouts } from '../../admin.config';
 
 @Component({
   selector: 'app-read-establishments',
@@ -12,14 +12,13 @@ import { adminConfig } from '../../admin.config';
 })
 export class ReadComponent implements OnInit {
   @Input() model: string;
-  readLayout: any;
+  readLayout: ReadLayout[];
   collections: Observable<Array<any>>;
 
   constructor(private afs: AngularFirestore) {}
 
   ngOnInit(): void {
     this.readLayout = adminConfig[this.model].readLayout;
-    console.log('test: ', this.readLayout);
     this.collections = this.getCollection();
   }
 

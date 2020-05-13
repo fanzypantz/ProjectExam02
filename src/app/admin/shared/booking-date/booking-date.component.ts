@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-booking-date',
@@ -10,8 +11,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styles: [],
 })
 export class BookingDateComponent implements OnInit {
-  @Input() dateStart: string;
-  @Input() dateEnd: string;
+  @Input() dateStart: firebase.firestore.Timestamp;
+  @Input() dateEnd: firebase.firestore.Timestamp;
 
   constructor() {}
 
