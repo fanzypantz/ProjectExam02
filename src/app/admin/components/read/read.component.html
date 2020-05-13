@@ -1,0 +1,28 @@
+<h1>Administration - View</h1>
+
+<table>
+  <tr>
+    <th *ngFor="let layoutItem of readLayout">{{ layoutItem.name }}</th>
+  </tr>
+
+  <tr *ngFor="let item of collections | async">
+    <td *ngFor="let layoutItem of readLayout">
+      {{
+        layoutItem.layout.type === 'string' ? item[layoutItem.layout.key] : ''
+      }}
+      <app-date
+        *ngIf="layoutItem.layout.type === 'date'"
+        [date]="item[layoutItem.layout.key]"
+      ></app-date>
+      <app-booking-date
+        *ngIf="layoutItem.layout.type === 'booking'"
+        [dateStart]="item[layoutItem.layout.keys[0]]"
+        [dateEnd]="item[layoutItem.layout.keys[1]]"
+      ></app-booking-date>
+      <app-images
+        *ngIf="layoutItem.layout.type === 'imageArray'"
+        [images]="item[layoutItem.layout.key]"
+      ></app-images>
+    </td>
+  </tr>
+</table>
