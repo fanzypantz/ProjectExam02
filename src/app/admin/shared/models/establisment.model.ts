@@ -1,4 +1,5 @@
 import * as firebase from 'firebase/app';
+import 'firebase/firestore';
 
 export interface Establishment {
   id: string;
@@ -13,6 +14,9 @@ export interface Establishment {
   selfCatering: boolean;
   createdAt: firebase.firestore.Timestamp;
   updatedAt: firebase.firestore.Timestamp;
-  bookingStart: firebase.firestore.Timestamp;
-  bookingEnd: firebase.firestore.Timestamp;
+  booking?: {
+    // enquiryId: string;
+    bookingStart: firebase.firestore.Timestamp;
+    bookingEnd: firebase.firestore.Timestamp;
+  }[];
 }

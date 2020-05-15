@@ -1,8 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { Establishment } from '../../../shared/models/establisment.model';
-import { User } from '../../../shared/models/user.model';
+import { Establishment } from '../models/establisment.model';
+import { User } from '../models/user.model';
+import { Enquiry } from '../models/enquiry.model';
+import { Message } from '../models/message.model';
+import { Post } from '../models/post.model';
 
 import { adminConfig, ReadInterface } from '../../admin.config';
 import { ActivatedRoute } from '@angular/router';
@@ -25,7 +28,7 @@ export class ReadComponent implements OnInit {
       this.readLayout = adminConfig[p.model].readLayout;
       this.collections = this.getCollection();
       this.collections.subscribe((p) => {
-        console.log('p: ', p);
+        // console.table(p);
       });
     });
   }
@@ -41,15 +44,15 @@ export class ReadComponent implements OnInit {
     switch (this.model) {
       case 'enquiries':
         return this.afs
-          .collection<Establishment>(this.model)
+          .collection<Enquiry>(this.model)
           .valueChanges({ idField: 'id' });
       case 'messages':
         return this.afs
-          .collection<Establishment>(this.model)
+          .collection<Message>(this.model)
           .valueChanges({ idField: 'id' });
       case 'posts':
         return this.afs
-          .collection<Establishment>(this.model)
+          .collection<Post>(this.model)
           .valueChanges({ idField: 'id' });
       case 'users':
         return this.afs.collection<User>(this.model).valueChanges();

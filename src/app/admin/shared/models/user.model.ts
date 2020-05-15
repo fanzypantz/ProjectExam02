@@ -1,3 +1,6 @@
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
+
 export interface Roles {
   customer?: boolean;
   editor?: boolean;
@@ -10,4 +13,6 @@ export interface User {
   photoURL?: string;
   displayName?: string;
   roles: Roles;
+  createdAt: firebase.firestore.Timestamp;
+  updatedAt: firebase.firestore.Timestamp;
 }

@@ -11,7 +11,9 @@ import {
 
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { User } from '../shared/models/user.model';
+import { User } from '../admin/shared/models/user.model';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -62,6 +64,8 @@ export class AuthService {
       roles: {
         customer: true,
       },
+      createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+      updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
     };
 
     // Update the data on firebase server, merge: true will just update instead

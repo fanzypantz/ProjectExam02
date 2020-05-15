@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { defaultEstablishments } from '../shared/app.config';
+import { defaultEnquiries, defaultEstablishments } from '../shared/app.config';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
+import 'firebase/firestore';
+import { Establishment } from './shared/models/establisment.model';
 
 @Component({
   selector: 'app-admin',
@@ -47,22 +49,57 @@ export class AdminComponent implements OnInit {
         selfCatering: item.selfCatering,
         createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
         updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
-        bookingStart: firebase.firestore.Timestamp.fromDate(new Date()),
-        bookingEnd: firebase.firestore.Timestamp.fromDate(
-          new Date(new Date().getTime() + 60 * 60 * 24 * 1000)
-        ),
       };
-      this.createNewEntry(data).then((r) => {});
+      this.createNewEntry('establishments', data).then((r) => {});
     }
+
+    // Re-fetch the new establishments to use in enquiries
+    const establishment = this.afs
+      .collection<Establishment>(this.model)
+      .valueChanges({ idField: 'id' });
+
+    establishment.subscribe((establishments) => {
+      const bookingStart = new Date(
+        new Date().getTime() + 60 * 60 * getRandomInt(24, 200) * 1000
+      );
+      const bookingEnd = new Date(
+        new Date().getTime() + 60 * 60 * getRandomInt(24, 200) * 1000
+      );
+
+      for (const [i, item] of defaultEnquiries.entries()) {
+        const data = {
+          establishmentId: establishments[i].id,
+          name: item.name,
+          email: item.email,
+          createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+          updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
+          bookingStart: firebase.firestore.Timestamp.fromDate(bookingStart),
+          bookingEnd: firebase.firestore.Timestamp.fromDate(bookingEnd),
+        };
+        this.createNewEntry('enquiries', data).then((r) => {});
+
+        // Update the establishments with the new booking
+        this.afs
+          .collection('establishments')
+          .doc(establishments[i].id)
+          .collection('booking')
+          .add({
+            bookingStart,
+            bookingEnd,
+          });
+      }
+    });
   }
 
-  private createNewEntry(data) {
+  private createNewEntry(model: string, data: object) {
     return new Promise<any>((resolve, reject) => {
       this.afs
-        .collection(this.model)
+        .collection(model)
         .add(data)
         .then(
-          (res) => {},
+          (res) => {
+            resolve(res);
+          },
           (err) => reject(err)
         );
     });

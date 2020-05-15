@@ -249,3 +249,18 @@ export const defaultEstablishments = [
     id: '17',
   },
 ];
+
+export const defaultEnquiries = [
+  {
+    name: 'TestPerson Personson',
+    email: 'testEmail@test.com',
+  },
+  {
+    name: 'Remi Gallardo',
+    email: 'testEmail@test.com',
+  },
+  {
+    name: 'Fredrik Venestad',
+    email: 'testEmail@test.com',
+  },
+];

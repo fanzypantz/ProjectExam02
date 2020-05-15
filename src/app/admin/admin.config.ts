@@ -3,11 +3,6 @@ export const adminConfig = {
     readLayout: [
       { name: 'id', type: 'string', key: 'id' },
       { name: 'images', type: 'imageArray', key: 'imageUrl' },
-      {
-        name: 'booking status',
-        type: 'booking',
-        keys: ['bookingStart', 'bookingEnd'],
-      },
       { name: 'name', type: 'string', key: 'establishmentName' },
       { name: 'price', type: 'string', key: 'price' },
       { name: 'max guests', type: 'string', key: 'maxGuests' },
@@ -15,13 +10,35 @@ export const adminConfig = {
     ],
   },
   enquiries: {
-    readLayout: [{ name: 'id', type: 'string', key: 'id' }],
+    readLayout: [
+      { name: 'id', type: 'string', key: 'id' },
+      { name: 'establishmentId', type: 'string', key: 'establishmentId' },
+      { name: 'name', type: 'string', key: 'name' },
+      { name: 'email', type: 'string', key: 'email' },
+      {
+        name: 'booking status',
+        type: 'booking',
+        keys: ['bookingStart', 'bookingEnd'],
+      },
+    ],
   },
   messages: {
-    readLayout: [{ name: 'id', type: 'string', key: 'id' }],
+    readLayout: [
+      { name: 'id', type: 'string', key: 'id' },
+      { name: 'name', type: 'string', key: 'name' },
+      { email: 'id', type: 'string', key: 'email' },
+      { name: 'created at', type: 'date', key: 'createdAt' },
+      { name: 'last updated', type: 'date', key: 'updatedAt' },
+    ],
   },
   posts: {
-    readLayout: [{ name: 'id', type: 'string', key: 'id' }],
+    readLayout: [
+      { name: 'id', type: 'string', key: 'id' },
+      { name: 'title', type: 'string', key: 'title' },
+      { email: 'image ', type: 'image', key: 'imageUrl' },
+      { name: 'created at', type: 'date', key: 'createdAt' },
+      { name: 'last updated', type: 'date', key: 'updatedAt' },
+    ],
   },
   users: {
     readLayout: [
