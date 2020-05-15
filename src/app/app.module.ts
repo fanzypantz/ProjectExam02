@@ -17,9 +17,11 @@ import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import { firebaseConfig } from './shared/app.config';
 import { ReadComponent } from './admin/shared/read/read.component';
 import { EditComponent } from './admin/shared/edit/edit.component';
-import { BookingDateComponent } from './admin/shared/booking-date/booking-date.component';
-import { ImagesComponent } from './admin/shared/images/images.component';
-import { DateComponent } from './admin/shared/date/date.component';
+import { BookingDateComponent } from './admin/shared/layoutComponents/booking-date/booking-date.component';
+import { ImagesComponent } from './admin/shared/layoutComponents/images/images.component';
+import { ImageComponent } from './admin/shared/layoutComponents/image/images.component';
+import { DateComponent } from './admin/shared/layoutComponents/date/date.component';
+import { RolesComponent } from './admin/shared/layoutComponents/roles/roles.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { DateComponent } from './admin/shared/date/date.component';
     EditComponent,
     BookingDateComponent,
     ImagesComponent,
+    ImageComponent,
     DateComponent,
+    RolesComponent,
   ],
   imports: [
     BrowserModule,

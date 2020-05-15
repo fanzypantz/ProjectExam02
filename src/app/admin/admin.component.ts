@@ -30,11 +30,9 @@ export class AdminComponent implements OnInit {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    const id = this.afs.createId();
-
+    // Seed establishments
     for (const item of defaultEstablishments) {
       const data = {
-        id,
         establishmentName: item.establishmentName,
         establishmentEmail: item.establishmentEmail,
         imageUrl: [item.imageUrl],
