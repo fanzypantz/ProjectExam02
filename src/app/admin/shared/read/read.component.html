@@ -2,42 +2,42 @@
 
 <table class="fl-table">
   <tr>
-    <th *ngFor="let layoutItem of readLayout">{{ layoutItem.name }}</th>
+    <th *ngFor="let titleHead of readLayout">{{ titleHead.name }}</th>
   </tr>
 
   <tr *ngFor="let item of collections | async">
-    <td *ngFor="let layoutItem of readLayout">
+    <td *ngFor="let tableData of readLayout">
       <!--Switch the display mode based on the layout type-->
-      <div [ngSwitch]="layoutItem.layout.type">
+      <div [ngSwitch]="tableData.type">
         <app-string
           *ngSwitchCase="'string'"
-          [text]="item[layoutItem.layout.key]"
+          [text]="item[tableData.key]"
         ></app-string>
 
         <app-date
           *ngSwitchCase="'date'"
-          [date]="item[layoutItem.layout.key]"
+          [date]="item[tableData.key]"
         ></app-date>
 
         <app-booking-date
           *ngSwitchCase="'booking'"
-          [dateStart]="item[layoutItem.layout.keys[0]]"
-          [dateEnd]="item[layoutItem.layout.keys[1]]"
+          [dateStart]="item[tableData.keys[0]]"
+          [dateEnd]="item[tableData.keys[1]]"
         ></app-booking-date>
 
         <app-images
           *ngSwitchCase="'imageArray'"
-          [images]="item[layoutItem.layout.key]"
+          [images]="item[tableData.key]"
         ></app-images>
 
         <app-image
           *ngSwitchCase="'image'"
-          [image]="item[layoutItem.layout.key]"
+          [image]="item[tableData.key]"
         ></app-image>
 
         <app-roles
           *ngSwitchCase="'roles'"
-          [roles]="item[layoutItem.layout.key]"
+          [roles]="item[tableData.key]"
         ></app-roles>
       </div>
     </td>
