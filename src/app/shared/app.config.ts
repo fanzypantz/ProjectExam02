@@ -9,6 +9,14 @@ export const firebaseConfig = {
   measurementId: 'G-H8SZ64J4QX',
 };
 
+const lorem =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ' +
+  'incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ' +
+  'exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure ' +
+  'dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ' +
+  'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit ' +
+  'anim id est laborum.';
+
 export const defaultEstablishments = [
   {
     establishmentName: 'Sunsssset Beach',
@@ -262,5 +270,25 @@ export const defaultEnquiries = [
   {
     name: 'Fredrik Venestad',
     email: 'testEmail@test.com',
+  },
+];
+
+export const defaultPosts = [
+  {
+    title: 'This is a cool place to visit',
+    text: lorem,
+  },
+  {
+    title: 'Visit the past of Bergen',
+    text: lorem,
+  },
+  {
+    title: 'Bergen has some cool buildings',
+    text: lorem,
+  },
+
+  {
+    title: 'Visit the aquarium in downtown Bergen',
+    text: lorem,
   },
 ];

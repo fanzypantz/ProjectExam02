@@ -1,4 +1,6 @@
-<button (click)="seedDatabase()">Put the seed in me</button>
+<button (click)="seedEstablishments()">Seed Establishments</button>
+<button (click)="seedEnquiries()">Seed Enquiries</button>
+<input type="file" (change)="handleFileInput($event.target.files)" multiple />
 <div>
   <a
     [routerLink]="'/admin'"

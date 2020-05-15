@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { defaultEnquiries, defaultEstablishments } from '../shared/app.config';
+import {
+  defaultEnquiries,
+  defaultEstablishments,
+  defaultPosts,
+} from '../shared/app.config';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -25,13 +29,13 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  seedDatabase() {
-    function getRandomInt(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
+  seedEstablishments() {
     // Seed establishments
     for (const item of defaultEstablishments) {
       const data = {
@@ -40,7 +44,7 @@ export class AdminComponent implements OnInit {
         imageUrl: [item.imageUrl],
         price: item.price,
         maxGuests: item.maxGuests,
-        rating: getRandomInt(3, 5),
+        rating: this.getRandomInt(3, 5),
         location: new firebase.firestore.GeoPoint(
           item.googleLat,
           item.googleLong
@@ -52,7 +56,9 @@ export class AdminComponent implements OnInit {
       };
       this.createNewEntry('establishments', data).then((r) => {});
     }
+  }
 
+  seedEnquiries() {
     // Re-fetch the new establishments to use in enquiries
     const establishment = this.afs
       .collection<Establishment>(this.model)
@@ -60,10 +66,10 @@ export class AdminComponent implements OnInit {
 
     establishment.subscribe((establishments) => {
       const bookingStart = new Date(
-        new Date().getTime() + 60 * 60 * getRandomInt(24, 200) * 1000
+        new Date().getTime() + 60 * 60 * this.getRandomInt(24, 200) * 1000
       );
       const bookingEnd = new Date(
-        new Date().getTime() + 60 * 60 * getRandomInt(24, 200) * 1000
+        new Date().getTime() + 60 * 60 * this.getRandomInt(24, 200) * 1000
       );
 
       for (const [i, item] of defaultEnquiries.entries()) {
@@ -89,6 +95,51 @@ export class AdminComponent implements OnInit {
           });
       }
     });
+  }
+
+  handleFileInput(files) {
+    for (const [i, item] of defaultPosts.entries()) {
+      const storageRef = firebase
+        .storage()
+        .ref()
+        .child(`posts/${files[i].name}`);
+
+      const uploadTask = storageRef.put(files[i]);
+
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          // Observe state change events such as progress, pause, and resume
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log('Upload is ' + progress + '% done');
+          switch (snapshot.state) {
+            case firebase.storage.TaskState.PAUSED: // or 'paused'
+              console.log('Upload is paused');
+              break;
+            case firebase.storage.TaskState.RUNNING: // or 'running'
+              console.log('Upload is running');
+              break;
+          }
+        },
+        (err) => {
+          console.log('error: ', err);
+        },
+        () => {
+          uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+            const data = {
+              title: item.title,
+              text: item.text,
+              imageUrl: downloadURL,
+              createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+              updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
+            };
+            this.createNewEntry('posts', data).then((r) => {});
+          });
+        }
+      );
+    }
   }
 
   private createNewEntry(model: string, data: object) {
