@@ -22,6 +22,7 @@ import { ImagesComponent } from './admin/shared/layoutComponents/images/images.c
 import { ImageComponent } from './admin/shared/layoutComponents/image/images.component';
 import { DateComponent } from './admin/shared/layoutComponents/date/date.component';
 import { RolesComponent } from './admin/shared/layoutComponents/roles/roles.component';
+import { StringComponent } from './admin/shared/layoutComponents/string/string.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { RolesComponent } from './admin/shared/layoutComponents/roles/roles.comp
     ImageComponent,
     DateComponent,
     RolesComponent,
+    StringComponent,
   ],
   imports: [
     BrowserModule,

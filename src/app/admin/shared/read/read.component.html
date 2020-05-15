@@ -8,35 +8,38 @@
   <tr *ngFor="let item of collections | async">
     <td *ngFor="let layoutItem of readLayout">
       <!--Switch the display mode based on the layout type-->
-      {{
-        layoutItem.layout.type === 'string' ? item[layoutItem.layout.key] : ''
-      }}
+      <div [ngSwitch]="layoutItem.layout.type">
+        <app-string
+          *ngSwitchCase="'string'"
+          [text]="item[layoutItem.layout.key]"
+        ></app-string>
 
-      <app-date
-        *ngIf="layoutItem.layout.type === 'date'"
-        [date]="item[layoutItem.layout.key]"
-      ></app-date>
+        <app-date
+          *ngSwitchCase="'date'"
+          [date]="item[layoutItem.layout.key]"
+        ></app-date>
 
-      <app-booking-date
-        *ngIf="layoutItem.layout.type === 'booking'"
-        [dateStart]="item[layoutItem.layout.keys[0]]"
-        [dateEnd]="item[layoutItem.layout.keys[1]]"
-      ></app-booking-date>
+        <app-booking-date
+          *ngSwitchCase="'booking'"
+          [dateStart]="item[layoutItem.layout.keys[0]]"
+          [dateEnd]="item[layoutItem.layout.keys[1]]"
+        ></app-booking-date>
 
-      <app-images
-        *ngIf="layoutItem.layout.type === 'imageArray'"
-        [images]="item[layoutItem.layout.key]"
-      ></app-images>
+        <app-images
+          *ngSwitchCase="'imageArray'"
+          [images]="item[layoutItem.layout.key]"
+        ></app-images>
 
-      <app-image
-        *ngIf="layoutItem.layout.type === 'image'"
-        [image]="item[layoutItem.layout.key]"
-      ></app-image>
+        <app-image
+          *ngSwitchCase="'image'"
+          [image]="item[layoutItem.layout.key]"
+        ></app-image>
 
-      <app-roles
-        *ngIf="layoutItem.layout.type === 'roles'"
-        [roles]="item[layoutItem.layout.key]"
-      ></app-roles>
+        <app-roles
+          *ngSwitchCase="'roles'"
+          [roles]="item[layoutItem.layout.key]"
+        ></app-roles>
+      </div>
     </td>
   </tr>
 </table>
