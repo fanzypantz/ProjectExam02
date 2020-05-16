@@ -292,3 +292,21 @@ export const defaultPosts = [
     text: lorem,
   },
 ];
+
+export const defaultMessages = [
+  {
+    name: 'Annoying customer',
+    email: 'annoying@twat.com',
+    message: 'You guys suck and should pay me to live in your housing!',
+  },
+  {
+    name: 'Legitimate Customer',
+    email: 'normal@customer.com',
+    message: 'What is the menu items for the room service?',
+  },
+  {
+    name: 'Weirdo McWeird',
+    email: 'what@what.com',
+    message: 'Can I haz cheezburgers',
+  },
+];

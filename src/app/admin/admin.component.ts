@@ -4,11 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import {
   defaultEnquiries,
   defaultEstablishments,
+  defaultMessages,
   defaultPosts,
 } from '../shared/app.config';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
+
 import { Establishment } from './shared/models/establisment.model';
 
 @Component({
@@ -97,7 +99,7 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  handleFileInput(files) {
+  seedPosts(files) {
     for (const [i, item] of defaultPosts.entries()) {
       const storageRef = firebase
         .storage()
@@ -139,6 +141,19 @@ export class AdminComponent implements OnInit {
           });
         }
       );
+    }
+  }
+
+  seedMessages() {
+    for (const item of defaultMessages) {
+      const data = {
+        name: item.name,
+        email: item.email,
+        message: item.message,
+        createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+        updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
+      };
+      this.createNewEntry('messages', data).then((r) => {});
     }
   }
 

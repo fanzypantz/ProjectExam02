@@ -19,6 +19,8 @@ export class ReadComponent implements OnInit {
   @Input() model: string;
   readLayout: ReadInterface[];
   collections: Observable<Array<any>>;
+  showConfirmPrompt = false;
+  deleteId: string;
 
   constructor(private afs: AngularFirestore, private route: ActivatedRoute) {
     // Subscribe to the queryParams so every time it changes this function is called
@@ -27,15 +29,28 @@ export class ReadComponent implements OnInit {
       this.model = p.model;
       this.readLayout = adminConfig[p.model].readLayout;
       this.collections = this.getCollection();
-      this.collections.subscribe((p) => {
-        // console.table(p);
-      });
     });
   }
 
   ngOnInit(): void {
     this.readLayout = adminConfig[this.model].readLayout;
     this.collections = this.getCollection();
+  }
+
+  confirmDelete(id) {
+    this.showConfirmPrompt = true;
+    this.deleteId = id;
+  }
+
+  cancelDelete() {
+    this.showConfirmPrompt = false;
+    this.deleteId = null;
+  }
+
+  deleteEntry() {
+    this.showConfirmPrompt = false;
+    this.afs.collection(this.model).doc(this.deleteId).delete();
+    this.deleteId = null;
   }
 
   getCollection() {
