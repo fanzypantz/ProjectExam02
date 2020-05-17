@@ -6,38 +6,38 @@
   </tr>
 
   <tr *ngFor="let item of collections | async">
-    <td *ngFor="let tableData of readLayout">
+    <td *ngFor="let layoutInfo of readLayout">
       <!--Switch the display mode based on the layout type-->
-      <div [ngSwitch]="tableData.type">
+      <div [ngSwitch]="layoutInfo.type">
         <app-string
           *ngSwitchCase="'string'"
-          [text]="item[tableData.key]"
+          [text]="item[layoutInfo.key]"
         ></app-string>
 
         <app-date
           *ngSwitchCase="'date'"
-          [date]="item[tableData.key]"
+          [date]="item[layoutInfo.key]"
         ></app-date>
 
         <app-booking-date
           *ngSwitchCase="'booking'"
-          [dateStart]="item[tableData.keys[0]]"
-          [dateEnd]="item[tableData.keys[1]]"
+          [dateStart]="item[layoutInfo.keys[0]]"
+          [dateEnd]="item[layoutInfo.keys[1]]"
         ></app-booking-date>
 
         <app-images
           *ngSwitchCase="'imageArray'"
-          [images]="item[tableData.key]"
+          [images]="item[layoutInfo.key]"
         ></app-images>
 
         <app-image
           *ngSwitchCase="'image'"
-          [image]="item[tableData.key]"
+          [image]="item[layoutInfo.key]"
         ></app-image>
 
         <app-roles
           *ngSwitchCase="'roles'"
-          [roles]="item[tableData.key]"
+          [roles]="item[layoutInfo.key]"
         ></app-roles>
       </div>
     </td>
