@@ -43,7 +43,12 @@
     </td>
 
     <td>
-      <img class="admin-read-icon" src="assets/images/svg/pencil.svg" alt="" />
+      <a
+        [routerLink]="'/admin'"
+        [queryParams]="{ model: model, mode: 'edit', id: item.id || item.uid }"
+        ><img class="admin-read-icon" src="assets/images/svg/pencil.svg" alt=""
+      /></a>
+
       <img
         (click)="confirmDelete(item.id || item.uid)"
         class="admin-read-icon"

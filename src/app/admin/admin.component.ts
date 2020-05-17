@@ -21,6 +21,7 @@ import { Establishment } from './shared/models/establisment.model';
 export class AdminComponent implements OnInit {
   model: string;
   mode: string;
+  id: string;
 
   constructor(private route: ActivatedRoute, private afs: AngularFirestore) {}
 
@@ -28,9 +29,13 @@ export class AdminComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.model = params.model;
       this.mode = params.mode;
+      if (params.id) {
+        this.id = params.id;
+      }
     });
   }
 
+  // Everything bellow is debug only
   getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);

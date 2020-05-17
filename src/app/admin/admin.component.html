@@ -2,6 +2,7 @@
 <button (click)="seedEnquiries()">Seed Enquiries</button>
 <button (click)="seedMessages()">Seed Messages</button>
 <input type="file" (change)="seedPosts($event.target.files)" multiple />
+
 <div>
   <a
     [routerLink]="'/admin'"
@@ -24,7 +25,6 @@
   >
 </div>
 
-<app-read-establishments
-  *ngIf="mode === 'read'"
-  [model]="model"
-></app-read-establishments>
+<app-read *ngIf="mode === 'read'" [model]="model"></app-read>
+
+<app-edit *ngIf="mode === 'edit'" [model]="model" [id]="id"></app-edit>

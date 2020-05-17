@@ -1,1 +1,7 @@
-<p>edit works!</p>
+<h1>Administration - Edit</h1>
+
+<div *ngIf="data">
+  <div *ngFor="let layoutInfo of writeLayout">
+    {{ layoutInfo.name }} - {{ data[layoutInfo.key] }}
+  </div>
+</div>

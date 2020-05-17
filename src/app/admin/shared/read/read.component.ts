@@ -11,7 +11,7 @@ import { adminConfig, ReadInterface } from '../../admin.config';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-read-establishments',
+  selector: 'app-read',
   templateUrl: './read.component.html',
   styleUrls: ['./read.component.scss'],
 })

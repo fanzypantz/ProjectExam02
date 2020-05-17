@@ -8,6 +8,16 @@ export const adminConfig = {
       { name: 'max guests', type: 'string', key: 'maxGuests' },
       { name: 'last updated', type: 'date', key: 'updatedAt' },
     ],
+    writeLayout: [
+      { name: 'Booking Status', type: 'booking', key: 'booking' },
+      { name: 'Name', type: 'string', key: 'establishmentName' },
+      { name: 'Images', type: 'imageArray', key: 'imageUrl' },
+      { name: 'Price', type: 'number', key: 'price' },
+      { name: 'Max guests', type: 'number', key: 'maxGuests' },
+      { name: 'Description', type: 'string', key: 'description' },
+      { name: 'Created at', type: 'date', key: 'createdAt' },
+      { name: 'Last updated', type: 'date', key: 'updatedAt' },
+    ],
   },
   enquiries: {
     readLayout: [
