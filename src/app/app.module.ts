@@ -26,6 +26,11 @@ import { StringComponent } from './admin/shared/layoutComponents/string/string.c
 import { AccommodationsComponent } from './accommodations/accommodations.component';
 import { ContactComponent } from './contact/contact.component';
 import { EnquiriesComponent } from './enquiries/enquiries.component';
+import { GalleryComponent } from './home/gallery/gallery.component';
+import { BookingSearchComponent } from './shared/booking-search/booking-search.component';
+import { DealsComponent } from './home/deals/deals.component';
+import { PostsComponent } from './home/posts/posts.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +49,11 @@ import { EnquiriesComponent } from './enquiries/enquiries.component';
     AccommodationsComponent,
     ContactComponent,
     EnquiriesComponent,
+    GalleryComponent,
+    BookingSearchComponent,
+    DealsComponent,
+    PostsComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
