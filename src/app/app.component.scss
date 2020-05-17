@@ -1,4 +1,7 @@
+@import '../variables';
+
 .main-component {
+  background-color: $main;
   width: 60%;
   margin: 0 auto;
 }
