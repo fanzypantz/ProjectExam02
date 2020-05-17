@@ -1,7 +1,22 @@
 @import '../variables';
 
+app-root {
+  position: relative;
+}
+
+app-nav-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 80px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  z-index: 200;
+}
+
 .main-component {
-  background-color: $main;
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
+  overflow: auto;
 }

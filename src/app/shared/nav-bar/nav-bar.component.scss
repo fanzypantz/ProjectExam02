@@ -1,0 +1,71 @@
+@import '../../../variables.scss';
+
+.nav-icon {
+  height: 30px;
+  transition: fill 250ms ease;
+  fill: $main-shade2;
+}
+
+.nav-container {
+  height: 80px;
+}
+
+.nav-container,
+.nav-user {
+  display: flex;
+}
+
+.nav-item {
+  background-color: $main;
+  display: flex;
+  width: 80px;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: $main-shade2;
+  margin-left: 5px;
+  transition: height, width, background-color, color;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+
+  h3 {
+    margin: 5px 0 0 0;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 0.9em;
+  }
+
+  &:first-of-type {
+    margin-left: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: $main;
+    background-color: $main-shade2;
+    height: 90px;
+    width: 90px;
+
+    .nav-icon {
+      fill: $main;
+    }
+  }
+}
+
+.nav-admin {
+  background-color: $main-shade2;
+  color: $main;
+  .nav-icon {
+    fill: $main;
+  }
+
+  &:hover {
+    color: $main-shade2;
+    background-color: $main;
+
+    .nav-icon {
+      fill: $main-shade2;
+    }
+  }
+}

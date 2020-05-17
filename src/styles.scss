@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import './variables.scss';
 
+app-root {
+  position: relative;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -12,4 +16,12 @@ h2,
 h3,
 h4 {
   font-family: $font-family;
+}
+
+a {
+  text-decoration: none;
+
+  &:visited {
+    color: $white;
+  }
 }
