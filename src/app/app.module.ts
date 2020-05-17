@@ -23,6 +23,9 @@ import { ImageComponent } from './admin/shared/layoutComponents/image/images.com
 import { DateComponent } from './admin/shared/layoutComponents/date/date.component';
 import { RolesComponent } from './admin/shared/layoutComponents/roles/roles.component';
 import { StringComponent } from './admin/shared/layoutComponents/string/string.component';
+import { AccommodationsComponent } from './accommodations/accommodations.component';
+import { ContactComponent } from './contact/contact.component';
+import { EnquiriesComponent } from './enquiries/enquiries.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { StringComponent } from './admin/shared/layoutComponents/string/string.c
     DateComponent,
     RolesComponent,
     StringComponent,
+    AccommodationsComponent,
+    ContactComponent,
+    EnquiriesComponent,
   ],
   imports: [
     BrowserModule,
