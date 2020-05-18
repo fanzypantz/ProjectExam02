@@ -1,0 +1,36 @@
+@import '../../../variables';
+
+.home-gallery-container {
+  height: 50vh;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+}
+
+.home-gallery-images {
+  height: 100%;
+  display: flex;
+  transition: transform 1s ease-in-out;
+
+  img {
+    object-fit: cover;
+    width: 100vw;
+  }
+}
+
+.home-gallery-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-gallery-control-line {
+  width: 100px;
+  stroke: $main;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  transition: stroke 1s ease;
+}
+
+.home-gallery-control-line-active {
+  stroke: $secondary;
+}

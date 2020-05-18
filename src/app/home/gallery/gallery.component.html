@@ -1,1 +1,67 @@
-<p>gallery works!</p>
+<div class="home-gallery-container">
+  <div
+    class="home-gallery-images"
+    [ngStyle]="{
+      transform: 'translateX(-' + position * innerWidth + 'px)'
+    }"
+  >
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/noroff-projectexam-02.appspot.com/o/gallery%2Fgallery01.jpg?alt=media&token=9cdafe67-290b-4f32-a018-f2373479ce96"
+      alt=""
+    />
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/noroff-projectexam-02.appspot.com/o/gallery%2Fgallery02.jpg?alt=media&token=f2d1822a-58ef-42a0-90cf-c3c766a404fd"
+      alt=""
+    />
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/noroff-projectexam-02.appspot.com/o/gallery%2Fgallery03.jpg?alt=media&token=8e152fd0-5f44-4c7f-a1ac-28435a14de4e"
+      alt=""
+    />
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/noroff-projectexam-02.appspot.com/o/gallery%2Fgallery04.jpg?alt=media&token=72032b5e-ca53-4bb2-b153-a74f0f3ce046"
+      alt=""
+    />
+  </div>
+</div>
+<div class="home-gallery-control">
+  <svg
+    (click)="goToImage(0)"
+    class="home-gallery-control-line"
+    [class.home-gallery-control-line-active]="position === 0"
+    viewBox="0 0 53.9 10"
+  >
+    <g transform="matrix(1, 0, 0, 1, 0, 0)">
+      <line id="Line_7-2_1_" class="st0" x1="5" y1="5" x2="48.9" y2="5" />
+    </g>
+  </svg>
+  <svg
+    (click)="goToImage(1)"
+    class="home-gallery-control-line"
+    [class.home-gallery-control-line-active]="position === 1"
+    viewBox="0 0 53.9 10"
+  >
+    <g transform="matrix(1, 0, 0, 1, 0, 0)">
+      <line id="Line_7-2_1_" class="st0" x1="5" y1="5" x2="48.9" y2="5" />
+    </g>
+  </svg>
+  <svg
+    (click)="goToImage(2)"
+    class="home-gallery-control-line"
+    [class.home-gallery-control-line-active]="position === 2"
+    viewBox="0 0 53.9 10"
+  >
+    <g transform="matrix(1, 0, 0, 1, 0, 0)">
+      <line id="Line_7-2_1_" class="st0" x1="5" y1="5" x2="48.9" y2="5" />
+    </g>
+  </svg>
+  <svg
+    (click)="goToImage(3)"
+    class="home-gallery-control-line"
+    [class.home-gallery-control-line-active]="position === 3"
+    viewBox="0 0 53.9 10"
+  >
+    <g transform="matrix(1, 0, 0, 1, 0, 0)">
+      <line id="Line_7-2_1_" class="st0" x1="5" y1="5" x2="48.9" y2="5" />
+    </g>
+  </svg>
+</div>
