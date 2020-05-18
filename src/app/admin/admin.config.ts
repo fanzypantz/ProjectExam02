@@ -6,6 +6,7 @@ export const adminConfig = {
       { name: 'name', type: 'string', key: 'establishmentName' },
       { name: 'price', type: 'string', key: 'price' },
       { name: 'max guests', type: 'string', key: 'maxGuests' },
+      { name: 'highlight', type: 'boolean', key: 'highlight' },
       { name: 'last updated', type: 'date', key: 'updatedAt' },
     ],
     writeLayout: [
@@ -17,6 +18,8 @@ export const adminConfig = {
       { name: 'Description', type: 'string', key: 'description' },
       { name: 'Created at', type: 'date', key: 'createdAt' },
       { name: 'Last updated', type: 'date', key: 'updatedAt' },
+      { name: 'Highlight on front page', type: 'boolean', key: 'highlight' },
+      { name: 'highlight', type: 'boolean', key: 'highlight' },
     ],
   },
   enquiries: {

@@ -28,7 +28,12 @@
   stroke: $main;
   stroke-width: 6px;
   stroke-linecap: round;
-  transition: stroke 1s ease;
+  transition: stroke 1s ease, transform 250ms ease;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
 }
 
 .home-gallery-control-line-active {

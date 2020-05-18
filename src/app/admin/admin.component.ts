@@ -58,6 +58,7 @@ export class AdminComponent implements OnInit {
         ),
         description: item.description,
         selfCatering: item.selfCatering,
+        highlight: item.highlight,
         createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
         updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
       };

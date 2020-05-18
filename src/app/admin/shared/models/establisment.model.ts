@@ -12,6 +12,7 @@ export interface Establishment {
   location: firebase.firestore.GeoPoint;
   description: string;
   selfCatering: boolean;
+  highlight: boolean;
   createdAt: firebase.firestore.Timestamp;
   updatedAt: firebase.firestore.Timestamp;
   booking?: {

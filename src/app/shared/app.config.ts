@@ -30,6 +30,7 @@ export const defaultEstablishments = [
     description:
       'Get ready for some amazing sunsets as you sip a cocktail and watch dolphins play in the harbour below.',
     selfCatering: true,
+    highlight: false,
     id: '1',
   },
   {
@@ -44,6 +45,7 @@ export const defaultEstablishments = [
     description:
       'Need some time off from your busy life to relax and unwind? Choose Rest Easy for the complete relaxation experience you desire.',
     selfCatering: false,
+    highlight: false,
     id: '2',
   },
   {
@@ -58,6 +60,7 @@ export const defaultEstablishments = [
     description:
       'This secluded wilderness cabin is the perfect spot for a restful and cosy getaway.',
     selfCatering: true,
+    highlight: false,
     id: '3',
   },
   {
@@ -72,6 +75,7 @@ export const defaultEstablishments = [
     description:
       'Voted the best B&B in Norway, this farm cottage is available for family holidays throughout the summer.',
     selfCatering: false,
+    highlight: false,
     id: '4',
   },
   {
@@ -86,6 +90,7 @@ export const defaultEstablishments = [
     description:
       'For a getaway like no other, this unique treehouse offers a cosy and comfortable wilderness experience.',
     selfCatering: true,
+    highlight: true,
     id: '5',
   },
   {
@@ -100,6 +105,7 @@ export const defaultEstablishments = [
     description:
       'This trendy apartment in the heart of the city is the perfect base from which to explore Bergen.',
     selfCatering: true,
+    highlight: false,
     id: '6',
   },
   {
@@ -114,6 +120,7 @@ export const defaultEstablishments = [
     description:
       'A beautiful lakeside retreat where you can relax, unwind and explore the beauty of the natural world.',
     selfCatering: false,
+    highlight: true,
     id: '7',
   },
   {
@@ -128,6 +135,7 @@ export const defaultEstablishments = [
     description:
       "If you're in Bergen on business or for a holiday, this cosy and classy apartment is the perfect place to stay.",
     selfCatering: true,
+    highlight: false,
     id: '8',
   },
   {
@@ -142,6 +150,7 @@ export const defaultEstablishments = [
     description:
       'For a restful and relaxing trip, come visit our luxurious boutique hotel, with views of the sea from all our rooms',
     selfCatering: false,
+    highlight: false,
     id: '9',
   },
   {
@@ -156,6 +165,7 @@ export const defaultEstablishments = [
     description:
       'A luxury hotel nestled in the mountains. Our award winning chef will cater for your every desire.',
     selfCatering: false,
+    highlight: true,
     id: '10',
   },
   {
@@ -170,6 +180,7 @@ export const defaultEstablishments = [
     description:
       'A large and tastefully decorated home away from home. Perfect for bigger families or groups of friends.',
     selfCatering: true,
+    highlight: false,
     id: '11',
   },
   {
@@ -184,6 +195,7 @@ export const defaultEstablishments = [
     description:
       'A family-friendly lodge with beautiful, well-appointed rooms. Located in a stunning valley close to winter sports facilities.',
     selfCatering: false,
+    highlight: false,
     id: '12',
   },
   {
@@ -198,6 +210,7 @@ export const defaultEstablishments = [
     description:
       'A rustic and cosy rural cottage, perfect for romantic weekends away and quiet retreats into nature.',
     selfCatering: true,
+    highlight: false,
     id: '13',
   },
   {
@@ -212,6 +225,7 @@ export const defaultEstablishments = [
     description:
       'Located on the banks of a beautiful and idyllic lake, this large and luxurious home is perfect for a rural getaway.',
     selfCatering: true,
+    highlight: false,
     id: '14',
   },
   {
@@ -226,6 +240,7 @@ export const defaultEstablishments = [
     description:
       'A large and welcoming lake house retreat in the heart of a beautiful valley.',
     selfCatering: true,
+    highlight: false,
     id: '15',
   },
   {
@@ -240,6 +255,7 @@ export const defaultEstablishments = [
     description:
       'Rest, relax and explore Bergen from this beautiful home in a quiet neighbourhood.',
     selfCatering: true,
+    highlight: false,
     id: '16',
   },
   {
@@ -254,6 +270,7 @@ export const defaultEstablishments = [
     description:
       'With wonderful views of the surrounding area, and a host who is passionate about the area, Buena Vista is a must for those looking for an authentic experience at a reasonable price.',
     selfCatering: false,
+    highlight: false,
     id: '17',
   },
 ];

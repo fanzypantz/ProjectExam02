@@ -36,7 +36,7 @@ export class GalleryComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.interval) {
       clearInterval(this.interval);
     }

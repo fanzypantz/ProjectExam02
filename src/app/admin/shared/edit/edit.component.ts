@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Enquiry } from '../models/enquiry.model';
 import { Message } from '../models/message.model';
 import { Post } from '../models/post.model';
@@ -6,16 +6,17 @@ import { User } from '../models/user.model';
 import { Establishment } from '../models/establisment.model';
 import { adminConfig, ReadInterface } from '../../admin.config';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
 })
-export class EditComponent implements OnInit {
+export class EditComponent implements OnInit, OnDestroy {
   @Input() model: string;
   @Input() id: string;
+  private documentSubscription: Subscription;
   writeLayout: ReadInterface[];
   document: Observable<any>;
   data: any;
@@ -25,9 +26,13 @@ export class EditComponent implements OnInit {
   ngOnInit(): void {
     this.writeLayout = adminConfig[this.model].writeLayout;
     this.document = this.getCollection();
-    this.document.subscribe((snapshot) => {
+    this.documentSubscription = this.document.subscribe((snapshot) => {
       this.data = snapshot;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.documentSubscription.unsubscribe();
   }
 
   getCollection() {

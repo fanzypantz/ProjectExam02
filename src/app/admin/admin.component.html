@@ -1,9 +1,11 @@
-<button (click)="seedEstablishments()">Seed Establishments</button>
-<button (click)="seedEnquiries()">Seed Enquiries</button>
-<button (click)="seedMessages()">Seed Messages</button>
-<input type="file" (change)="seedPosts($event.target.files)" multiple />
+<div class="admin-debug">
+  <button (click)="seedEstablishments()">Seed Establishments</button>
+  <button (click)="seedEnquiries()">Seed Enquiries</button>
+  <button (click)="seedMessages()">Seed Messages</button>
+  <input type="file" (change)="seedPosts($event.target.files)" multiple />
+</div>
 
-<div>
+<div class="admin-menu">
   <a
     [routerLink]="'/admin'"
     [queryParams]="{ model: 'establishments', mode: 'read' }"
