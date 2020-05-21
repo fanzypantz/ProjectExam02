@@ -4,6 +4,7 @@
   position: relative;
   margin: 0 auto 200px auto;
   width: 60%;
+  max-width: $max-width;
   display: flex;
   justify-content: space-between;
 }

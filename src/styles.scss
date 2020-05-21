@@ -26,6 +26,12 @@ h4 {
   font-family: $font-family;
 }
 
+h4 {
+  color: $secondary-shade;
+  margin: 5px 0;
+  text-transform: uppercase;
+}
+
 a {
   text-decoration: none;
 
@@ -64,4 +70,17 @@ a {
   height: 43vw;
   background-color: $main-shade2;
   clip-path: polygon(17% 38%, 100% 0, 83% 62%, 0 100%);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.bg-trapezoid {
+  position: absolute;
+  top: -35%;
+  right: calc(-20vw);
+  z-index: -10;
+  width: 50vw;
+  height: 43vw;
+  background-color: $main;
+  clip-path: polygon(12% 8%, 100% 0, 100% 100%, -3% 92%);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }

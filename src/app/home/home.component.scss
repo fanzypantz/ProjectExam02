@@ -1,6 +1,6 @@
 @import '../../variables';
 
-.home-deals-title {
+.home-title {
   margin: 70px auto;
   position: relative;
   width: 380px;
@@ -17,7 +17,7 @@
   }
 }
 
-.home-deals-title-border {
+.home-title-border {
   position: absolute;
   z-index: -1;
   top: 50%;
@@ -27,4 +27,63 @@
   border-top: 1px solid $main;
   border-bottom: 1px solid $main;
   transform: translate(-50%, -50%);
+}
+
+.home-explore {
+  width: $main-width;
+  max-width: $max-width;
+  margin: 500px auto 500px auto;
+  position: relative;
+}
+
+.home-explore-title-container {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: $secondary-shade;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.home-explore .home-title {
+  margin: 40px 30px;
+  color: $white;
+  width: 490px;
+  z-index: 10;
+
+  .home-title-border {
+    border-top-color: $white;
+    border-bottom-color: $white;
+  }
+
+  h1 {
+    margin: 0;
+  }
+}
+
+.home-explore-img {
+  height: 400px;
+  width: 860px;
+  object-fit: cover;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.home-explore-blob {
+  position: absolute;
+  top: -13%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  width: 320px;
+  height: 672px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 60px 40px;
+  background-color: $white;
+
+  p {
+    margin: 0;
+  }
 }
