@@ -8,8 +8,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./accommodation-details.component.scss'],
 })
 export class AccommodationDetailsComponent implements OnInit, OnDestroy {
-  id: string;
   private paramSub: Subscription;
+  id: string;
+
   constructor(private route: ActivatedRoute) {
     this.paramSub = route.params.subscribe((p) => {
       this.id = p.id;
