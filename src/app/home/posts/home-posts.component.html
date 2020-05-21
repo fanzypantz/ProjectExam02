@@ -6,28 +6,28 @@
     </div>
   </div>
 
-  <div class="home-posts-wide">
+  <div (click)="goTo(data[0].id)" class="home-posts-wide">
     <img class="home-posts-img" src="{{ data[0].imageUrl }}" alt="" />
     <div class="home-posts-title">
       <h4>{{ data[0].title }}</h4>
     </div>
   </div>
 
-  <div class="home-posts-tall">
+  <div (click)="goTo(data[1].id)" class="home-posts-tall">
     <img class="home-posts-img" src="{{ data[1].imageUrl }}" alt="" />
     <div class="home-posts-title">
       <h4>{{ data[1].title }}</h4>
     </div>
   </div>
 
-  <div class="home-posts-tall">
+  <div (click)="goTo(data[2].id)" class="home-posts-tall">
     <img class="home-posts-img" src="{{ data[2].imageUrl }}" alt="" />
     <div class="home-posts-title">
       <h4>{{ data[2].title }}</h4>
     </div>
   </div>
 
-  <div class="home-posts-tall">
+  <div (click)="goTo(data[3].id)" class="home-posts-tall">
     <img class="home-posts-img" src="{{ data[3].imageUrl }}" alt="" />
     <div class="home-posts-title">
       <h4>{{ data[3].title }}</h4>

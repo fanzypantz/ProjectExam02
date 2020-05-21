@@ -2,25 +2,23 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { Establishment } from '../../admin/shared/models/establisment.model';
+import { Post } from '../../admin/shared/models/post.model';
 
 @Component({
-  selector: 'app-deals',
-  templateUrl: './deals.component.html',
-  styleUrls: ['./deals.component.scss'],
+  selector: 'app-home-posts',
+  templateUrl: './home-posts.component.html',
+  styleUrls: ['./home-posts.component.scss'],
 })
-export class DealsComponent implements OnInit, OnDestroy {
+export class HomePostsComponent implements OnInit, OnDestroy {
   private documentSubscription: Subscription;
-  document: Observable<Array<Establishment>>;
+  document: Observable<Array<Post>>;
   data: any;
 
   constructor(private afs: AngularFirestore, private router: Router) {}
 
   ngOnInit(): void {
     this.document = this.afs
-      .collection<Establishment>('establishments', (ref) =>
-        ref.where('highlight', '==', true)
-      )
+      .collection<Post>('posts', (ref) => ref.limit(4))
       .valueChanges({ idField: 'id' });
     this.documentSubscription = this.document.subscribe((snapshot) => {
       this.data = snapshot;
@@ -32,6 +30,6 @@ export class DealsComponent implements OnInit, OnDestroy {
   }
 
   goTo(id) {
-    this.router.navigate(['/accommodation-details', id]);
+    this.router.navigate(['/posts', id]);
   }
 }

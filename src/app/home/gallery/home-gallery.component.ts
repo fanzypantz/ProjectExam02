@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 
 @Component({
-  selector: 'app-gallery',
-  templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.scss'],
+  selector: 'app-home-gallery',
+  templateUrl: './home-gallery.component.html',
+  styleUrls: ['./home-gallery.component.scss'],
 })
-export class GalleryComponent implements OnInit, OnDestroy {
+export class HomeGalleryComponent implements OnInit, OnDestroy {
   public position = 0;
   public innerWidth: number;
   private interval: number;

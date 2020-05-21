@@ -12,6 +12,7 @@ import { AccommodationsComponent } from './accommodations/accommodations.compone
 import { AccommodationDetailsComponent } from './addommodation-details/accommodation-details.component';
 import { ContactComponent } from './contact/contact.component';
 import { EnquiriesComponent } from './enquiries/enquiries.component';
+import { PostsComponent } from './posts/posts.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'accommodation-details/:id',
     component: AccommodationDetailsComponent,
+  },
+  {
+    path: 'posts/:id',
+    component: PostsComponent,
   },
   { path: 'contact', component: ContactComponent },
   { path: 'enquiries', component: EnquiriesComponent },
