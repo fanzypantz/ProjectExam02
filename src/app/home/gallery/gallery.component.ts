@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-gallery',
@@ -26,6 +26,12 @@ export class GalleryComponent implements OnInit, OnDestroy {
     }, 10000);
   }
 
+  ngOnDestroy(): void {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  }
+
   goToImage(id) {
     if (!this.isAnimating) {
       this.isAnimating = true;
@@ -36,9 +42,8 @@ export class GalleryComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {
-    if (this.interval) {
-      clearInterval(this.interval);
-    }
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.innerWidth = window.innerWidth;
   }
 }
