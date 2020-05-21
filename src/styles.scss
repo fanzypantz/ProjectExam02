@@ -7,11 +7,13 @@ app-root {
 
 html {
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 body {
   width: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
   font-family: $font-family-text;
@@ -50,4 +52,16 @@ a {
     background-color: $secondary;
     border-bottom-color: $secondary-shade;
   }
+}
+
+.bg-parallelogram {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -10;
+  width: 105vw;
+  height: 43vw;
+  background-color: $main-shade2;
+  clip-path: polygon(17% 38%, 100% 0, 83% 62%, 0 100%);
 }

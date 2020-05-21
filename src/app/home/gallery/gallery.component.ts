@@ -7,7 +7,7 @@ import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 })
 export class GalleryComponent implements OnInit, OnDestroy {
   public position = 0;
-  public innerWidth: any;
+  public innerWidth: number;
   private interval: number;
   private isAnimating: boolean;
 
@@ -45,5 +45,6 @@ export class GalleryComponent implements OnInit, OnDestroy {
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.innerWidth = window.innerWidth;
+    console.log('width: ', this.innerWidth);
   }
 }
