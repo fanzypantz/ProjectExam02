@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Establishment } from '../models/establisment.model';
 import { User } from '../models/user.model';
 import { Enquiry } from '../models/enquiry.model';
@@ -15,8 +15,9 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './read.component.html',
   styleUrls: ['./read.component.scss'],
 })
-export class ReadComponent implements OnInit {
+export class ReadComponent implements OnInit, OnDestroy {
   @Input() model: string;
+  private paramSub: Subscription;
   readLayout: ReadInterface[];
   collections: Observable<Array<any>>;
   showConfirmPrompt = false;
@@ -25,7 +26,7 @@ export class ReadComponent implements OnInit {
   constructor(private afs: AngularFirestore, private route: ActivatedRoute) {
     // Subscribe to the queryParams so every time it changes this function is called
     // When the queryParam change, change the values and fetch the new data
-    route.queryParams.subscribe((p) => {
+    this.paramSub = route.queryParams.subscribe((p) => {
       this.model = p.model;
       this.readLayout = adminConfig[p.model].readLayout;
       this.collections = this.getCollection();
@@ -35,6 +36,10 @@ export class ReadComponent implements OnInit {
   ngOnInit(): void {
     this.readLayout = adminConfig[this.model].readLayout;
     this.collections = this.getCollection();
+  }
+
+  ngOnDestroy(): void {
+    this.paramSub.unsubscribe();
   }
 
   confirmDelete(id) {

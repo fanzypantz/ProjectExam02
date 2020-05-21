@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import {
@@ -8,9 +8,10 @@ import {
   defaultPosts,
 } from '../shared/app.config';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Subscription } from 'rxjs';
 import * as firebase from 'firebase/app';
-import 'firebase/firestore';
 
+import 'firebase/firestore';
 import { Establishment } from './shared/models/establisment.model';
 
 @Component({
@@ -18,7 +19,8 @@ import { Establishment } from './shared/models/establisment.model';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss'],
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit, OnDestroy {
+  private querySub: Subscription;
   model: string;
   mode: string;
   id: string;
@@ -26,13 +28,17 @@ export class AdminComponent implements OnInit {
   constructor(private route: ActivatedRoute, private afs: AngularFirestore) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
+    this.querySub = this.route.queryParams.subscribe((params) => {
       this.model = params.model;
       this.mode = params.mode;
       if (params.id) {
         this.id = params.id;
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.querySub.unsubscribe();
   }
 
   // Everything bellow is debug only

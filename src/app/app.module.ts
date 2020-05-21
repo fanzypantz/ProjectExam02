@@ -31,6 +31,7 @@ import { BookingSearchComponent } from './shared/booking-search/booking-search.c
 import { DealsComponent } from './home/deals/deals.component';
 import { PostsComponent } from './home/posts/posts.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { AccommodationDetailsComponent } from './addommodation-details/accommodation-details.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { FooterComponent } from './shared/footer/footer.component';
     RolesComponent,
     StringComponent,
     AccommodationsComponent,
+    AccommodationDetailsComponent,
     ContactComponent,
     EnquiriesComponent,
     GalleryComponent,

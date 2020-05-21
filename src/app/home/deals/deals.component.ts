@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 import { Establishment } from '../../admin/shared/models/establisment.model';
 
 @Component({
@@ -13,7 +14,7 @@ export class DealsComponent implements OnInit, OnDestroy {
   document: Observable<Array<Establishment>>;
   data: any;
 
-  constructor(private afs: AngularFirestore) {}
+  constructor(private afs: AngularFirestore, private router: Router) {}
 
   ngOnInit(): void {
     this.document = this.afs
@@ -28,5 +29,9 @@ export class DealsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.documentSubscription.unsubscribe();
+  }
+
+  goTo(id) {
+    this.router.navigate(['/accommodation-details', id]);
   }
 }

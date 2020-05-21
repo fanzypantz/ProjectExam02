@@ -9,12 +9,17 @@ import { CanReadGuard } from './auth/guards/can-read.guard';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { AccommodationsComponent } from './accommodations/accommodations.component';
+import { AccommodationDetailsComponent } from './addommodation-details/accommodation-details.component';
 import { ContactComponent } from './contact/contact.component';
 import { EnquiriesComponent } from './enquiries/enquiries.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'accommodations', component: AccommodationsComponent },
+  {
+    path: 'accommodation-detail/:id',
+    component: AccommodationDetailsComponent,
+  },
   { path: 'contact', component: ContactComponent },
   { path: 'enquiries', component: EnquiriesComponent },
   { path: 'admin', component: AdminComponent, canActivate: [CanDeleteGuard] },

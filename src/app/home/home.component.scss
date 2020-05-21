@@ -1,0 +1,30 @@
+@import '../../variables';
+
+.home-deals-title {
+  margin: 70px auto;
+  position: relative;
+  width: 380px;
+  height: 80px;
+
+  h1 {
+    line-height: 80px;
+    text-align: center;
+    font-size: 4em;
+    font-weight: 100;
+    font-style: normal;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.home-deals-title-border {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 100%;
+  border-top: 1px solid $main;
+  border-bottom: 1px solid $main;
+  transform: translate(-50%, -50%);
+}
