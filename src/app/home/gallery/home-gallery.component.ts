@@ -45,6 +45,5 @@ export class HomeGalleryComponent implements OnInit, OnDestroy {
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.innerWidth = window.innerWidth;
-    console.log('width: ', this.innerWidth);
   }
 }
