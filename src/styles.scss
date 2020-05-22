@@ -19,6 +19,13 @@ body {
   font-family: $font-family-text;
 }
 
+app-footer {
+  display: block;
+  position: relative;
+  margin-top: 300px;
+  height: 260px;
+}
+
 h1,
 h2,
 h3,
@@ -77,11 +84,23 @@ a {
   position: absolute;
   top: -35%;
   right: calc(-20vw);
-  z-index: -10;
+  z-index: -11;
   width: 50vw;
   height: 43vw;
   background-color: $main;
   clip-path: polygon(12% 8%, 100% 0, 100% 100%, -3% 92%);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.bg-slope {
+  z-index: -12;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 1700px;
+  background-color: $secondary;
+  clip-path: polygon(0 0, 100% 34%, 100% 100%, 0% 100%);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 

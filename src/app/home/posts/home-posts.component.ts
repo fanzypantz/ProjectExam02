@@ -30,6 +30,6 @@ export class HomePostsComponent implements OnInit, OnDestroy {
   }
 
   goTo(id) {
-    this.router.navigate(['/posts', id]);
+    this.router.navigate(['/post', id]);
   }
 }

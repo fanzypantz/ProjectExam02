@@ -3,19 +3,22 @@
 .home-posts {
   width: 60vw;
   height: 60vw;
-  margin: 0 auto 400px auto;
+  max-height: $max-width;
+  max-width: $max-width;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
 }
 
 .home-posts-inspire {
   background-color: $main;
-  width: calc((60vw / 3) - 11px);
-  height: calc((60vw / 3) - 11px);
+  width: calc((100% / 3) - 11px);
+  height: calc((100% / 3) - 11px);
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 8px 8px 0;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 
   .home-title {
     color: $white;
@@ -44,7 +47,7 @@
   h4 {
     font-weight: 400;
     margin: 0;
-    line-height: 30px;
+    line-height: 40px;
     color: $main-shade2;
     padding-left: 30px;
   }
@@ -64,9 +67,10 @@
   position: relative;
   z-index: 1;
   margin-left: 8px;
-  width: calc(((60vw / 3) * 2) - 5px);
-  height: calc((60vw / 3) - 8px);
+  width: calc(((100% / 3) * 2) - 5px);
+  height: calc((100% / 3) - 8px);
   overflow: hidden;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 
   &:hover {
     cursor: pointer;
@@ -80,11 +84,12 @@
 
 .home-posts-tall {
   position: relative;
-  width: calc((60vw / 3) - 11px);
-  height: calc(((60vw / 3) * 2) - 6px);
+  width: calc((100% / 3) - 11px);
+  height: calc(((100% / 3) * 2) - 6px);
   margin-right: 8px;
   margin-top: 8px;
   overflow: hidden;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 
   &:hover {
     cursor: pointer;

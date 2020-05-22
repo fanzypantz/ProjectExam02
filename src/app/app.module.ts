@@ -32,6 +32,7 @@ import { HomeDealsComponent } from './home/deals/home-deals.component';
 import { HomePostsComponent } from './home/posts/home-posts.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AccommodationDetailsComponent } from './addommodation-details/accommodation-details.component';
+import { PostsDetailsComponent } from './posts-details/posts-details.component';
 import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
@@ -57,6 +58,7 @@ import { PostsComponent } from './posts/posts.component';
     HomeDealsComponent,
     HomePostsComponent,
     PostsComponent,
+    PostsDetailsComponent,
     FooterComponent,
   ],
   imports: [
