@@ -5,6 +5,7 @@ export interface Establishment {
   id: string;
   establishmentName: string;
   establishmentEmail: string;
+  area: string;
   imageUrl: string[];
   price: number;
   maxGuests: number;

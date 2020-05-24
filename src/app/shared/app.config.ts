@@ -21,6 +21,7 @@ export const defaultEstablishments = [
   {
     establishmentName: 'Sunsssset Beach',
     establishmentEmail: 'info@sunsetbeach.com',
+    area: 'Nordnes',
     imageUrl:
       'https://images.unsplash.com/photo-1439130490301-25e322d88054?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80',
     price: '85',
@@ -36,6 +37,7 @@ export const defaultEstablishments = [
   {
     establishmentName: 'Rest Easy',
     establishmentEmail: 'management@resteasy.com',
+    area: 'Arna',
     imageUrl:
       'https://images.unsplash.com/photo-1512552288940-3a300922a275?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80',
     price: '120',
@@ -51,6 +53,7 @@ export const defaultEstablishments = [
   {
     establishmentName: 'The Hideaway',
     establishmentEmail: 'info@hideaway.com',
+    area: 'Ytre Arna',
     imageUrl:
       'https://images.unsplash.com/photo-1551906993-c8b38a6ab201?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=666&q=80',
     price: '70',
@@ -66,6 +69,7 @@ export const defaultEstablishments = [
   {
     establishmentName: 'Farm Cottage',
     establishmentEmail: 'info@cottageholidays.com',
+    area: 'Kronstad',
     imageUrl:
       'https://images.unsplash.com/photo-1505916349660-8d91a99c3e23?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
     price: '100',
@@ -81,6 +85,7 @@ export const defaultEstablishments = [
   {
     establishmentName: 'Tree Tops',
     establishmentEmail: 'enquiries@treetops.com',
+    area: 'Bryggen',
     imageUrl:
       'https://images.unsplash.com/photo-1550355191-aa8a80b41353?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
     price: '95',
@@ -96,6 +101,7 @@ export const defaultEstablishments = [
   {
     establishmentName: 'Coast to Coast',
     establishmentEmail: 'enquiries@coasttocoast.com',
+    area: 'Laksevåg',
     imageUrl:
       'https://images.unsplash.com/photo-1544085701-4d54e9f41c45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80',
     price: '55',
@@ -111,6 +117,7 @@ export const defaultEstablishments = [
   {
     establishmentName: 'Koselig hytte Spa Resort',
     establishmentEmail: 'info@koselighyttespa.no',
+    area: 'Årstad',
     imageUrl:
       'https://images.unsplash.com/photo-1469394576569-858815b13427?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=849&q=80',
     price: '105',
@@ -126,6 +133,7 @@ export const defaultEstablishments = [
   {
     establishmentName: 'City Break',
     establishmentEmail: 'info@citybreakapartment.no',
+    area: 'Fyllingsdalen',
     imageUrl:
       'https://images.unsplash.com/photo-1509365390695-33aee754301f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
     price: '60',
@@ -141,6 +149,7 @@ export const defaultEstablishments = [
   {
     establishmentName: 'Fjell Hotel',
     establishmentEmail: 'desk@fjellhotel.com',
+    area: 'Fyllingsdalen',
     imageUrl:
       'https://images.unsplash.com/photo-1501117716987-c8c394bb29df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
     price: '160',
@@ -156,6 +165,7 @@ export const defaultEstablishments = [
   {
     establishmentName: 'Glede Mountain Lodge',
     establishmentEmail: 'enquiries@gledemountain.no',
+    area: 'Bryggen',
     imageUrl:
       'https://images.unsplash.com/photo-1517320964276-a002fa203177?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=375&q=80',
     price: '110',
@@ -171,6 +181,7 @@ export const defaultEstablishments = [
   {
     establishmentName: 'Home from Home',
     establishmentEmail: 'info@homefromhome.com',
+    area: 'Åsane',
     imageUrl:
       'https://images.unsplash.com/photo-1546555648-fb7876c40c58?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=755&q=80',
     price: '80',
@@ -186,6 +197,7 @@ export const defaultEstablishments = [
   {
     establishmentName: 'Lodge Hotel',
     establishmentEmail: 'info@lodgehotel.com',
+    area: 'Åsane',
     imageUrl:
       'https://images.unsplash.com/photo-1548873902-8b69fb85030a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80',
     price: '75',
@@ -201,6 +213,7 @@ export const defaultEstablishments = [
   {
     establishmentName: 'The Shed',
     establishmentEmail: 'enquiries@theshedaccomodation.no',
+    area: 'Askøy',
     imageUrl:
       'https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
     price: '50',
@@ -216,6 +229,7 @@ export const defaultEstablishments = [
   {
     establishmentName: 'Innsjø Hus',
     establishmentEmail: 'enquiries@innsjøhus.no',
+    area: 'Troldhaugen',
     imageUrl:
       'https://images.unsplash.com/photo-1469394576569-858815b13427?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=849&q=80',
     price: '200',
@@ -231,6 +245,7 @@ export const defaultEstablishments = [
   {
     establishmentName: 'Peace and Quiet',
     establishmentEmail: 'enquiries@peaceandquiet.no',
+    area: 'Ytrebygda',
     imageUrl:
       'https://images.unsplash.com/photo-1479123142480-cbdc7b84de24?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=678&q=80',
     price: '150',
@@ -246,6 +261,7 @@ export const defaultEstablishments = [
   {
     establishmentName: "Adam's Place",
     establishmentEmail: 'enquiries@adamsplace.no',
+    area: 'Litlesotra',
     imageUrl:
       'https://images.unsplash.com/photo-1507038772120-7fff76f79d79?ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80',
     price: '60',
@@ -261,6 +277,7 @@ export const defaultEstablishments = [
   {
     establishmentName: 'Buena Vista',
     establishmentEmail: 'info@buenavista.com',
+    area: 'Salhus',
     imageUrl:
       'https://images.unsplash.com/photo-1523791633495-94ebabc8a795?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80',
     price: '45',

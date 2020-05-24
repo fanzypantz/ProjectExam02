@@ -54,6 +54,7 @@ export class AdminComponent implements OnInit, OnDestroy {
       const data = {
         establishmentName: item.establishmentName,
         establishmentEmail: item.establishmentEmail,
+        area: item.area,
         imageUrl: [item.imageUrl],
         price: item.price,
         maxGuests: item.maxGuests,
