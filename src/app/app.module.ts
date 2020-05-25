@@ -34,6 +34,8 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { AccommodationDetailsComponent } from './addommodation-details/accommodation-details.component';
 import { PostsDetailsComponent } from './posts-details/posts-details.component';
 import { PostsComponent } from './posts/posts.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BookingDetailsComponent } from './shared/booking-search/details/booking-details.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,7 @@ import { PostsComponent } from './posts/posts.component';
     PostsComponent,
     PostsDetailsComponent,
     FooterComponent,
+    BookingDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import { PostsComponent } from './posts/posts.component';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

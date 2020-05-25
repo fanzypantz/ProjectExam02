@@ -11,8 +11,8 @@ import { Post } from '../../admin/shared/models/post.model';
 })
 export class HomePostsComponent implements OnInit, OnDestroy {
   private documentSubscription: Subscription;
-  document: Observable<Array<Post>>;
-  data: any;
+  private document: Observable<Array<Post>>;
+  private data: Array<Post>;
 
   constructor(private afs: AngularFirestore, private router: Router) {}
 

@@ -1,1 +1,275 @@
-<p>booking-search works!</p>
+<form
+  class="search-form"
+  [formGroup]="bookingForm"
+  (ngSubmit)="onSubmit(bookingForm.value)"
+  #ngForm="ngForm"
+>
+  <div class="search-form-group form-area">
+    <label for="area" class="search-icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="23.137"
+        height="30.849"
+        viewBox="0 0 23.137 30.849"
+      >
+        <path
+          id="Path_3"
+          data-name="Path 3"
+          d="M24.028,39.018a.964.964,0,0,0,.8.425h0a.964.964,0,0,0,.8-.425l9.1-13.514a10.835,10.835,0,0,0,1.663-5.761A11.377,11.377,0,0,0,24.818,8.6,11.377,11.377,0,0,0,13.249,19.743a10.853,10.853,0,0,0,1.686,5.8Zm.791-28.5a9.448,9.448,0,0,1,9.64,9.22,8.884,8.884,0,0,1-1.352,4.71l-8.281,12.3L16.551,24.485a8.9,8.9,0,0,1-1.373-4.743A9.448,9.448,0,0,1,24.819,10.522Z"
+          transform="translate(-13.249 -8.595)"
+          fill="#fff"
+        />
+        <path
+          id="Path_4"
+          data-name="Path 4"
+          d="M25.046,25.221a5.305,5.305,0,1,0-5.482-5.3A5.4,5.4,0,0,0,25.046,25.221Zm0-8.676a3.379,3.379,0,1,1-3.553,3.374A3.471,3.471,0,0,1,25.046,16.544Z"
+          transform="translate(-13.476 -8.811)"
+          fill="#fff"
+        />
+      </svg>
+    </label>
+
+    <div
+      *ngIf="
+        !(area.invalid && (area.dirty || area.touched || ngForm.submitted))
+      "
+      class="form-overbox"
+    >
+      <h3>Areas in Bergen</h3>
+    </div>
+
+    <div
+      *ngIf="area.invalid && (area.dirty || area.touched || ngForm.submitted)"
+      class="form-overbox form-error"
+    >
+      <h3 *ngIf="area.errors.required">Area required!</h3>
+      <h3 *ngIf="area.errors.minlength">
+        Area must be at least 3 characters long
+      </h3>
+    </div>
+
+    <input
+      [ngClass]="{
+        'form-input': true,
+        'form-input-invalid':
+          area.invalid && (area.dirty || area.touched || ngForm.submitted)
+      }"
+      id="area"
+      type="text"
+      name="area"
+      formControlName="area"
+      placeholder="Where are you going?"
+      autocomplete="off"
+      required
+      minlength="3"
+    />
+
+    <div
+      [ngClass]="{
+        'form-underbox': true,
+        'form-underbox-active': showSearch === true
+      }"
+    >
+      <div
+        class="form-underbox-item"
+        (click)="onAreaClick(item.area)"
+        *ngFor="let item of matchingAreas"
+      >
+        <a>{{ item.area }}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="search-form-group">
+    <label class="search-icon" for="check-in">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="44.2"
+        height="44.1"
+        viewBox="0 0 44.2 44.1"
+      >
+        <g id="calendar" transform="translate(-10 -9.9)">
+          <g id="Icon-Calendar" transform="translate(30 478)">
+            <path
+              id="Fill-133"
+              d="M19.6-424H-15.6a4.439,4.439,0,0,1-4.4-4.4v-32.3c0-2.4,1.6-4.4,3.7-4.4h2.2v2.9h-2.2c-.3,0-.7.6-.7,1.5v32.3a1.538,1.538,0,0,0,1.5,1.5H19.7a1.538,1.538,0,0,0,1.5-1.5v-32.3c0-.9-.5-1.5-.7-1.5H18.3v-2.9h2.2c2,0,3.7,2,3.7,4.4v32.3a4.76,4.76,0,0,1-4.6,4.4"
+              fill="#fff"
+            />
+            <path
+              id="Fill-134"
+              d="M-9.7-459.2a1.538,1.538,0,0,1-1.5-1.5v-5.9a1.538,1.538,0,0,1,1.5-1.5,1.538,1.538,0,0,1,1.5,1.5v5.9a1.612,1.612,0,0,1-1.5,1.5"
+              fill="#fff"
+            />
+            <path
+              id="Fill-135"
+              d="M13.7-459.2a1.538,1.538,0,0,1-1.5-1.5v-5.9a1.538,1.538,0,0,1,1.5-1.5,1.538,1.538,0,0,1,1.5,1.5v5.9a1.538,1.538,0,0,1-1.5,1.5"
+              fill="#fff"
+            />
+            <path id="Fill-136" d="M-5.3-465.1H9.3v3H-5.3Z" fill="#fff" />
+            <path id="Fill-137" d="M-17.1-456.3H21.1v3H-17.1Z" fill="#fff" />
+            <path id="Fill-138" d="M15.2-450.4h2.9v2.9H15.2Z" fill="#fff" />
+            <path id="Fill-139" d="M9.3-450.4h3v2.9h-3Z" fill="#fff" />
+            <path id="Fill-140" d="M3.5-450.4H6.4v2.9H3.5Z" fill="#fff" />
+            <path id="Fill-141" d="M-2.4-450.4H.5v2.9H-2.4Z" fill="#fff" />
+            <path id="Fill-142" d="M-8.3-450.4h3v2.9h-3Z" fill="#fff" />
+            <path id="Fill-143" d="M15.2-444.5h2.9v2.9H15.2Z" fill="#fff" />
+            <path id="Fill-144" d="M9.3-444.5h3v2.9h-3Z" fill="#fff" />
+            <path id="Fill-145" d="M3.5-444.5H6.4v2.9H3.5Z" fill="#fff" />
+            <path id="Fill-146" d="M-2.4-444.5H.5v2.9H-2.4Z" fill="#fff" />
+            <path id="Fill-147" d="M-8.3-444.5h3v2.9h-3Z" fill="#fff" />
+            <path id="Fill-148" d="M-14.1-444.5h2.9v2.9h-2.9Z" fill="#fff" />
+            <path id="Fill-149" d="M15.2-438.7h2.9v3H15.2Z" fill="#fff" />
+            <path id="Fill-150" d="M9.3-438.7h3v3h-3Z" fill="#fff" />
+            <path id="Fill-151" d="M3.5-438.7H6.4v3H3.5Z" fill="#fff" />
+            <path id="Fill-152" d="M-2.4-438.7H.5v3H-2.4Z" fill="#fff" />
+            <path id="Fill-153" d="M-8.3-438.7h3v3h-3Z" fill="#fff" />
+            <path id="Fill-154" d="M-14.1-438.7h2.9v3h-2.9Z" fill="#fff" />
+            <path id="Fill-155" d="M9.3-432.8h3v2.9h-3Z" fill="#fff" />
+            <path id="Fill-156" d="M3.5-432.8H6.4v2.9H3.5Z" fill="#fff" />
+            <path id="Fill-157" d="M-2.4-432.8H.5v2.9H-2.4Z" fill="#fff" />
+            <path id="Fill-158" d="M-8.3-432.8h3v2.9h-3Z" fill="#fff" />
+            <path id="Fill-159" d="M-14.1-432.8h2.9v2.9h-2.9Z" fill="#fff" />
+          </g>
+        </g>
+      </svg>
+    </label>
+
+    <div
+      *ngIf="
+        !(
+          checkIn.invalid &&
+          (checkIn.dirty || checkIn.touched || ngForm.submitted)
+        )
+      "
+      class="form-overbox"
+    >
+      <h3>Check-in date</h3>
+    </div>
+
+    <div
+      *ngIf="
+        checkIn.invalid &&
+        (checkIn.dirty || checkIn.touched || ngForm.submitted)
+      "
+      class="form-overbox form-error"
+    >
+      <h3 *ngIf="checkIn.errors.required">Check-in date required!</h3>
+    </div>
+
+    <input
+      [ngClass]="{
+        'form-input': true,
+        'form-date': true,
+        'form-input-invalid':
+          checkIn.invalid &&
+          (checkIn.dirty || checkIn.touched || ngForm.submitted)
+      }"
+      id="check-in"
+      type="date"
+      name="check-in"
+      formControlName="checkIn"
+      placeholder="Check-in"
+      required
+    />
+  </div>
+
+  <div class="search-form-group">
+    <input
+      [ngClass]="{
+        'form-input': true,
+        'form-date': true,
+        'form-input-invalid':
+          checkOut.invalid &&
+          (checkOut.dirty || checkOut.touched || ngForm.submitted)
+      }"
+      id="check-out"
+      type="date"
+      name="check-out"
+      formControlName="checkOut"
+      required
+    />
+
+    <div
+      *ngIf="
+        !(
+          checkOut.invalid &&
+          (checkOut.dirty || checkOut.touched || ngForm.submitted)
+        )
+      "
+      class="form-overbox"
+    >
+      <h3>Check-out date</h3>
+    </div>
+
+    <div
+      *ngIf="
+        checkOut.invalid &&
+        (checkOut.dirty || checkOut.touched || ngForm.submitted)
+      "
+      class="form-overbox form-error"
+    >
+      <h3 *ngIf="checkOut.errors.required">Check-out date required!</h3>
+    </div>
+
+    <label class="search-icon" for="check-in">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="44.2"
+        height="44.1"
+        viewBox="0 0 44.2 44.1"
+      >
+        <g id="calendar" transform="translate(-10 -9.9)">
+          <g id="Icon-Calendar" transform="translate(30 478)">
+            <path
+              id="Fill-133"
+              d="M19.6-424H-15.6a4.439,4.439,0,0,1-4.4-4.4v-32.3c0-2.4,1.6-4.4,3.7-4.4h2.2v2.9h-2.2c-.3,0-.7.6-.7,1.5v32.3a1.538,1.538,0,0,0,1.5,1.5H19.7a1.538,1.538,0,0,0,1.5-1.5v-32.3c0-.9-.5-1.5-.7-1.5H18.3v-2.9h2.2c2,0,3.7,2,3.7,4.4v32.3a4.76,4.76,0,0,1-4.6,4.4"
+              fill="#fff"
+            />
+            <path
+              id="Fill-134"
+              d="M-9.7-459.2a1.538,1.538,0,0,1-1.5-1.5v-5.9a1.538,1.538,0,0,1,1.5-1.5,1.538,1.538,0,0,1,1.5,1.5v5.9a1.612,1.612,0,0,1-1.5,1.5"
+              fill="#fff"
+            />
+            <path
+              id="Fill-135"
+              d="M13.7-459.2a1.538,1.538,0,0,1-1.5-1.5v-5.9a1.538,1.538,0,0,1,1.5-1.5,1.538,1.538,0,0,1,1.5,1.5v5.9a1.538,1.538,0,0,1-1.5,1.5"
+              fill="#fff"
+            />
+            <path id="Fill-136" d="M-5.3-465.1H9.3v3H-5.3Z" fill="#fff" />
+            <path id="Fill-137" d="M-17.1-456.3H21.1v3H-17.1Z" fill="#fff" />
+            <path id="Fill-138" d="M15.2-450.4h2.9v2.9H15.2Z" fill="#fff" />
+            <path id="Fill-139" d="M9.3-450.4h3v2.9h-3Z" fill="#fff" />
+            <path id="Fill-140" d="M3.5-450.4H6.4v2.9H3.5Z" fill="#fff" />
+            <path id="Fill-141" d="M-2.4-450.4H.5v2.9H-2.4Z" fill="#fff" />
+            <path id="Fill-142" d="M-8.3-450.4h3v2.9h-3Z" fill="#fff" />
+            <path id="Fill-143" d="M15.2-444.5h2.9v2.9H15.2Z" fill="#fff" />
+            <path id="Fill-144" d="M9.3-444.5h3v2.9h-3Z" fill="#fff" />
+            <path id="Fill-145" d="M3.5-444.5H6.4v2.9H3.5Z" fill="#fff" />
+            <path id="Fill-146" d="M-2.4-444.5H.5v2.9H-2.4Z" fill="#fff" />
+            <path id="Fill-147" d="M-8.3-444.5h3v2.9h-3Z" fill="#fff" />
+            <path id="Fill-148" d="M-14.1-444.5h2.9v2.9h-2.9Z" fill="#fff" />
+            <path id="Fill-149" d="M15.2-438.7h2.9v3H15.2Z" fill="#fff" />
+            <path id="Fill-150" d="M9.3-438.7h3v3h-3Z" fill="#fff" />
+            <path id="Fill-151" d="M3.5-438.7H6.4v3H3.5Z" fill="#fff" />
+            <path id="Fill-152" d="M-2.4-438.7H.5v3H-2.4Z" fill="#fff" />
+            <path id="Fill-153" d="M-8.3-438.7h3v3h-3Z" fill="#fff" />
+            <path id="Fill-154" d="M-14.1-438.7h2.9v3h-2.9Z" fill="#fff" />
+            <path id="Fill-155" d="M9.3-432.8h3v2.9h-3Z" fill="#fff" />
+            <path id="Fill-156" d="M3.5-432.8H6.4v2.9H3.5Z" fill="#fff" />
+            <path id="Fill-157" d="M-2.4-432.8H.5v2.9H-2.4Z" fill="#fff" />
+            <path id="Fill-158" d="M-8.3-432.8h3v2.9h-3Z" fill="#fff" />
+            <path id="Fill-159" d="M-14.1-432.8h2.9v2.9h-2.9Z" fill="#fff" />
+          </g>
+        </g>
+      </svg>
+    </label>
+  </div>
+
+  <app-booking-details
+    [roomData]="bookingForm.get('roomData')"
+  ></app-booking-details>
+
+  <button class="btn" type="submit">
+    Find Accommodation
+  </button>
+</form>

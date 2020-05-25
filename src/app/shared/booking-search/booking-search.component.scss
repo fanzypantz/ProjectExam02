@@ -1,0 +1,241 @@
+@import '../../../variables';
+
+.search-form {
+  display: flex;
+  height: 60px;
+  width: 100%;
+}
+
+.search-form .btn {
+  width: calc(75% / 4);
+  height: 60px;
+  border-left: 2px solid $main;
+}
+
+.search-icon {
+  width: 60px;
+  height: 60px;
+  background-color: $main;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.search-form-group {
+  position: relative;
+  display: flex;
+  width: calc(75% / 4);
+
+  &:hover .form-overbox {
+    opacity: 1;
+  }
+}
+
+app-booking-details {
+  width: calc(75% / 4);
+}
+
+.form-input {
+  font-family: $font-family;
+  width: calc(100% - 70px);
+  background-color: $main-shade2;
+  border: none;
+  padding-left: 10px;
+  color: $main;
+  font-size: 15px;
+  font-weight: 600;
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &::placeholder {
+    color: $main;
+  }
+}
+
+.form-input-invalid {
+  border: 2px solid $tertiary;
+  width: calc(100% - 72px);
+  height: calc(100% - 4px);
+  padding-left: 8px;
+}
+
+.form-overbox {
+  position: absolute;
+  top: 0;
+  transform: translateY(calc(-100% - 10px));
+  left: 60px;
+  min-height: 40px;
+  width: calc(100% - 70px);
+  background-color: $main;
+  color: $white;
+  padding-left: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms ease;
+  border-bottom: 2px solid $main-shade2;
+
+  h3 {
+    margin: 0;
+    line-height: 40px;
+    font-weight: 400;
+    font-size: 1em;
+  }
+}
+
+.form-error {
+  opacity: 1;
+  background-color: $tertiary-shade;
+  width: max-content;
+  padding: 0 10px;
+}
+
+.form-overbox-checkout {
+  left: 0;
+}
+
+.form-underbox {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(calc(100% + 10px));
+  left: 60px;
+  width: calc(100% - 60px);
+  max-height: 305px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 250ms ease;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.form-underbox-active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.form-underbox-item {
+  padding-left: 10px;
+  background-color: $main;
+  border-bottom: 2px solid $main-shade2;
+  height: 30px;
+  width: 100%;
+  margin-bottom: 2px;
+
+  a {
+    line-height: 30px;
+    margin: 0;
+    color: $white;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $main-shade2;
+
+    a {
+      color: $main;
+    }
+  }
+}
+
+.form-area {
+  width: 25%;
+}
+
+.search-dropdown-container {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(calc(100% + 10px));
+  left: 60px;
+  width: calc(100% - 60px);
+
+  label {
+    padding-left: 10px;
+    background-color: $main-shade2;
+    border-bottom: 2px solid $main;
+    color: $main;
+    display: block;
+    width: calc(100% - 10px);
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 2px;
+  }
+
+  input[type='number'] {
+    color: $main;
+    padding-left: 10px;
+    background-color: $main-shade2;
+    width: calc(100% - 10px);
+    height: 30px;
+    border: none;
+    border-bottom: 2px solid $main-shade1;
+    margin-bottom: 2px;
+  }
+}
+
+.form-date::-webkit-inner-spin-button,
+.form-date::-webkit-outer-spin-button,
+.form-date::-webkit-clear-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.form-date::-webkit-calendar-picker-indicator {
+  color: $main;
+
+  &:hover {
+    background-color: transparent;
+    cursor: pointer;
+  }
+}
+#check-in {
+  //text-transform: uppercase;
+  border-right: 2px solid $main;
+}
+
+#check-out {
+  //text-transform: uppercase;
+}
+
+.search-form-details {
+  width: 100%;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.search-details {
+  width: calc(100% - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  position: relative;
+
+  p,
+  h4 {
+    color: $main;
+    margin: 0 0 0 20px;
+  }
+
+  p {
+    line-height: 12px;
+    font-size: 0.9em;
+  }
+
+  svg {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+  }
+}

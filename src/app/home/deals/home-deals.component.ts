@@ -11,15 +11,15 @@ import { Establishment } from '../../admin/shared/models/establisment.model';
 })
 export class HomeDealsComponent implements OnInit, OnDestroy {
   private documentSubscription: Subscription;
-  document: Observable<Array<Establishment>>;
-  data: any;
+  private document: Observable<Array<Establishment>>;
+  private data: Array<Establishment>;
 
   constructor(private afs: AngularFirestore, private router: Router) {}
 
   ngOnInit(): void {
     this.document = this.afs
       .collection<Establishment>('establishments', (ref) =>
-        ref.where('highlight', '==', true)
+        ref.where('highlight', '==', true).limit(3)
       )
       .valueChanges({ idField: 'id' });
     this.documentSubscription = this.document.subscribe((snapshot) => {
