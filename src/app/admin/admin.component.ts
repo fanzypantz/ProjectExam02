@@ -50,22 +50,55 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   seedEstablishments() {
     // Seed establishments
-    for (const item of defaultEstablishments) {
+    for (let i = 0; i < 100; i++) {
+      const randomGeoIndex = this.getRandomInt(
+        0,
+        defaultEstablishments.length - 1
+      );
+
       const data = {
-        establishmentName: item.establishmentName,
-        establishmentEmail: item.establishmentEmail,
-        area: item.area,
-        imageUrl: [item.imageUrl],
-        price: item.price,
-        maxGuests: item.maxGuests,
+        establishmentName:
+          defaultEstablishments[
+            this.getRandomInt(0, defaultEstablishments.length - 1)
+          ].establishmentName,
+        establishmentEmail:
+          defaultEstablishments[
+            this.getRandomInt(0, defaultEstablishments.length - 1)
+          ].establishmentEmail,
+        area:
+          defaultEstablishments[
+            this.getRandomInt(0, defaultEstablishments.length - 1)
+          ].area,
+        imageUrl: [
+          defaultEstablishments[
+            this.getRandomInt(0, defaultEstablishments.length - 1)
+          ].imageUrl,
+        ],
+        price:
+          defaultEstablishments[
+            this.getRandomInt(0, defaultEstablishments.length - 1)
+          ].price,
+        maxGuests:
+          defaultEstablishments[
+            this.getRandomInt(0, defaultEstablishments.length - 1)
+          ].maxGuests,
         rating: this.getRandomInt(3, 5),
         location: new firebase.firestore.GeoPoint(
-          item.googleLat,
-          item.googleLong
+          defaultEstablishments[randomGeoIndex].googleLat,
+          defaultEstablishments[randomGeoIndex].googleLong
         ),
-        description: item.description,
-        selfCatering: item.selfCatering,
-        highlight: item.highlight,
+        description:
+          defaultEstablishments[
+            this.getRandomInt(0, defaultEstablishments.length - 1)
+          ].description,
+        selfCatering:
+          defaultEstablishments[
+            this.getRandomInt(0, defaultEstablishments.length - 1)
+          ].selfCatering,
+        highlight:
+          defaultEstablishments[
+            this.getRandomInt(0, defaultEstablishments.length - 1)
+          ].highlight,
         createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
         updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
       };
