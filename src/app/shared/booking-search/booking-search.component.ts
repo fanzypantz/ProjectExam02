@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, SubscriptionLike } from 'rxjs';
@@ -11,12 +11,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./booking-search.component.scss'],
 })
 export class BookingSearchComponent implements OnInit, OnDestroy {
+  @Input() areaInput: string;
+  @Input() checkInInput: number;
+  @Input() checkOutInput: number;
+  @Input() adultsInput: string;
+  @Input() roomsInput: string;
+
   private collections: Observable<Establishment[]>;
   private documentSubscription: SubscriptionLike;
-  private bookingForm: FormGroup;
+  public bookingForm: FormGroup;
   private data: Establishment[];
-  private matchingAreas: Establishment[];
-  private showSearch: boolean;
+  public matchingAreas: Establishment[];
+  public showSearch: boolean;
 
   constructor(
     private afs: AngularFirestore,
@@ -24,19 +30,26 @@ export class BookingSearchComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder
   ) {
     this.showSearch = false;
-
-    this.bookingForm = this.formBuilder.group({
-      area: '',
-      checkIn: '',
-      checkOut: '',
-      roomData: this.formBuilder.group({
-        adults: 2,
-        rooms: 1,
-      }),
-    });
   }
 
   ngOnInit(): void {
+    // Does not look like default date on the default HTML input works
+    const checkInDate = new Date(this.checkInInput);
+    const checkOutDate = new Date(this.checkOutInput);
+    this.bookingForm = this.formBuilder.group({
+      area: this.areaInput || '',
+      checkIn:
+        `${checkInDate.getFullYear()}-${checkInDate.getMonth()}-${checkInDate.getDate()}` ||
+        '',
+      checkOut:
+        `${checkOutDate.getFullYear()}-${checkOutDate.getMonth()}-${checkOutDate.getDate()}` ||
+        '',
+      roomData: this.formBuilder.group({
+        adults: parseInt(this.adultsInput, 10) || 2,
+        rooms: parseInt(this.roomsInput, 10) || 1,
+      }),
+    });
+
     this.onChanges();
 
     this.collections = this.afs
@@ -86,7 +99,6 @@ export class BookingSearchComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(data) {
-    console.log('data: ', data);
     if (this.bookingForm.valid) {
       this.router.navigate(['/accommodations'], {
         queryParams: {

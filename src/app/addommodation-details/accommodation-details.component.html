@@ -1,1 +1,86 @@
-<p>{{ id }}</p>
+<div *ngIf="data" class="big-title page-title">
+  <h1>{{ data.establishmentName }} - {{ data.area }}</h1>
+  <div class="big-title-border"></div>
+</div>
+
+<div *ngIf="data" class="accommodation-container">
+  <div class="accommodation-top">
+    <div class="accommodation-img">
+      <img [src]="data.imageUrl" alt="" />
+    </div>
+
+    <div class="accommodation-map">
+      <agm-map
+        [latitude]="data.location.latitude"
+        [longitude]="data.location.longitude"
+        [zoom]="zoom"
+      >
+        <agm-marker
+          [latitude]="data.location.latitude"
+          [longitude]="data.location.longitude"
+        ></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+
+  <div class="accommodation-bottom">
+    <div class="accommodation-details">
+      <div class="accommodation-title">
+        <h2>{{ data.establishmentName }}</h2>
+        <div class="accommodation-rating">
+          <svg
+            *ngFor="let item of [].constructor(data.rating); let i = index"
+            xmlns="http://www.w3.org/2000/svg"
+            width="12.403"
+            height="11.783"
+            viewBox="0 0 12.403 11.783"
+          >
+            <g id="Page-1" transform="translate(0 -0.5)">
+              <g id="Core" transform="translate(0 0.5)">
+                <g id="star">
+                  <path
+                    id="Shape"
+                    d="M6.2,9.472l3.833,2.311L9.02,7.424,12.4,4.492,7.944,4.11,6.2,0,4.46,4.11,0,4.492,3.383,7.424,2.369,11.783Z"
+                    fill="#fd0"
+                    fill-rule="evenodd"
+                  />
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <p class="accommodation-text">{{ data.description }}</p>
+    </div>
+
+    <div class="accommodation-details-booking">
+      <div class="accommodation-booking-column">
+        <div class="accommodation-booking-details">
+          <div class="accommodation-booking-details-box">
+            <p>Self Catering</p>
+            <p class="square">{{ data.selfCatering ? 'Yes' : 'No' }}</p>
+          </div>
+          <div class="accommodation-booking-details-box">
+            <p>Max Guests</p>
+            <p class="square">{{ data.maxGuests }}</p>
+          </div>
+        </div>
+        <a class="btn mail" [href]="'mailto:' + data.establishmentEmail"
+          >CONTACT</a
+        >
+      </div>
+
+      <div class="accommodation-booking-column"></div>
+
+      <div class="accommodation-booking-column">
+        <div class="accommodation-booking-price">
+          <h2>${{ data.price }}</h2>
+        </div>
+
+        <a class="btn">CHOOSE</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-parallelogram bg-main"></div>
+</div>

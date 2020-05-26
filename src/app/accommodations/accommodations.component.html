@@ -1,7 +1,84 @@
-<p>accommodations fucking works!</p>
+<div class="big-title page-title">
+  <h1>Accommodations</h1>
+  <div class="big-title-border"></div>
+</div>
 
-<div>{{ area }}</div>
-<div>{{ checkIn }}</div>
-<div>{{ checkOut }}</div>
-<div>{{ adults }}</div>
-<div>{{ rooms }}</div>
+<app-booking-search
+  [areaInput]="area"
+  [checkInInput]="checkIn"
+  [checkOutInput]="checkOut"
+  [adultsInput]="adults"
+  [roomsInput]="rooms"
+></app-booking-search>
+
+<div class="accommodations-container">
+  <div class="accommodations-card" *ngFor="let item of searchResults">
+    <img class="accommodations-img" [src]="item.imageUrl" alt="" />
+    <div class="accommodation-details">
+      <div class="accommodation-title">
+        <h2>{{ item.establishmentName }}</h2>
+        <div class="accommodation-rating">
+          <svg
+            *ngFor="let item of [].constructor(item.rating); let i = index"
+            xmlns="http://www.w3.org/2000/svg"
+            width="12.403"
+            height="11.783"
+            viewBox="0 0 12.403 11.783"
+          >
+            <g id="Page-1" transform="translate(0 -0.5)">
+              <g id="Core" transform="translate(0 0.5)">
+                <g id="star">
+                  <path
+                    id="Shape"
+                    d="M6.2,9.472l3.833,2.311L9.02,7.424,12.4,4.492,7.944,4.11,6.2,0,4.46,4.11,0,4.492,3.383,7.424,2.369,11.783Z"
+                    fill="#fd0"
+                    fill-rule="evenodd"
+                  />
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <p class="accommodation-text">{{ item.description }}</p>
+    </div>
+    <div class="accommodation-booking">
+      <div class="accommodation-booking-container">
+        <div class="accommodation-booking-details">
+          <div class="accommodation-booking-details-box">
+            <p>Self Catering</p>
+            <p class="square">{{ item.selfCatering ? 'Yes' : 'No' }}</p>
+          </div>
+          <div class="accommodation-booking-details-box">
+            <p>Max Guests</p>
+            <p class="square">{{ item.maxGuests }}</p>
+          </div>
+        </div>
+
+        <div class="accommodation-booking-price">
+          <h2>${{ item.price }}</h2>
+        </div>
+      </div>
+
+      <div
+        class="accommodation-booking-container accommodation-booking-buttons"
+      >
+        <a class="btn mail" [href]="'mailto:' + item.establishmentEmail"
+          >CONTACT</a
+        >
+        <a class="btn" [routerLink]="['/accommodation-details', item.id]"
+          >CHOOSE</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-parallelogram">
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/noroff-projectexam-02.appspot.com/o/gallery%2Fgallery03.jpg?alt=media&token=8e152fd0-5f44-4c7f-a1ac-28435a14de4e"
+      alt=""
+    />
+  </div>
+</div>
+
+<div class="bg-accommodations"></div>

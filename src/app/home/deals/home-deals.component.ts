@@ -12,7 +12,7 @@ import { Establishment } from '../../admin/shared/models/establisment.model';
 export class HomeDealsComponent implements OnInit, OnDestroy {
   private documentSubscription: Subscription;
   private document: Observable<Array<Establishment>>;
-  private data: Array<Establishment>;
+  public data: Array<Establishment>;
 
   constructor(private afs: AngularFirestore, private router: Router) {}
 

@@ -1,19 +1,38 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { Establishment } from '../admin/shared/models/establisment.model';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-accommodation-details',
   templateUrl: './accommodation-details.component.html',
-  styleUrls: ['./accommodation-details.component.scss'],
+  styleUrls: [
+    '../accommodations/accommodations.component.scss',
+    './accommodation-details.component.scss',
+  ],
 })
 export class AccommodationDetailsComponent implements OnInit, OnDestroy {
   private paramSub: Subscription;
+  private documentSubscription: Subscription;
   id: string;
+  private accommodation: Observable<Establishment>;
+  public data: Establishment;
+  public zoom = 12;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private afs: AngularFirestore, private route: ActivatedRoute) {
     this.paramSub = route.params.subscribe((p) => {
       this.id = p.id;
+
+      // @ts-ignore
+      this.accommodation = this.afs
+        .collection<Establishment>('establishments')
+        .doc(this.id)
+        .valueChanges();
+
+      this.documentSubscription = this.accommodation.subscribe((snapshot) => {
+        this.data = snapshot;
+      });
     });
   }
 

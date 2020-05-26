@@ -12,7 +12,7 @@ import { Post } from '../../admin/shared/models/post.model';
 export class HomePostsComponent implements OnInit, OnDestroy {
   private documentSubscription: Subscription;
   private document: Observable<Array<Post>>;
-  private data: Array<Post>;
+  public data: Array<Post>;
 
   constructor(private afs: AngularFirestore, private router: Router) {}
 

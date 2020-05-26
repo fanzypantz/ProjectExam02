@@ -1,17 +1,4 @@
 @import '../../variables';
-app-booking-search {
-  position: absolute;
-  width: $main-width;
-  max-width: $max-width;
-  height: 60px;
-  background-color: $main-shade2;
-  z-index: 10;
-  top: 200px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-}
 
 .home-explore {
   width: $main-width;
@@ -29,13 +16,13 @@ app-booking-search {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
-.home-explore .home-title {
+.home-explore .big-title {
   margin: 40px 30px;
   color: $white;
   width: 490px;
   z-index: 10;
 
-  .home-title-border {
+  .big-title-border {
     border-top-color: $white;
     border-bottom-color: $white;
   }

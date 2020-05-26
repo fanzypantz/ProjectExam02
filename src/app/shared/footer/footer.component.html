@@ -111,4 +111,17 @@
 
 <div class="footer-bg"></div>
 
-<div class="bg-slope"></div>
+<div
+  [ngClass]="{ 'bg-slope': true, 'footer-bg-small': isAccommodationDetails() }"
+>
+  <img
+    *ngIf="isAccommodations()"
+    src="https://firebasestorage.googleapis.com/v0/b/noroff-projectexam-02.appspot.com/o/posts%2Fpost03.jpg?alt=media&token=aeedd91d-7321-4051-b356-488547c11eb2"
+    alt=""
+  />
+  <img
+    *ngIf="isAccommodationDetails()"
+    src="https://firebasestorage.googleapis.com/v0/b/noroff-projectexam-02.appspot.com/o/backgrounds%2Fmountains.jpg?alt=media&token=56256e9c-6a94-4930-a058-5f23c04b1a88"
+    alt=""
+  />
+</div>

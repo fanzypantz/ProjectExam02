@@ -47,7 +47,23 @@ a {
   }
 }
 
+app-booking-search {
+  position: absolute;
+  width: $main-width;
+  max-width: $max-width;
+  height: 60px;
+  background-color: $main-shade2;
+  z-index: 10;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+
 .btn {
+  font-family: $font-family;
+  font-size: 1em;
   width: 100%;
   height: 30px;
   background-color: $tertiary;
@@ -78,6 +94,12 @@ a {
   background-color: $main-shade2;
   clip-path: polygon(17% 38%, 100% 0, 83% 62%, 0 100%);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .bg-trapezoid {
@@ -90,6 +112,12 @@ a {
   background-color: $main;
   clip-path: polygon(12% 8%, 100% 0, 100% 100%, -3% 92%);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .bg-slope {
@@ -102,9 +130,19 @@ a {
   background-color: $secondary;
   clip-path: polygon(0 0, 100% 34%, 100% 100%, 0% 100%);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
-.home-title {
+.bg-main {
+  background-color: $main;
+}
+
+.big-title {
   margin: 70px auto;
   position: relative;
   width: 380px;
@@ -121,7 +159,7 @@ a {
   }
 }
 
-.home-title-border {
+.big-title-border {
   position: absolute;
   z-index: -1;
   top: 50%;
@@ -131,4 +169,21 @@ a {
   border-top: 1px solid $main;
   border-bottom: 1px solid $main;
   transform: translate(-50%, -50%);
+}
+
+.page-title {
+  margin: 80px auto 200px auto;
+  width: fit-content;
+  height: 70px;
+
+  h1 {
+    display: inline-block;
+    line-height: 70px;
+    font-size: 3.4em;
+    margin: 0;
+    color: $main;
+  }
+}
+
+app-accommodation-details {
 }

@@ -2,6 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { Establishment } from '../admin/shared/models/establisment.model';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Enquiry } from '../admin/shared/models/enquiry.model';
 
 @Component({
   selector: 'app-accommodations',
@@ -10,26 +13,129 @@ import { map } from 'rxjs/operators';
 })
 export class AccommodationsComponent implements OnInit, OnDestroy {
   private paramSub: Subscription;
+  private establishmentSub: Subscription;
+  private enquiriesSub: Subscription;
   public area: string;
-  public checkIn: string;
-  public checkOut: string;
+  public checkIn: number;
+  public checkOut: number;
   public adults: string;
   public rooms: string;
+  private establishments: Observable<Establishment[]>;
+  private enquiries: Observable<Enquiry[]>;
+  private establishmentsData: Establishment[];
+  private enquiriesData: Enquiry[];
+  public searchResults: Establishment[];
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private afs: AngularFirestore, private route: ActivatedRoute) {
     this.paramSub = route.queryParams.subscribe((p) => {
       // Get all data from the query string
       this.area = p.area;
-      this.checkIn = p.checkIn;
-      this.checkOut = p.checkOut;
+      this.checkIn = Date.parse(p.checkIn);
+      this.checkOut = Date.parse(p.checkOut);
       this.adults = p.adults;
       this.rooms = p.rooms;
+
+      if (
+        this.establishmentsData &&
+        this.enquiriesData &&
+        this.checkIfQueryExists()
+      ) {
+        this.searchResults = this.filterData(
+          this.establishmentsData,
+          this.enquiriesData
+        );
+      } else {
+        this.searchResults = this.establishmentsData;
+      }
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Firebase has no great filtering that is similar to SQL
+    // There are probably better ways of doing this, but this is quick and easy
+    // hardcoded filtering on client-side.
+    // Get all establishments and its data
+    this.establishments = this.afs
+      .collection<Establishment>('establishments')
+      .valueChanges({ idField: 'id' });
+    this.establishmentSub = this.establishments.subscribe((snapshot) => {
+      this.establishmentsData = snapshot;
+      if (!this.checkIfQueryExists()) {
+        this.searchResults = this.establishmentsData;
+      }
+    });
+
+    // Get all enquiries
+    this.enquiries = this.afs
+      .collection<Enquiry>('enquiries')
+      .valueChanges({ idField: 'id' });
+    this.enquiriesSub = this.enquiries.subscribe((snapshot) => {
+      this.enquiriesData = snapshot;
+      // Filter the data and assign it to an array of Establishments that can be displayed
+      // First check if the user came to this page with an already filled in form
+      if (this.checkIfQueryExists()) {
+        this.searchResults = this.filterData(
+          this.establishmentsData,
+          this.enquiriesData
+        );
+      } else {
+        this.searchResults = this.establishmentsData;
+      }
+    });
+  }
 
   ngOnDestroy(): void {
     this.paramSub.unsubscribe();
+    this.establishmentSub.unsubscribe();
+  }
+
+  filterData(establishments: Establishment[], enquiries: Enquiry[]) {
+    if (establishments && enquiries) {
+      const filtered = establishments.filter((el) => {
+        return (
+          el.area.toLowerCase() === this.area.toLowerCase() &&
+          this.checkBooking(el, enquiries)
+        );
+      });
+
+      // If there are no matching accommodations just return them all
+      console.log('filtered: ', filtered.length);
+      if (filtered.length > 0) {
+        return filtered;
+      } else {
+        return establishments;
+      }
+    }
+  }
+
+  checkBooking(el: Establishment, enquiries: Enquiry[]) {
+    const enquiryFilter = enquiries.filter((enquiry) => {
+      return el.id === enquiry.establishmentId;
+    });
+
+    if (enquiryFilter.length > 0) {
+      const bookingStart = enquiryFilter[0].bookingStart.toMillis();
+      const bookingEnd = enquiryFilter[0].bookingEnd.toMillis();
+
+      // If the checkOut date is within the range of the already booked time frame return false
+      if (this.checkOut > bookingStart && this.checkOut < bookingEnd) {
+        return false;
+      }
+      // If the checkIn date is within the range of the already booked time frame return false
+      if (this.checkIn < bookingEnd && this.checkIn > bookingStart) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  checkIfQueryExists() {
+    return !!(
+      this.area &&
+      this.checkIn &&
+      this.checkOut &&
+      this.adults &&
+      this.rooms
+    );
   }
 }
