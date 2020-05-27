@@ -11,6 +11,10 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  isTall() {
+    return document.body.clientHeight > 3000;
+  }
+
   isHome() {
     return this.location.path() === '/';
   }

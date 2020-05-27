@@ -99,7 +99,6 @@ export class AccommodationsComponent implements OnInit, OnDestroy {
       });
 
       // If there are no matching accommodations just return them all
-      console.log('filtered: ', filtered.length);
       if (filtered.length > 0) {
         return filtered;
       } else {

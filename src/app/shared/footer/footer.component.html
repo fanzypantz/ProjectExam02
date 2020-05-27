@@ -112,7 +112,10 @@
 <div class="footer-bg"></div>
 
 <div
-  [ngClass]="{ 'bg-slope': true, 'footer-bg-small': isAccommodationDetails() }"
+  [ngClass]="{
+    'bg-slope': true,
+    'footer-bg-small': isAccommodationDetails() || !isTall()
+  }"
 >
   <img
     *ngIf="isAccommodations()"
