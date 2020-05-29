@@ -4,7 +4,7 @@ import { Message } from '../models/message.model';
 import { Post } from '../models/post.model';
 import { User } from '../models/user.model';
 import { Establishment } from '../models/establisment.model';
-import { adminConfig, ReadInterface } from '../../admin.config';
+import { adminConfig, ReadInterface, WriteInterface } from '../../admin.config';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, Subscription } from 'rxjs';
 
@@ -17,7 +17,7 @@ export class EditComponent implements OnInit, OnDestroy {
   @Input() model: string;
   @Input() id: string;
   private documentSubscription: Subscription;
-  writeLayout: ReadInterface[];
+  writeLayout: WriteInterface[];
   document: Observable<any>;
   data: any;
 

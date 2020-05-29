@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-edit-string',
   template: `
-    <p>
-      edit-string works!
-    </p>
+    <div class="admin-edit-card-container">
+      <p>edit-string works! {{ text }}</p>
+    </div>
   `,
+  styleUrls: ['../edit.component.scss'],
   styles: [],
 })
 export class EditStringComponent implements OnInit {
+  @Input() text: string;
+
   constructor() {}
 
   ngOnInit(): void {}

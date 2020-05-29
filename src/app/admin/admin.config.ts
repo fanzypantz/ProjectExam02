@@ -16,32 +16,96 @@ export const adminConfig = {
         type: 'booking',
         key: 'booking',
         editAble: true,
+        size: 'half',
+        layout: 'left',
       },
       {
         name: 'Name',
         type: 'string',
         key: 'establishmentName',
         editAble: true,
+        size: 'half',
+        layout: 'right',
       },
       {
         name: 'Email',
         type: 'email',
         key: 'establishmentEmail',
         editAble: true,
+        size: 'half',
+        layout: 'left',
       },
-      { name: 'Images', type: 'imageArray', key: 'imageUrl', editAble: true },
-      { name: 'Price', type: 'number', key: 'price', editAble: true },
-      { name: 'Max guests', type: 'number', key: 'maxGuests', editAble: true },
-      { name: 'Description', type: 'text', key: 'description', editAble: true },
-      { name: 'Location', type: 'location', key: 'location', editAble: true },
-      { name: 'area', type: 'string', key: 'area', editAble: true },
-      { name: 'Created at', type: 'date', key: 'createdAt', editAble: false },
-      { name: 'Last updated', type: 'date', key: 'updatedAt', editAble: false },
+      {
+        name: 'Images',
+        type: 'imageArray',
+        key: 'imageUrl',
+        editAble: true,
+        size: 'half',
+        layout: 'right',
+      },
+      {
+        name: 'Price',
+        type: 'number',
+        key: 'price',
+        editAble: true,
+        size: 'small',
+        layout: 'left',
+      },
+      {
+        name: 'Max guests',
+        type: 'number',
+        key: 'maxGuests',
+        editAble: true,
+        size: 'small',
+        layout: 'right',
+      },
+      {
+        name: 'Description',
+        type: 'text',
+        key: 'description',
+        editAble: true,
+        size: 'full',
+        layout: 'left',
+      },
+      {
+        name: 'Location',
+        type: 'location',
+        key: 'location',
+        editAble: true,
+        size: 'half',
+        layout: 'left',
+      },
+      {
+        name: 'area',
+        type: 'string',
+        key: 'area',
+        editAble: true,
+        size: 'half',
+        layout: 'right',
+      },
+      {
+        name: 'Created at',
+        type: 'date',
+        key: 'createdAt',
+        editAble: false,
+        size: 'half',
+        layout: 'left',
+      },
+      {
+        name: 'Last updated',
+        type: 'date',
+        key: 'updatedAt',
+        editAble: false,
+        size: 'half',
+        layout: 'right',
+      },
       {
         name: 'Highlight on front page',
         type: 'boolean',
         key: 'highlight',
         editAble: true,
+        size: 'half',
+        layout: 'left',
       },
     ],
   },
@@ -91,6 +155,16 @@ export const adminConfig = {
 export interface ReadInterface {
   name: string;
   type: string;
+  key?: string;
+  keys?: string[];
+}
+
+export interface WriteInterface {
+  name: string;
+  type: string;
+  editAble: boolean;
+  size: string;
+  layout: string;
   key?: string;
   keys?: string[];
 }

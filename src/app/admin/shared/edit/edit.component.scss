@@ -3,16 +3,33 @@
 .admin-edit-container {
   display: flex;
   flex-wrap: wrap;
-
   width: $main-width;
   max-width: $max-width;
   margin: 50px auto;
 }
 
 .admin-edit-card {
-  width: calc(50%);
+  width: calc(50% - 20px);
+  margin-bottom: 15px;
+}
+
+.admin-edit-card-container {
+  background-color: $main;
+  color: $white;
+  min-height: 160px;
+  padding: 30px;
 }
 
 .admin-edit-card-full {
   width: 100%;
+}
+
+.admin-edit-card-small {
+  width: calc(25% - 30px);
+}
+
+.admin-edit-card-left {
+}
+.admin-edit-card-right {
+  margin-left: 40px;
 }

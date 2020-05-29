@@ -1,21 +1,61 @@
 <div class="admin-edit-container" *ngIf="data">
   <div
     class="admin-edit-card"
-    [ngClass]="{ 'admin-edit-card-full': false }"
+    [ngClass]="{
+      'admin-edit-card-full': layoutInfo.size === 'full',
+      'admin-edit-card-small': layoutInfo.size === 'small',
+      'admin-edit-card-left': layoutInfo.layout === 'left',
+      'admin-edit-card-right': layoutInfo.layout === 'right'
+    }"
     *ngFor="let layoutInfo of writeLayout"
   >
     <div class="admin-edit-switch" [ngSwitch]="layoutInfo.type">
-      <app-edit-string *ngSwitchCase="'string'"> </app-edit-string>
-      <app-edit-text *ngSwitchCase="'text'"> </app-edit-text>
-      <app-edit-number *ngSwitchCase="'number'"> </app-edit-number>
-      <app-edit-email *ngSwitchCase="'email'"> </app-edit-email>
-      <app-edit-boolean *ngSwitchCase="'boolean'"></app-edit-boolean>
-      <app-edit-location *ngSwitchCase="'location'"></app-edit-location>
-      <app-edit-date *ngSwitchCase="'date'"></app-edit-date>
-      <app-edit-booking-date *ngSwitchCase="'booking'"></app-edit-booking-date>
-      <app-edit-image *ngSwitchCase="'image'"></app-edit-image>
-      <app-edit-images *ngSwitchCase="'imageArray'"></app-edit-images>
-      <app-edit-roles *ngSwitchCase="'roles'"></app-edit-roles>
+      <app-edit-string *ngSwitchCase="'string'" [text]="data[layoutInfo.key]">
+      </app-edit-string>
+
+      <app-edit-text *ngSwitchCase="'text'" [text]="data[layoutInfo.key]">
+      </app-edit-text>
+
+      <app-edit-number *ngSwitchCase="'number'" [number]="data[layoutInfo.key]">
+      </app-edit-number>
+
+      <app-edit-email *ngSwitchCase="'email'" [email]="data[layoutInfo.key]">
+      </app-edit-email>
+
+      <app-edit-boolean
+        *ngSwitchCase="'boolean'"
+        [truthy]="data[layoutInfo.key]"
+      ></app-edit-boolean>
+
+      <app-edit-location
+        *ngSwitchCase="'location'"
+        [location]="data[layoutInfo.key]"
+      ></app-edit-location>
+
+      <app-edit-date
+        *ngSwitchCase="'date'"
+        [date]="data[layoutInfo.key]"
+      ></app-edit-date>
+
+      <app-edit-booking-date
+        *ngSwitchCase="'booking'"
+        [id]="data.id"
+      ></app-edit-booking-date>
+
+      <app-edit-image
+        *ngSwitchCase="'image'"
+        [image]="data[layoutInfo.key]"
+      ></app-edit-image>
+
+      <app-edit-images
+        *ngSwitchCase="'imageArray'"
+        [images]="data[layoutInfo.key]"
+      ></app-edit-images>
+
+      <app-edit-roles
+        *ngSwitchCase="'roles'"
+        [roles]="data[layoutInfo.key]"
+      ></app-edit-roles>
     </div>
   </div>
 </div>
