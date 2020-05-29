@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DateComponent } from './date.component';
+import { EditBooleanComponent } from './edit-boolean.component';
 
-describe('DateComponent', () => {
-  let component: DateComponent;
-  let fixture: ComponentFixture<DateComponent>;
+describe('BooleanComponent', () => {
+  let component: EditBooleanComponent;
+  let fixture: ComponentFixture<EditBooleanComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [DateComponent],
+      declarations: [EditBooleanComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DateComponent);
+    fixture = TestBed.createComponent(EditBooleanComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

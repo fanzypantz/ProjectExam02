@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-edit-image',
+  selector: 'app-edit-images',
   template: `
     <p>
-      image works!
+      images works!
     </p>
   `,
   styles: [],
 })
-export class EditImageComponent implements OnInit {
+export class EditImagesComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}

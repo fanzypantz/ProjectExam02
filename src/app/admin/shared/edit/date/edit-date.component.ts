@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-boolean',
+  selector: 'app-edit-date',
   template: `
     <p>
-      boolean works!
+      date works!
     </p>
   `,
   styles: [],
 })
-export class BooleanComponent implements OnInit {
+export class EditDateComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}

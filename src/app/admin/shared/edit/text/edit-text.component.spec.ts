@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NumberComponent } from './number.component';
+import { EditTextComponent } from './edit-text.component';
 
-describe('NumberComponent', () => {
-  let component: NumberComponent;
-  let fixture: ComponentFixture<NumberComponent>;
+describe('TextComponent', () => {
+  let component: EditTextComponent;
+  let fixture: ComponentFixture<EditTextComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NumberComponent],
+      declarations: [EditTextComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NumberComponent);
+    fixture = TestBed.createComponent(EditTextComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

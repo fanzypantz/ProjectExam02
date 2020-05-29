@@ -38,8 +38,16 @@ import { PostsComponent } from './posts/posts.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BookingDetailsComponent } from './shared/booking-search/details/booking-details.component';
 import { EditStringComponent } from './admin/shared/edit/edit-string/edit-string.component';
-import { BooleanComponent } from './admin/shared/edit/boolean/boolean.component';
-import { NumberComponent } from './admin/shared/edit/number/number.component';
+import { EditBooleanComponent } from './admin/shared/edit/boolean/edit-boolean.component';
+import { EditNumberComponent } from './admin/shared/edit/number/edit-number.component';
+import { EditImageComponent } from './admin/shared/edit/image/image.component';
+import { EditImagesComponent } from './admin/shared/edit/images/edit-images.component';
+import { EditDateComponent } from './admin/shared/edit/date/edit-date.component';
+import { EditBookingDateComponent } from './admin/shared/edit/booking-date/edit-booking-date.component';
+import { EditRolesComponent } from './admin/shared/edit/roles/edit-roles.component';
+import { EditEmailComponent } from './admin/shared/edit/email/edit-email.component';
+import { EditTextComponent } from './admin/shared/edit/text/edit-text.component';
+import { EditLocationComponent } from './admin/shared/edit/location/edit-location.component';
 
 @NgModule({
   declarations: [
@@ -68,8 +76,16 @@ import { NumberComponent } from './admin/shared/edit/number/number.component';
     FooterComponent,
     BookingDetailsComponent,
     EditStringComponent,
-    BooleanComponent,
-    NumberComponent,
+    EditImageComponent,
+    EditImagesComponent,
+    EditDateComponent,
+    EditBooleanComponent,
+    EditNumberComponent,
+    EditBookingDateComponent,
+    EditRolesComponent,
+    EditEmailComponent,
+    EditTextComponent,
+    EditLocationComponent,
   ],
   imports: [
     BrowserModule,

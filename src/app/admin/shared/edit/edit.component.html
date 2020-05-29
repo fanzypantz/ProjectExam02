@@ -1,7 +1,21 @@
-<h1>Administration - Edit</h1>
-
-<div *ngIf="data">
-  <div *ngFor="let layoutInfo of writeLayout">
-    {{ layoutInfo.name }} - {{ data[layoutInfo.key] }}
+<div class="admin-edit-container" *ngIf="data">
+  <div
+    class="admin-edit-card"
+    [ngClass]="{ 'admin-edit-card-full': false }"
+    *ngFor="let layoutInfo of writeLayout"
+  >
+    <div class="admin-edit-switch" [ngSwitch]="layoutInfo.type">
+      <app-edit-string *ngSwitchCase="'string'"> </app-edit-string>
+      <app-edit-text *ngSwitchCase="'text'"> </app-edit-text>
+      <app-edit-number *ngSwitchCase="'number'"> </app-edit-number>
+      <app-edit-email *ngSwitchCase="'email'"> </app-edit-email>
+      <app-edit-boolean *ngSwitchCase="'boolean'"></app-edit-boolean>
+      <app-edit-location *ngSwitchCase="'location'"></app-edit-location>
+      <app-edit-date *ngSwitchCase="'date'"></app-edit-date>
+      <app-edit-booking-date *ngSwitchCase="'booking'"></app-edit-booking-date>
+      <app-edit-image *ngSwitchCase="'image'"></app-edit-image>
+      <app-edit-images *ngSwitchCase="'imageArray'"></app-edit-images>
+      <app-edit-roles *ngSwitchCase="'roles'"></app-edit-roles>
+    </div>
   </div>
 </div>

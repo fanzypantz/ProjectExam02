@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-number',
+  selector: 'app-edit-boolean',
   template: `
     <p>
-      number works!
+      boolean works!
     </p>
   `,
   styles: [],
 })
-export class NumberComponent implements OnInit {
+export class EditBooleanComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}

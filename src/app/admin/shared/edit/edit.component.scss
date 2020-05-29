@@ -1,0 +1,18 @@
+@import '../../../../variables';
+
+.admin-edit-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: $main-width;
+  max-width: $max-width;
+  margin: 50px auto;
+}
+
+.admin-edit-card {
+  width: calc(50%);
+}
+
+.admin-edit-card-full {
+  width: 100%;
+}

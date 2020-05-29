@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-date',
+  selector: 'app-edit-roles',
   template: `
     <p>
-      date works!
+      roles works!
     </p>
   `,
   styles: [],
 })
-export class DateComponent implements OnInit {
+export class EditRolesComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
