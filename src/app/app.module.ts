@@ -37,6 +37,9 @@ import { PostsDetailsComponent } from './posts-details/posts-details.component';
 import { PostsComponent } from './posts/posts.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BookingDetailsComponent } from './shared/booking-search/details/booking-details.component';
+import { EditStringComponent } from './admin/shared/edit/edit-string/edit-string.component';
+import { BooleanComponent } from './admin/shared/edit/boolean/boolean.component';
+import { NumberComponent } from './admin/shared/edit/number/number.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +67,9 @@ import { BookingDetailsComponent } from './shared/booking-search/details/booking
     PostsDetailsComponent,
     FooterComponent,
     BookingDetailsComponent,
+    EditStringComponent,
+    BooleanComponent,
+    NumberComponent,
   ],
   imports: [
     BrowserModule,
