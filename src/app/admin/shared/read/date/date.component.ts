@@ -3,7 +3,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 
 @Component({
-  selector: 'app-date',
+  selector: 'app-read-date',
   template: ` {{ date.toDate() | date: 'yyyy/MM/dd' }} `,
   styles: [],
 })

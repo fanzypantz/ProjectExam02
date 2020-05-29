@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-images',
+  selector: 'app-read-images',
   template: `
     <img
       class="admin-form-img-small"

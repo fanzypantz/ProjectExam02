@@ -7,7 +7,7 @@ interface Roles {
 }
 
 @Component({
-  selector: 'app-roles',
+  selector: 'app-read-roles',
   template: `
     <p *ngIf="roles.admin">Admin</p>
     <p *ngIf="roles.editor">Editor</p>

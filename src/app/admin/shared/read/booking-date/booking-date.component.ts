@@ -3,7 +3,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 
 @Component({
-  selector: 'app-booking-date',
+  selector: 'app-read-booking-date',
   template: `
     {{ dateStart.toDate() | date: 'yyyy/MM/dd' }}-{{
       dateEnd.toDate() | date: 'yyyy/MM/dd'

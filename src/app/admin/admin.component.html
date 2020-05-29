@@ -5,26 +5,44 @@
   <input type="file" (change)="seedPosts($event.target.files)" multiple />
 </div>
 
+<div class="big-title page-title">
+  <h1>{{ this.model }} - {{ this.mode }}</h1>
+  <div class="big-title-border"></div>
+</div>
+
 <div class="admin-menu">
   <a
+    class="btn"
     [routerLink]="'/admin'"
     [queryParams]="{ model: 'establishments', mode: 'read' }"
     >Establishments</a
   >
   <a
+    class="btn"
     [routerLink]="'/admin'"
     [queryParams]="{ model: 'enquiries', mode: 'read' }"
     >Enquiries</a
   >
-  <a [routerLink]="'/admin'" [queryParams]="{ model: 'messages', mode: 'read' }"
+  <a
+    class="btn"
+    [routerLink]="'/admin'"
+    [queryParams]="{ model: 'messages', mode: 'read' }"
     >Messages</a
   >
-  <a [routerLink]="'/admin'" [queryParams]="{ model: 'posts', mode: 'read' }"
+  <a
+    class="btn"
+    [routerLink]="'/admin'"
+    [queryParams]="{ model: 'posts', mode: 'read' }"
     >Posts</a
   >
-  <a [routerLink]="'/admin'" [queryParams]="{ model: 'users', mode: 'read' }"
+  <a
+    class="btn"
+    [routerLink]="'/admin'"
+    [queryParams]="{ model: 'users', mode: 'read' }"
     >Users</a
   >
+
+  <div class="bg-parallelogram"></div>
 </div>
 
 <app-read *ngIf="mode === 'read'" [model]="model"></app-read>

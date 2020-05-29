@@ -18,12 +18,12 @@ import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import { firebaseConfig } from './shared/app.config';
 import { ReadComponent } from './admin/shared/read/read.component';
 import { EditComponent } from './admin/shared/edit/edit.component';
-import { BookingDateComponent } from './admin/shared/layoutComponents/booking-date/booking-date.component';
-import { ImagesComponent } from './admin/shared/layoutComponents/images/images.component';
-import { ImageComponent } from './admin/shared/layoutComponents/image/images.component';
-import { DateComponent } from './admin/shared/layoutComponents/date/date.component';
-import { RolesComponent } from './admin/shared/layoutComponents/roles/roles.component';
-import { StringComponent } from './admin/shared/layoutComponents/string/string.component';
+import { BookingDateComponent } from './admin/shared/read/booking-date/booking-date.component';
+import { ImagesComponent } from './admin/shared/read/images/images.component';
+import { ImageComponent } from './admin/shared/read/image/images.component';
+import { DateComponent } from './admin/shared/read/date/date.component';
+import { RolesComponent } from './admin/shared/read/roles/roles.component';
+import { StringComponent } from './admin/shared/read/string/string.component';
 import { AccommodationsComponent } from './accommodations/accommodations.component';
 import { ContactComponent } from './contact/contact.component';
 import { EnquiriesComponent } from './enquiries/enquiries.component';
@@ -68,7 +68,7 @@ import { BookingDetailsComponent } from './shared/booking-search/details/booking
   imports: [
     BrowserModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAcTjgqq0ifpF5Hjcz334aiuHTxNztbN6I'
+      apiKey: 'AIzaSyAcTjgqq0ifpF5Hjcz334aiuHTxNztbN6I',
     }),
     AppRoutingModule,
     AuthModule,

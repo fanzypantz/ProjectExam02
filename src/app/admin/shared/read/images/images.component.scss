@@ -1,0 +1,11 @@
+.admin-form-img-small {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
+  &:nth-child(n + 2) {
+    transform: translateX(-40%);
+  }
+}

@@ -1,3 +1,46 @@
+@import '../../variables';
+
 .admin-debug {
-  margin-top: 80px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.bg-parallelogram {
+  background-color: $secondary;
+}
+
+.page-title {
+  margin: 80px auto;
+}
+
+.admin-menu {
+  width: $main-width;
+  max-width: $max-width;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  width: calc(100% / 5);
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  margin-right: 10px;
+  background-color: $main;
+  border-bottom: 2px solid $main-shade2;
+  color: $main-shade1;
+
+  &:hover {
+    background-color: $secondary;
+    border-bottom: 2px solid $secondary-shade;
+    color: $white;
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
 }

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-string',
+  selector: 'app-read-string',
   template: ` {{ text }} `,
   styleUrls: ['./string.component.scss'],
 })
