@@ -1,17 +1,22 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-roles',
   template: `
-    <div class="admin-edit-card-container">
-      <p>roles works! {{ roles }}</p>
+    <div [formGroup]="adminForm" class="admin-edit-card-container">
+      <label [for]="key">{{ name }}</label>
+      <input [formControlName]="key" type="text" />
     </div>
   `,
   styleUrls: ['../edit.component.scss'],
   styles: [],
 })
 export class EditRolesComponent implements OnInit {
-  @Input() roles: string[];
+  @Input() adminForm: FormGroup;
+  @Input() key: string;
+  @Input() name: string;
+  @Input() editAble: boolean;
 
   constructor() {}
 

@@ -185,5 +185,156 @@ app-booking-search {
   }
 }
 
-app-accommodation-details {
+.form-input {
+  font-family: $font-family;
+  width: calc(100% - 70px);
+  background-color: $main-shade2;
+  border: none;
+  padding-left: 10px;
+  color: $main;
+  font-size: 15px;
+  font-weight: 600;
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &::placeholder {
+    color: $main;
+  }
+}
+
+.form-input-files-label {
+  font-family: $font-family;
+  display: block;
+  height: 50px;
+  width: calc(100% - 20px);
+  line-height: 50px;
+  padding-left: 20px;
+  background-color: $main-shade2;
+  color: $main;
+  font-size: 0.9em;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.form-input-files {
+  display: none;
+}
+
+.form-input-boolean {
+  height: 30px;
+  width: 30px;
+  margin: 0 auto;
+  border-radius: 0;
+  background-color: $main-shade2;
+}
+
+.form-input-invalid {
+  border: 2px solid $tertiary;
+  width: calc(100% - 72px);
+  height: calc(100% - 4px);
+  padding-left: 8px;
+}
+
+.form-date::-webkit-inner-spin-button,
+.form-date::-webkit-outer-spin-button,
+.form-date::-webkit-clear-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.form-date::-webkit-calendar-picker-indicator {
+  color: $main;
+
+  &:hover {
+    background-color: transparent;
+    cursor: pointer;
+  }
+}
+
+.lds-spinner {
+  color: official;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-spinner div {
+  transform-origin: 40px 40px;
+  animation: lds-spinner 1.2s linear infinite;
+}
+.lds-spinner div:after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 37px;
+  width: 6px;
+  height: 18px;
+  border-radius: 20%;
+  background: #fff;
+}
+.lds-spinner div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -1.1s;
+}
+.lds-spinner div:nth-child(2) {
+  transform: rotate(30deg);
+  animation-delay: -1s;
+}
+.lds-spinner div:nth-child(3) {
+  transform: rotate(60deg);
+  animation-delay: -0.9s;
+}
+.lds-spinner div:nth-child(4) {
+  transform: rotate(90deg);
+  animation-delay: -0.8s;
+}
+.lds-spinner div:nth-child(5) {
+  transform: rotate(120deg);
+  animation-delay: -0.7s;
+}
+.lds-spinner div:nth-child(6) {
+  transform: rotate(150deg);
+  animation-delay: -0.6s;
+}
+.lds-spinner div:nth-child(7) {
+  transform: rotate(180deg);
+  animation-delay: -0.5s;
+}
+.lds-spinner div:nth-child(8) {
+  transform: rotate(210deg);
+  animation-delay: -0.4s;
+}
+.lds-spinner div:nth-child(9) {
+  transform: rotate(240deg);
+  animation-delay: -0.3s;
+}
+.lds-spinner div:nth-child(10) {
+  transform: rotate(270deg);
+  animation-delay: -0.2s;
+}
+.lds-spinner div:nth-child(11) {
+  transform: rotate(300deg);
+  animation-delay: -0.1s;
+}
+.lds-spinner div:nth-child(12) {
+  transform: rotate(330deg);
+  animation-delay: 0s;
+}
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fr-toolbar,
+.second-toolbar {
+  border-radius: 0 !important;
 }

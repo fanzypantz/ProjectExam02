@@ -1,61 +1,108 @@
-<div class="admin-edit-container" *ngIf="data">
+<form
+  class="admin-edit-container"
+  [formGroup]="adminForm"
+  *ngIf="data"
+  (ngSubmit)="onSubmit(adminForm.value)"
+>
   <div
     class="admin-edit-card"
     [ngClass]="{
       'admin-edit-card-full': layoutInfo.size === 'full',
       'admin-edit-card-small': layoutInfo.size === 'small',
+      'admin-edit-card-tall': layoutInfo.size === 'tall',
       'admin-edit-card-left': layoutInfo.layout === 'left',
       'admin-edit-card-right': layoutInfo.layout === 'right'
     }"
     *ngFor="let layoutInfo of writeLayout"
   >
     <div class="admin-edit-switch" [ngSwitch]="layoutInfo.type">
-      <app-edit-string *ngSwitchCase="'string'" [text]="data[layoutInfo.key]">
+      <app-edit-string
+        *ngSwitchCase="'string'"
+        [adminForm]="adminForm"
+        [key]="layoutInfo.key"
+        [name]="layoutInfo.name"
+      >
       </app-edit-string>
 
-      <app-edit-text *ngSwitchCase="'text'" [text]="data[layoutInfo.key]">
+      <app-edit-text
+        *ngSwitchCase="'text'"
+        [adminForm]="adminForm"
+        [key]="layoutInfo.key"
+        [name]="layoutInfo.name"
+      >
       </app-edit-text>
 
-      <app-edit-number *ngSwitchCase="'number'" [number]="data[layoutInfo.key]">
+      <app-edit-number
+        *ngSwitchCase="'number'"
+        [adminForm]="adminForm"
+        [key]="layoutInfo.key"
+        [name]="layoutInfo.name"
+      >
       </app-edit-number>
 
-      <app-edit-email *ngSwitchCase="'email'" [email]="data[layoutInfo.key]">
+      <app-edit-email
+        *ngSwitchCase="'email'"
+        [adminForm]="adminForm"
+        [key]="layoutInfo.key"
+        [name]="layoutInfo.name"
+      >
       </app-edit-email>
 
       <app-edit-boolean
         *ngSwitchCase="'boolean'"
-        [truthy]="data[layoutInfo.key]"
+        [adminForm]="adminForm"
+        [key]="layoutInfo.key"
+        [name]="layoutInfo.name"
       ></app-edit-boolean>
 
       <app-edit-location
         *ngSwitchCase="'location'"
-        [location]="data[layoutInfo.key]"
+        [adminForm]="adminForm"
+        [key]="layoutInfo.key"
+        [name]="layoutInfo.name"
+        [editAble]="layoutInfo.editAble"
       ></app-edit-location>
 
       <app-edit-date
         *ngSwitchCase="'date'"
-        [date]="data[layoutInfo.key]"
+        [adminForm]="adminForm"
+        [key]="layoutInfo.key"
+        [name]="layoutInfo.name"
+        [editAble]="layoutInfo.editAble"
       ></app-edit-date>
 
       <app-edit-booking-date
         *ngSwitchCase="'booking'"
-        [id]="data.id"
+        [adminForm]="adminForm"
+        [key]="layoutInfo.key"
+        [name]="layoutInfo.name"
       ></app-edit-booking-date>
 
       <app-edit-image
         *ngSwitchCase="'image'"
-        [image]="data[layoutInfo.key]"
+        [adminForm]="adminForm"
+        [key]="layoutInfo.key"
+        [name]="layoutInfo.name"
       ></app-edit-image>
 
       <app-edit-images
         *ngSwitchCase="'imageArray'"
-        [images]="data[layoutInfo.key]"
+        [adminForm]="adminForm"
+        [key]="layoutInfo.key"
+        [name]="layoutInfo.name"
+        [model]="model"
       ></app-edit-images>
 
       <app-edit-roles
         *ngSwitchCase="'roles'"
-        [roles]="data[layoutInfo.key]"
+        [adminForm]="adminForm"
+        [key]="layoutInfo.key"
+        [name]="layoutInfo.name"
       ></app-edit-roles>
     </div>
   </div>
-</div>
+
+  <button class="btn admin-edit-submit" type="submit">
+    Save {{ model | uppercase }}
+  </button>
+</form>

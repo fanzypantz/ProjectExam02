@@ -1,6 +1,7 @@
 @import '../../../../variables';
 
 .admin-edit-container {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   width: $main-width;
@@ -14,10 +15,28 @@
 }
 
 .admin-edit-card-container {
+  position: relative;
   background-color: $main;
   color: $white;
-  min-height: 160px;
-  padding: 30px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  label,
+  p {
+    margin-bottom: 10px;
+    font-size: 22px;
+  }
+
+  .form-input,
+  .form-input-files-label {
+    font-weight: 400;
+    font-size: 1.1em;
+    width: calc(100% - 70px);
+    height: 50px;
+    padding: 0 0 0 20px;
+  }
 }
 
 .admin-edit-card-full {
@@ -28,8 +47,120 @@
   width: calc(25% - 30px);
 }
 
+.admin-edit-card-tall {
+  height: 500px;
+}
+
 .admin-edit-card-left {
 }
 .admin-edit-card-right {
   margin-left: 40px;
+}
+
+.admin-input-group {
+  display: flex;
+}
+
+.admin-input-icon {
+  height: 30px;
+  width: 30px;
+  background-color: $secondary;
+  padding: 10px;
+
+  svg {
+    height: 100%;
+    width: 100%;
+    fill: $white;
+    stroke: $white;
+  }
+
+  line {
+    stroke: $white;
+  }
+
+  polygon {
+    fill: $white;
+  }
+}
+
+.admin-edit-map {
+  width: 100%;
+  height: 200px;
+
+  agm-map {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.admin-images-row {
+  display: flex;
+}
+
+.admin-images-container {
+  display: flex;
+  margin: 10px 0;
+  width: calc(100% - 230px);
+  flex-wrap: wrap;
+}
+
+.admin-images-box {
+  margin-left: 5px;
+  flex-wrap: wrap;
+  position: relative;
+  width: 60px;
+  height: 60px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.admin-images-delete {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  fill: $white;
+  width: 20px;
+  height: 20px;
+
+  line {
+    stroke: $grey;
+    stroke-width: 4pt;
+  }
+}
+
+.admin-images-upload {
+  width: 230px;
+
+  .btn {
+    height: 40px;
+    margin-top: 10px;
+  }
+}
+
+.admin-images-input {
+  display: flex;
+}
+
+.admin-spinner {
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.admin-edit-submit {
+  position: fixed;
+  top: 322px;
+  right: calc(20% - 220px);
+  width: 200px;
 }

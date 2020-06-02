@@ -2,10 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AgmCoreModule } from '@agm/core';
-
-// Components
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -13,9 +11,13 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AdminComponent } from './admin/admin.component';
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './shared/auth/auth.module';
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import { firebaseConfig } from './shared/app.config';
+
+// Components
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 import { ReadComponent } from './admin/shared/read/read.component';
 import { EditComponent } from './admin/shared/edit/edit.component';
 import { BookingDateComponent } from './admin/shared/read/booking-date/booking-date.component';
@@ -35,7 +37,6 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { AccommodationDetailsComponent } from './addommodation-details/accommodation-details.component';
 import { PostsDetailsComponent } from './posts-details/posts-details.component';
 import { PostsComponent } from './posts/posts.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BookingDetailsComponent } from './shared/booking-search/details/booking-details.component';
 import { EditStringComponent } from './admin/shared/edit/edit-string/edit-string.component';
 import { EditBooleanComponent } from './admin/shared/edit/boolean/edit-boolean.component';
@@ -92,6 +93,8 @@ import { EditLocationComponent } from './admin/shared/edit/location/edit-locatio
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAcTjgqq0ifpF5Hjcz334aiuHTxNztbN6I',
     }),
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot(),
     AppRoutingModule,
     AuthModule,
     AngularFireModule.initializeApp(firebaseConfig),

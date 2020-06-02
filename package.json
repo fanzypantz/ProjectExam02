@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~9.0.5",
     "@angular/platform-browser-dynamic": "~9.0.5",
     "@angular/router": "~9.0.5",
+    "angular-froala-wysiwyg": "^3.1.1-1",
     "dotenv": "^8.2.0",
     "firebase": "^7.14.3",
     "ng-inline-svg": "^10.0.0",

@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Guards
-import { CanDeleteGuard } from './auth/guards/can-delete.guard';
-import { CanReadGuard } from './auth/guards/can-read.guard';
+import { CanDeleteGuard } from './shared/auth/guards/can-delete.guard';
+import { CanReadGuard } from './shared/auth/guards/can-read.guard';
 
 // Components
 import { AdminComponent } from './admin/admin.component';

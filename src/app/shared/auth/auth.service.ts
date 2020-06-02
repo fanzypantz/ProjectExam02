@@ -11,7 +11,7 @@ import {
 
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { User } from '../admin/shared/models/user.model';
+import { User } from '../../admin/shared/models/user.model';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 
