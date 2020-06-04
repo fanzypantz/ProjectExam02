@@ -79,16 +79,10 @@ import * as firebase from 'firebase';
               </g>
             </svg>
 
-            <label
-              *ngIf="fileAmount === 0"
-              class="form-input-files-label"
-              [for]="key"
+            <label *ngIf="fileAmount === 0" class="form-input-label" [for]="key"
               >Select Files...</label
             >
-            <label
-              *ngIf="fileAmount > 0"
-              class="form-input-files-label"
-              [for]="key"
+            <label *ngIf="fileAmount > 0" class="form-input-label" [for]="key"
               >{{ fileAmount }} files selected</label
             >
             <input

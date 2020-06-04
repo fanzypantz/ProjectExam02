@@ -302,7 +302,7 @@ export const adminConfig = {
       {
         name: 'Roles',
         type: 'roles',
-        key: 'text',
+        key: 'roles',
         editAble: true,
         size: 'half',
         layout: 'right',
@@ -327,4 +327,10 @@ export interface WriteInterface {
   layout: string;
   key?: string;
   keys?: string[];
+}
+
+export interface RoleInterface {
+  admin?: string;
+  editor?: string;
+  customer?: string;
 }

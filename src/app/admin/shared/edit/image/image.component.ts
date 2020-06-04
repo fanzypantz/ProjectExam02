@@ -79,10 +79,10 @@ import { FormGroup } from '@angular/forms';
               </g>
             </svg>
 
-            <label *ngIf="!file" class="form-input-files-label" [for]="key"
+            <label *ngIf="!file" class="form-input-label" [for]="key"
               >Select File...</label
             >
-            <label *ngIf="file" class="form-input-files-label" [for]="key"
+            <label *ngIf="file" class="form-input-label" [for]="key"
               >1 file selected</label
             >
             <input

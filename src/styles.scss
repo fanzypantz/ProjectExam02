@@ -205,7 +205,7 @@ app-booking-search {
   }
 }
 
-.form-input-files-label {
+.form-input-label {
   font-family: $font-family;
   display: block;
   height: 50px;
@@ -221,6 +221,10 @@ app-booking-search {
   }
 }
 
+.form-input-p {
+  font-size: 16px;
+}
+
 .form-input-files {
   display: none;
 }
@@ -231,6 +235,44 @@ app-booking-search {
   margin: 0 auto;
   border-radius: 0;
   background-color: $main-shade2;
+}
+
+// Source https://css-tricks.com/the-checkbox-hack/
+.form-input-switch {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+  background-color: $main-shade2;
+
+  input {
+    display: none;
+  }
+}
+
+.form-input-switch-toggle {
+  position: absolute;
+  display: block;
+  background-color: $main-shade1;
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  left: 0;
+  transform: translate(5px, -50%);
+  transition: background-color, width, left, transform;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+
+  &:hover {
+    width: 50px;
+  }
+}
+
+.form-input-switch input:checked ~ .form-input-switch-toggle {
+  background-color: $main;
+  transform: translate(-100%, -50%);
+  left: calc(100% - 5px);
 }
 
 .form-input-invalid {

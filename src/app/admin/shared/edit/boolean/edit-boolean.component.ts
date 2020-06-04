@@ -6,12 +6,10 @@ import { FormGroup } from '@angular/forms';
   template: `
     <div [formGroup]="adminForm" class="admin-edit-card-container">
       <label [for]="key">{{ name }}</label>
-      <input
-        class="form-input-boolean"
-        [formControlName]="key"
-        type="checkbox"
-        [name]="key"
-      />
+      <label for="customer" class="form-input-switch">
+        <input [formControlName]="key" id="customer" type="checkbox" />
+        <span class="form-input-switch-toggle"></span>
+      </label>
     </div>
   `,
   styleUrls: ['../edit.component.scss'],

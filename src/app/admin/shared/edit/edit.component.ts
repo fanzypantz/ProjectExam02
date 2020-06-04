@@ -57,8 +57,9 @@ export class EditComponent implements OnInit, OnDestroy, OnChanges {
       // from the layout config
       const group = {};
       this.writeLayout.forEach((layoutItem) => {
-        if (layoutItem.key === 'booking') {
-        } else {
+        // Booking is the only value in the database that should never be a regular widget
+        // Todo: Remove booking from DB so this if statement can be removed
+        if (layoutItem.key !== 'booking') {
           group[layoutItem.key] = new FormControl({
             value: this.data[layoutItem.key],
             disabled: !layoutItem.editAble,
@@ -103,6 +104,7 @@ export class EditComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   onSubmit(data) {
+    // Save the document based on it's model and ID.
     this.isSaving = true;
     const documentRef = this.afs.doc(`${this.model}/${this.id}`);
     documentRef.set(data, { merge: true }).then((r) => (this.isSaving = false));
