@@ -1,10 +1,17 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { Enquiry } from '../models/enquiry.model';
 import { Message } from '../models/message.model';
 import { Post } from '../models/post.model';
 import { User } from '../models/user.model';
 import { Establishment } from '../models/establisment.model';
-import { adminConfig, ReadInterface, WriteInterface } from '../../admin.config';
+import { adminConfig, WriteInterface } from '../../admin.config';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, Subscription } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -14,9 +21,10 @@ import { FormControl, FormGroup } from '@angular/forms';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
 })
-export class EditComponent implements OnInit, OnDestroy {
+export class EditComponent implements OnInit, OnDestroy, OnChanges {
   @Input() model: string;
   @Input() id: string;
+  private querySub: Subscription;
   private documentSubscription: Subscription;
   public adminForm: FormGroup;
   public writeLayout: WriteInterface[];
@@ -26,6 +34,19 @@ export class EditComponent implements OnInit, OnDestroy {
   constructor(private afs: AngularFirestore) {}
 
   ngOnInit(): void {
+    this.initEdit();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.initEdit();
+  }
+
+  ngOnDestroy(): void {
+    this.documentSubscription.unsubscribe();
+    this.querySub.unsubscribe();
+  }
+
+  initEdit(): void {
     this.writeLayout = adminConfig[this.model].writeLayout;
     this.document = this.getCollection();
     this.documentSubscription = this.document.subscribe((snapshot) => {
@@ -45,10 +66,6 @@ export class EditComponent implements OnInit, OnDestroy {
 
       this.adminForm = new FormGroup(group);
     });
-  }
-
-  ngOnDestroy(): void {
-    this.documentSubscription.unsubscribe();
   }
 
   getCollection() {

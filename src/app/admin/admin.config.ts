@@ -16,7 +16,7 @@ export const adminConfig = {
         type: 'booking',
         key: 'booking',
         editAble: true,
-        size: 'half',
+        size: 'full',
         layout: 'left',
       },
       {
@@ -25,7 +25,7 @@ export const adminConfig = {
         key: 'establishmentName',
         editAble: true,
         size: 'half',
-        layout: 'right',
+        layout: 'left',
       },
       {
         name: 'Email',
@@ -33,7 +33,7 @@ export const adminConfig = {
         key: 'establishmentEmail',
         editAble: true,
         size: 'half',
-        layout: 'left',
+        layout: 'right',
       },
       {
         name: 'Price',
@@ -41,7 +41,7 @@ export const adminConfig = {
         key: 'price',
         editAble: true,
         size: 'small',
-        layout: 'right',
+        layout: 'left',
       },
       {
         name: 'Max guests',
@@ -49,6 +49,14 @@ export const adminConfig = {
         key: 'maxGuests',
         editAble: true,
         size: 'small',
+        layout: 'right',
+      },
+      {
+        name: 'Area',
+        type: 'string',
+        key: 'area',
+        editAble: true,
+        size: 'half',
         layout: 'right',
       },
       {
@@ -68,22 +76,6 @@ export const adminConfig = {
         layout: 'left',
       },
       {
-        name: 'Location',
-        type: 'location',
-        key: 'location',
-        editAble: true,
-        size: 'half',
-        layout: 'left',
-      },
-      {
-        name: 'Area',
-        type: 'string',
-        key: 'area',
-        editAble: true,
-        size: 'half',
-        layout: 'right',
-      },
-      {
         name: 'Created at',
         type: 'date',
         key: 'createdAt',
@@ -98,6 +90,14 @@ export const adminConfig = {
         editAble: false,
         size: 'half',
         layout: 'right',
+      },
+      {
+        name: 'Location',
+        type: 'location',
+        key: 'location',
+        editAble: true,
+        size: 'full',
+        layout: 'left',
       },
       {
         name: 'Highlight on front page',

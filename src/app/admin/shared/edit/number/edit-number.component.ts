@@ -8,58 +8,45 @@ import { FormGroup } from '@angular/forms';
       <label [for]="key">{{ name }}</label>
       <div class="admin-input-group">
         <div class="admin-input-icon">
-          <svg viewBox="0 0 18 16">
+          <svg viewBox="0 0 52.9 52.9">
+            <style type="text/css">
+              .edit-number-svg {
+                stroke-width: 3;
+              }
+            </style>
             <defs></defs>
-            <g id="Group_92_1_" transform="translate(-6.5 -8)">
-              <line
-                id="Line_14_1_"
-                class="st0"
-                x1="6.5"
-                y1="8.5"
-                x2="24.5"
-                y2="8.5"
-              />
-              <line
-                id="Line_15_1_"
-                class="st0"
-                x1="10.8"
-                y1="11.5"
-                x2="24.5"
-                y2="11.5"
-              />
-              <line
-                id="Line_16_1_"
-                class="st0"
-                x1="6.5"
-                y1="14.5"
-                x2="24.5"
-                y2="14.5"
-              />
-              <line
-                id="Line_17_1_"
-                class="st0"
-                x1="10.8"
-                y1="17.5"
-                x2="24.5"
-                y2="17.5"
-              />
-              <line
-                id="Line_18_1_"
-                class="st0"
-                x1="6.5"
-                y1="20.5"
-                x2="24.5"
-                y2="20.5"
-              />
-              <line
-                id="Line_19_1_"
-                class="st0"
-                x1="10.8"
-                y1="23.5"
-                x2="24.5"
-                y2="23.5"
-              />
-            </g>
+            <line
+              id="Line_20_1_"
+              class="edit-number-svg"
+              x1="15.5"
+              y1="52.9"
+              x2="15.5"
+              y2="0"
+            />
+            <line
+              id="Line_21_1_"
+              class="edit-number-svg"
+              x1="37.3"
+              y1="52.9"
+              x2="37.3"
+              y2="0"
+            />
+            <line
+              id="Line_22_1_"
+              class="edit-number-svg"
+              x1="0"
+              y1="15.5"
+              x2="52.9"
+              y2="15.5"
+            />
+            <line
+              id="Line_23_1_"
+              class="edit-number-svg"
+              x1="0"
+              y1="37.3"
+              x2="52.9"
+              y2="37.3"
+            />
           </svg>
         </div>
 
