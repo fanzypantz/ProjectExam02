@@ -6,7 +6,13 @@ import { FormGroup } from '@angular/forms';
   template: `
     <div [formGroup]="adminForm" class="admin-edit-card-container">
       <label [for]="key">{{ name }}</label>
-      <textarea [froalaEditor] [formControlName]="key" [name]="key"></textarea>
+      <textarea
+        *ngIf="editAble"
+        [froalaEditor]
+        [formControlName]="key"
+        [name]="key"
+      ></textarea>
+      <div *ngIf="!editAble" [froalaView]="documentText"></div>
     </div>
   `,
   styleUrls: ['../edit.component.scss'],
@@ -16,8 +22,13 @@ export class EditTextComponent implements OnInit {
   @Input() adminForm: FormGroup;
   @Input() key: string;
   @Input() name: string;
+  @Input() editAble: boolean;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  get documentText() {
+    return this.adminForm.get(this.key).value;
+  }
 }

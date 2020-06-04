@@ -193,3 +193,11 @@
   //  color: $main;
   //}
 }
+
+.admin-images-singular {
+  width: calc(100% - 270px);
+  height: auto;
+  img {
+    border-radius: 0;
+  }
+}

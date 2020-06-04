@@ -102,7 +102,7 @@ import * as firebase from 'firebase';
             />
           </div>
 
-          <button class="btn" (click)="uploadImages(fileInput)">
+          <button type="button" class="btn" (click)="uploadImages(fileInput)">
             Upload Images
           </button>
         </div>
@@ -182,7 +182,7 @@ export class EditImagesComponent implements OnInit {
   }
 
   get images() {
-    return this.adminForm.get('imageUrl').value;
+    return this.adminForm.get(this.key).value;
   }
 
   get fileAmount() {
