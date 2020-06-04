@@ -12,7 +12,10 @@ import { Post } from '../models/post.model';
 import { User } from '../models/user.model';
 import { Establishment } from '../models/establisment.model';
 import { adminConfig, WriteInterface } from '../../admin.config';
-import { AngularFirestore } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+} from '@angular/fire/firestore';
 import { Observable, Subscription } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -24,12 +27,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class EditComponent implements OnInit, OnDestroy, OnChanges {
   @Input() model: string;
   @Input() id: string;
-  private querySub: Subscription;
   private documentSubscription: Subscription;
   public adminForm: FormGroup;
   public writeLayout: WriteInterface[];
   private document: Observable<any>;
   public data: any;
+  public isSaving: boolean;
 
   constructor(private afs: AngularFirestore) {}
 
@@ -43,7 +46,6 @@ export class EditComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnDestroy(): void {
     this.documentSubscription.unsubscribe();
-    this.querySub.unsubscribe();
   }
 
   initEdit(): void {
@@ -101,6 +103,8 @@ export class EditComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   onSubmit(data) {
-    console.log('submitted data: ', data);
+    this.isSaving = true;
+    const documentRef = this.afs.doc(`${this.model}/${this.id}`);
+    documentRef.set(data, { merge: true }).then((r) => (this.isSaving = false));
   }
 }

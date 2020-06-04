@@ -184,7 +184,7 @@ export const adminConfig = {
     readLayout: [
       { name: 'id', type: 'string', key: 'id' },
       { name: 'name', type: 'string', key: 'name' },
-      { email: 'id', type: 'string', key: 'email' },
+      { name: 'id', type: 'string', key: 'email' },
       { name: 'created at', type: 'date', key: 'createdAt' },
       { name: 'last updated', type: 'date', key: 'updatedAt' },
     ],
@@ -235,7 +235,7 @@ export const adminConfig = {
     readLayout: [
       { name: 'id', type: 'string', key: 'id' },
       { name: 'title', type: 'string', key: 'title' },
-      { email: 'image ', type: 'image', key: 'imageUrl' },
+      { name: 'image ', type: 'image', key: 'imageUrl' },
       { name: 'created at', type: 'date', key: 'createdAt' },
       { name: 'last updated', type: 'date', key: 'updatedAt' },
     ],

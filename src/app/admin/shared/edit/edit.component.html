@@ -4,6 +4,20 @@
   *ngIf="data"
   (ngSubmit)="onSubmit(adminForm.value)"
 >
+  <div *ngIf="isSaving" class="admin-spinner lds-spinner">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
   <div
     class="admin-edit-card"
     [ngClass]="{
