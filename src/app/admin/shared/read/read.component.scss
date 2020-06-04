@@ -20,12 +20,37 @@ app-images {
 }
 
 .admin-confirm-delete {
-  background-color: #0074d9;
+  background-color: $main-transparent;
   color: white;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 400px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  opacity: 0;
+  transform-origin: center;
+  animation: fade-in 0.5s ease-in-out both;
+
+  .btn {
+    width: 230px;
+    height: 40px;
+    margin-bottom: 10px;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .admin-table {

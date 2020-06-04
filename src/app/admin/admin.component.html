@@ -11,6 +11,14 @@
 </div>
 
 <div class="admin-menu">
+  <button
+    (click)="newDocument()"
+    *ngIf="mode === 'read'"
+    class="btn admin-create-btn"
+  >
+    New {{ model }}
+  </button>
+
   <a
     class="btn"
     [routerLink]="'/admin'"

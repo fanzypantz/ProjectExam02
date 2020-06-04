@@ -17,6 +17,7 @@
 }
 
 .admin-menu {
+  position: relative;
   width: $main-width;
   max-width: $max-width;
   margin: 0 auto;
@@ -43,4 +44,12 @@
   &:last-of-type {
     margin-right: 0;
   }
+}
+
+.admin-create-btn {
+  position: fixed;
+  top: 327px;
+  right: calc(20% - 220px);
+  width: 200px;
+  height: 40px;
 }

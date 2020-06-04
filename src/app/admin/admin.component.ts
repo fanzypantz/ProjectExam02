@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import {
   defaultEnquiries,
@@ -13,6 +13,10 @@ import * as firebase from 'firebase/app';
 
 import 'firebase/firestore';
 import { Establishment } from './shared/models/establisment.model';
+import { Enquiry } from './shared/models/enquiry.model';
+import { Message } from './shared/models/message.model';
+import { Post } from './shared/models/post.model';
+import { User } from './shared/models/user.model';
 
 @Component({
   selector: 'app-admin',
@@ -25,7 +29,11 @@ export class AdminComponent implements OnInit, OnDestroy {
   mode: string;
   id: string;
 
-  constructor(private route: ActivatedRoute, private afs: AngularFirestore) {}
+  constructor(
+    private route: ActivatedRoute,
+    private afs: AngularFirestore,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.querySub = this.route.queryParams.subscribe((params) => {
@@ -41,13 +49,106 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.querySub.unsubscribe();
   }
 
-  // Everything bellow is debug only
   getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+  newDocument() {
+    let data;
+
+    switch (this.model) {
+      case 'enquiries':
+        data = {
+          establishmentId: '',
+          name: '',
+          email: '',
+          createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+          updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
+          bookingStart: firebase.firestore.Timestamp.fromDate(new Date()),
+          bookingEnd: firebase.firestore.Timestamp.fromDate(new Date()),
+        };
+        break;
+      case 'messages':
+        data = {
+          name: '',
+          email: '',
+          message: '',
+          createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+          updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
+        };
+        break;
+      case 'posts':
+        data = {
+          title: '',
+          text: '',
+          imageUrl: '',
+          createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+          updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
+        };
+        break;
+      case 'users':
+        data = {
+          uid: '',
+          email: '',
+          displayName: '',
+          photoURL: '',
+          roles: {
+            customer: true,
+          },
+          createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+          updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
+        };
+        break;
+      default:
+        data = {
+          establishmentName: '',
+          establishmentEmail: '',
+          area: '',
+          imageUrl: [],
+          price: 0,
+          maxGuests: 0,
+          rating: 0,
+          location: new firebase.firestore.GeoPoint(
+            defaultEstablishments[60.3913].googleLat,
+            defaultEstablishments[5.3221].googleLong
+          ),
+          description: '',
+          selfCatering: false,
+          highlight: false,
+          createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+          updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
+        };
+        break;
+    }
+
+    this.createNewEntry(this.model, data).then((r) => {
+      this.router.navigate(['/admin'], {
+        queryParams: {
+          model: this.model,
+          mode: 'edit',
+          id: r.id,
+        },
+      });
+    });
+  }
+
+  private createNewEntry(model: string, data: object) {
+    return new Promise<any>((resolve, reject) => {
+      this.afs
+        .collection(model)
+        .add(data)
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (err) => reject(err)
+        );
+    });
+  }
+
+  // Everything bellow is debug only
   seedEstablishments() {
     // Seed establishments
     for (let i = 0; i < 100; i++) {
@@ -131,16 +232,6 @@ export class AdminComponent implements OnInit, OnDestroy {
           bookingEnd: firebase.firestore.Timestamp.fromDate(bookingEnd),
         };
         this.createNewEntry('enquiries', data).then((r) => {});
-
-        // Update the establishments with the new booking
-        this.afs
-          .collection('establishments')
-          .doc(establishments[i].id)
-          .collection('booking')
-          .add({
-            bookingStart,
-            bookingEnd,
-          });
       }
     });
   }
@@ -201,19 +292,5 @@ export class AdminComponent implements OnInit, OnDestroy {
       };
       this.createNewEntry('messages', data).then((r) => {});
     }
-  }
-
-  private createNewEntry(model: string, data: object) {
-    return new Promise<any>((resolve, reject) => {
-      this.afs
-        .collection(model)
-        .add(data)
-        .then(
-          (res) => {
-            resolve(res);
-          },
-          (err) => reject(err)
-        );
-    });
   }
 }
