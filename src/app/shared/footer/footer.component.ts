@@ -31,6 +31,10 @@ export class FooterComponent implements OnInit {
     return this.location.path().includes('admin');
   }
 
+  isAdminEdit() {
+    return this.location.path().includes('edit');
+  }
+
   goUp() {
     const element = document.querySelector('#nav');
     if (element) {

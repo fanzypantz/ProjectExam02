@@ -127,4 +127,16 @@
     src="https://firebasestorage.googleapis.com/v0/b/noroff-projectexam-02.appspot.com/o/backgrounds%2Fmountains.jpg?alt=media&token=56256e9c-6a94-4930-a058-5f23c04b1a88"
     alt=""
   />
+
+  <img
+    *ngIf="isAdmin() && !isAdminEdit()"
+    src="https://firebasestorage.googleapis.com/v0/b/noroff-projectexam-02.appspot.com/o/backgrounds%2Fcoast.jpg?alt=media&token=056b55ef-835c-45f0-b394-32c29067f0c5"
+    alt=""
+  />
+
+  <img
+    *ngIf="isAdminEdit()"
+    src="https://firebasestorage.googleapis.com/v0/b/noroff-projectexam-02.appspot.com/o/backgrounds%2Fdancer.jpg?alt=media&token=63f32db0-f851-4c17-9669-feb3ab0a70dc"
+    alt=""
+  />
 </div>
