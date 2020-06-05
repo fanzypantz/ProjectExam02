@@ -50,6 +50,7 @@ import { EditEmailComponent } from './admin/shared/edit/email/edit-email.compone
 import { EditTextComponent } from './admin/shared/edit/text/edit-text.component';
 import { EditLocationComponent } from './admin/shared/edit/location/edit-location.component';
 import { PageTransitionsService } from './shared/page-transitions.service';
+import { GalleryComponent } from './shared/gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { PageTransitionsService } from './shared/page-transitions.service';
     EditEmailComponent,
     EditTextComponent,
     EditLocationComponent,
+    GalleryComponent,
   ],
   imports: [
     BrowserModule,

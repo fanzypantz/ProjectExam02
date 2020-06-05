@@ -6,7 +6,7 @@
 <div *ngIf="data" class="accommodation-container">
   <div class="accommodation-top">
     <div class="accommodation-img">
-      <img [src]="data.imageUrl" alt="" />
+      <app-gallery [images]="data.imageUrl"></app-gallery>
     </div>
 
     <div class="accommodation-map">

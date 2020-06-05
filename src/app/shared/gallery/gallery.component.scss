@@ -1,0 +1,41 @@
+@import '../../../variables';
+
+.gallery-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.gallery-images {
+  display: flex;
+  transition: transform 1s ease-in-out;
+
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.gallery-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-150%);
+}
+
+.gallery-control-line {
+  width: 100px;
+  stroke: $main;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  transition: stroke 1s ease, transform 250ms ease;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+}
+
+.gallery-control-line-active {
+  stroke: $secondary;
+}
