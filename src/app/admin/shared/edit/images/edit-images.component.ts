@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import * as firebase from 'firebase';
+import 'firebase/firestore';
 
 @Component({
   selector: 'app-edit-images',

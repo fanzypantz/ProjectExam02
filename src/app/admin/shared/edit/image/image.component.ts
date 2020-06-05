@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
+import 'firebase/firestore';
 import { FormGroup } from '@angular/forms';
 
 @Component({

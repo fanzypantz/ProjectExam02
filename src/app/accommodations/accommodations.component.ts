@@ -64,8 +64,6 @@ export class AccommodationsComponent implements OnInit, OnDestroy {
       .collection<Establishment>('establishments')
       .valueChanges({ idField: 'id' });
     this.establishmentSub = this.establishments.subscribe((snapshot) => {
-      this.pageTransition.toggleOpenClose(0);
-
       this.establishmentsData = snapshot;
       if (!this.checkIfQueryExists()) {
         this.searchResults = this.establishmentsData;
@@ -88,6 +86,7 @@ export class AccommodationsComponent implements OnInit, OnDestroy {
       } else {
         this.searchResults = this.establishmentsData;
       }
+      this.pageTransition.toggleOpenClose(0);
     });
   }
 

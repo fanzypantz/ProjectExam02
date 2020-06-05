@@ -45,7 +45,7 @@ import {
   styleUrls: ['./gallery.component.scss'],
 })
 export class GalleryComponent implements OnInit {
-  @Input images: string[];
+  @Input() images: string[];
   public position = 0;
   public containerWidth: number;
   public containerHeight: number;
