@@ -10,3 +10,16 @@ app-nav-bar {
   justify-content: space-between;
   z-index: 200;
 }
+
+.page-transition-container {
+  z-index: 200;
+  position: fixed;
+  height: 0;
+  width: 100vw;
+  background-color: $main;
+  transition: height 500ms ease;
+}
+
+.page-transition-open {
+  height: 100vh;
+}

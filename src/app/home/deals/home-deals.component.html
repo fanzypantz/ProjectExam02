@@ -1,6 +1,6 @@
 <div class="home-deals-container">
   <div
-    (click)="goTo(item.id)"
+    (click)="pageTransition.navigate('/accommodation-details', { id: item.id })"
     class="home-deals-card"
     *ngFor="let item of data"
   >

@@ -1,5 +1,11 @@
 <app-nav-bar id="nav"></app-nav-bar>
 
+<div
+  *ngIf="pageTransition.isDisplayable$"
+  class="page-transition-container"
+  [ngClass]="{ 'page-transition-open': pageTransition.isOpen$ }"
+></div>
+
 <router-outlet></router-outlet>
 
 <app-footer></app-footer>

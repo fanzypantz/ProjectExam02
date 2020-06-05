@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageTransitionsService } from '../shared/page-transitions.service';
 
 @Component({
   selector: 'app-contact',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit {
-  constructor() {}
+  constructor(private pageTransition: PageTransitionsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.pageTransition.toggleOpenClose(500);
+  }
 }

@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Establishment } from '../admin/shared/models/establisment.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Enquiry } from '../admin/shared/models/enquiry.model';
+import { PageTransitionsService } from '../shared/page-transitions.service';
 
 @Component({
   selector: 'app-accommodations',
@@ -26,7 +27,11 @@ export class AccommodationsComponent implements OnInit, OnDestroy {
   private enquiriesData: Enquiry[];
   public searchResults: Establishment[];
 
-  constructor(private afs: AngularFirestore, private route: ActivatedRoute) {
+  constructor(
+    private afs: AngularFirestore,
+    private route: ActivatedRoute,
+    private pageTransition: PageTransitionsService
+  ) {
     this.paramSub = route.queryParams.subscribe((p) => {
       // Get all data from the query string
       this.area = p.area;
@@ -59,6 +64,8 @@ export class AccommodationsComponent implements OnInit, OnDestroy {
       .collection<Establishment>('establishments')
       .valueChanges({ idField: 'id' });
     this.establishmentSub = this.establishments.subscribe((snapshot) => {
+      this.pageTransition.toggleOpenClose(0);
+
       this.establishmentsData = snapshot;
       if (!this.checkIfQueryExists()) {
         this.searchResults = this.establishmentsData;

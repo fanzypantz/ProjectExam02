@@ -8,10 +8,15 @@ import {
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { tap, map, take } from 'rxjs/operators';
+import { PageTransitionsService } from '../../page-transitions.service';
 
 @Injectable()
 export class CanDeleteGuard implements CanActivate {
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private pageTransition: PageTransitionsService
+  ) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -22,7 +27,7 @@ export class CanDeleteGuard implements CanActivate {
       map((user) => user && user.roles.admin),
       tap((isAdmin) => {
         if (!isAdmin) {
-          this.router.navigate(['/']);
+          this.pageTransition.navigate('/');
         }
       })
     );

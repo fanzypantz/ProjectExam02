@@ -50,12 +50,15 @@
 
       <td>
         <a
-          [routerLink]="'/admin'"
-          [queryParams]="{
-            model: model,
-            mode: 'edit',
-            id: item.id || item.uid
-          }"
+          (click)="
+            pageTransition.navigate('/admin', {
+              queryParams: {
+                model: model,
+                mode: 'edit',
+                id: item.id || item.uid
+              }
+            })
+          "
         >
           <svg
             class="admin-read-icon"

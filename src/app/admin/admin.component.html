@@ -21,32 +21,47 @@
 
   <a
     class="btn"
-    [routerLink]="'/admin'"
-    [queryParams]="{ model: 'establishments', mode: 'read' }"
+    (click)="
+      pageTransition.navigate('/admin', {
+        queryParams: { model: 'establishments', mode: 'read' }
+      })
+    "
     >Establishments</a
   >
   <a
     class="btn"
-    [routerLink]="'/admin'"
-    [queryParams]="{ model: 'enquiries', mode: 'read' }"
+    (click)="
+      pageTransition.navigate('/admin', {
+        queryParams: { model: 'enquiries', mode: 'read' }
+      })
+    "
     >Enquiries</a
   >
   <a
     class="btn"
-    [routerLink]="'/admin'"
-    [queryParams]="{ model: 'messages', mode: 'read' }"
+    (click)="
+      pageTransition.navigate('/admin', {
+        queryParams: { model: 'messages', mode: 'read' }
+      })
+    "
     >Messages</a
   >
   <a
     class="btn"
-    [routerLink]="'/admin'"
-    [queryParams]="{ model: 'posts', mode: 'read' }"
+    (click)="
+      pageTransition.navigate('/admin', {
+        queryParams: { model: 'posts', mode: 'read' }
+      })
+    "
     >Posts</a
   >
   <a
     class="btn"
-    [routerLink]="'/admin'"
-    [queryParams]="{ model: 'users', mode: 'read' }"
+    (click)="
+      pageTransition.navigate('/admin', {
+        queryParams: { model: 'users', mode: 'read' }
+      })
+    "
     >Users</a
   >
 </div>

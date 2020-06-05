@@ -72,7 +72,5 @@ export class EditRolesComponent implements OnInit {
     const roleObject = {};
     roleObject[this.key] = this.roles;
     this.adminForm.patchValue(roleObject);
-
-    console.log('what: ', this.adminForm.get(this.key).value);
   }
 }

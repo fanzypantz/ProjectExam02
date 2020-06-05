@@ -14,6 +14,7 @@ import { switchMap } from 'rxjs/operators';
 import { User } from '../../admin/shared/models/user.model';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
+import { PageTransitionsService } from '../page-transitions.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -23,7 +24,8 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
-    private router: Router
+    private router: Router,
+    private pageTransition: PageTransitionsService
   ) {
     // Get the user from firebase
     this.user$ = this.afAuth.authState.pipe(
@@ -48,7 +50,7 @@ export class AuthService {
   async signOut() {
     // Call the auth api to log out and navigate to index again
     await this.afAuth.signOut();
-    return this.router.navigate(['/']);
+    return this.pageTransition.navigate('/');
   }
 
   private updateUserData(user) {

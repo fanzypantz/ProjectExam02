@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Establishment } from '../admin/shared/models/establisment.model';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { PageTransitionsService } from '../shared/page-transitions.service';
 
 @Component({
   selector: 'app-accommodation-details',
@@ -20,7 +21,11 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
   public data: Establishment;
   public zoom = 12;
 
-  constructor(private afs: AngularFirestore, private route: ActivatedRoute) {
+  constructor(
+    private afs: AngularFirestore,
+    private route: ActivatedRoute,
+    private pageTransition: PageTransitionsService
+  ) {
     this.paramSub = route.params.subscribe((p) => {
       this.id = p.id;
 
@@ -31,6 +36,7 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
         .valueChanges();
 
       this.documentSubscription = this.accommodation.subscribe((snapshot) => {
+        this.pageTransition.toggleOpenClose(0);
         this.data = snapshot;
       });
     });

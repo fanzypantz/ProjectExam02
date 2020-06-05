@@ -49,6 +49,7 @@ import { EditRolesComponent } from './admin/shared/edit/roles/edit-roles.compone
 import { EditEmailComponent } from './admin/shared/edit/email/edit-email.component';
 import { EditTextComponent } from './admin/shared/edit/text/edit-text.component';
 import { EditLocationComponent } from './admin/shared/edit/location/edit-location.component';
+import { PageTransitionsService } from './shared/page-transitions.service';
 
 @NgModule({
   declarations: [
@@ -103,7 +104,7 @@ import { EditLocationComponent } from './admin/shared/edit/location/edit-locatio
     AngularFireStorageModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [PageTransitionsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

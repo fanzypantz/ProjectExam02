@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PageTransitionsService } from './shared/page-transitions.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Visit Bergen';
-  constructor() {}
+  constructor(public pageTransition: PageTransitionsService) {}
 }

@@ -8,7 +8,8 @@ import { Message } from '../models/message.model';
 import { Post } from '../models/post.model';
 
 import { adminConfig, ReadInterface } from '../../admin.config';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PageTransitionsService } from '../../../shared/page-transitions.service';
 
 @Component({
   selector: 'app-read',
@@ -23,10 +24,15 @@ export class ReadComponent implements OnInit, OnDestroy {
   showConfirmPrompt = false;
   deleteId: string;
 
-  constructor(private afs: AngularFirestore, private route: ActivatedRoute) {
+  constructor(
+    private afs: AngularFirestore,
+    private route: ActivatedRoute,
+    private pageTransition: PageTransitionsService
+  ) {
     // Subscribe to the queryParams so every time it changes this function is called
     // When the queryParam change, change the values and fetch the new data
     this.paramSub = route.queryParams.subscribe((p) => {
+      this.pageTransition.toggleOpenClose(0);
       this.model = p.model;
       this.readLayout = adminConfig[p.model].readLayout;
       this.collections = this.getCollection();

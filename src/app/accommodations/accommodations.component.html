@@ -66,7 +66,11 @@
         <a class="btn mail" [href]="'mailto:' + item.establishmentEmail"
           >CONTACT</a
         >
-        <a class="btn" [routerLink]="['/accommodation-details', item.id]"
+        <a
+          class="btn"
+          (click)="
+            pageTransition.navigate('/accommodation-details', { id: item.id })
+          "
           >CHOOSE</a
         >
       </div>

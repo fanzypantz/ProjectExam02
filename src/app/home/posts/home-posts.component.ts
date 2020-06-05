@@ -3,6 +3,7 @@ import { Observable, Subscription } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Post } from '../../admin/shared/models/post.model';
+import { PageTransitionsService } from '../../shared/page-transitions.service';
 
 @Component({
   selector: 'app-home-posts',
@@ -14,7 +15,11 @@ export class HomePostsComponent implements OnInit, OnDestroy {
   private document: Observable<Array<Post>>;
   public data: Array<Post>;
 
-  constructor(private afs: AngularFirestore, private router: Router) {}
+  constructor(
+    private afs: AngularFirestore,
+    private router: Router,
+    public pageTransition: PageTransitionsService
+  ) {}
 
   ngOnInit(): void {
     this.document = this.afs
@@ -27,9 +32,5 @@ export class HomePostsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.documentSubscription.unsubscribe();
-  }
-
-  goTo(id) {
-    this.router.navigate(['/post', id]);
   }
 }
