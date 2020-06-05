@@ -1,112 +1,119 @@
-<div class="bg-parallelogram"></div>
-<table class="admin-table">
-  <tr>
-    <th>
-      <input type="checkbox" />
-    </th>
-    <th *ngFor="let titleHead of readLayout">{{ titleHead.name }}</th>
-    <th></th>
-  </tr>
+<div class="admin-read">
+  <div class="bg-parallelogram"></div>
 
-  <tr *ngFor="let item of collections | async">
-    <td><input type="checkbox" /></td>
-    <td *ngFor="let layoutInfo of readLayout">
-      <!--Switch the display mode based on the layout type-->
-      <div [ngSwitch]="layoutInfo.type">
-        <app-read-string
-          *ngSwitchCase="'string'"
-          [text]="item[layoutInfo.key]"
-        ></app-read-string>
+  <table class="admin-table">
+    <tr>
+      <th>
+        <input type="checkbox" />
+      </th>
+      <th *ngFor="let titleHead of readLayout">{{ titleHead.name }}</th>
+      <th></th>
+    </tr>
 
-        <app-read-date
-          *ngSwitchCase="'date'"
-          [date]="item[layoutInfo.key]"
-        ></app-read-date>
+    <tr *ngFor="let item of collections | async">
+      <td><input type="checkbox" /></td>
+      <td *ngFor="let layoutInfo of readLayout">
+        <!--Switch the display mode based on the layout type-->
+        <div [ngSwitch]="layoutInfo.type">
+          <app-read-string
+            *ngSwitchCase="'string'"
+            [text]="item[layoutInfo.key]"
+          ></app-read-string>
 
-        <app-read-booking-date
-          *ngSwitchCase="'booking'"
-          [dateStart]="item[layoutInfo.keys[0]]"
-          [dateEnd]="item[layoutInfo.keys[1]]"
-        ></app-read-booking-date>
+          <app-read-date
+            *ngSwitchCase="'date'"
+            [date]="item[layoutInfo.key]"
+          ></app-read-date>
 
-        <app-read-images
-          *ngSwitchCase="'imageArray'"
-          [images]="item[layoutInfo.key]"
-        ></app-read-images>
+          <app-read-booking-date
+            *ngSwitchCase="'booking'"
+            [dateStart]="item[layoutInfo.keys[0]]"
+            [dateEnd]="item[layoutInfo.keys[1]]"
+          ></app-read-booking-date>
 
-        <app-read-image
-          *ngSwitchCase="'image'"
-          [image]="item[layoutInfo.key]"
-        ></app-read-image>
+          <app-read-images
+            *ngSwitchCase="'imageArray'"
+            [images]="item[layoutInfo.key]"
+          ></app-read-images>
 
-        <app-read-roles
-          *ngSwitchCase="'roles'"
-          [roles]="item[layoutInfo.key]"
-        ></app-read-roles>
-      </div>
-    </td>
+          <app-read-image
+            *ngSwitchCase="'image'"
+            [image]="item[layoutInfo.key]"
+          ></app-read-image>
 
-    <td>
-      <a
-        [routerLink]="'/admin'"
-        [queryParams]="{ model: model, mode: 'edit', id: item.id || item.uid }"
-      >
+          <app-read-roles
+            *ngSwitchCase="'roles'"
+            [roles]="item[layoutInfo.key]"
+          ></app-read-roles>
+        </div>
+      </td>
+
+      <td>
+        <a
+          [routerLink]="'/admin'"
+          [queryParams]="{
+            model: model,
+            mode: 'edit',
+            id: item.id || item.uid
+          }"
+        >
+          <svg
+            class="admin-read-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="12.358"
+            height="12.644"
+            viewBox="0 0 12.358 12.644"
+          >
+            <g id="pencil" transform="translate(0 -0.518)">
+              <rect
+                id="Rectangle_110"
+                data-name="Rectangle 110"
+                width="4.651"
+                height="9.727"
+                transform="matrix(-0.707, -0.707, 0.707, -0.707, 3.763, 12.459)"
+              />
+              <path
+                id="Path_25"
+                data-name="Path 25"
+                d="M22.44,2.01,21.385.955a1.491,1.491,0,0,0-2.109,0l-.74.739,3.289,3.289.74-.739A1.653,1.653,0,0,0,22.44,2.01Z"
+                transform="translate(-10.587)"
+              />
+              <path
+                id="Path_26"
+                data-name="Path 26"
+                d="M0,25.591H3.04L0,22.28Z"
+                transform="translate(0 -12.429)"
+              />
+            </g>
+          </svg>
+        </a>
+
         <svg
+          (click)="confirmDelete(item.id || item.uid)"
           class="admin-read-icon"
           xmlns="http://www.w3.org/2000/svg"
-          width="12.358"
+          width="10.533"
           height="12.644"
-          viewBox="0 0 12.358 12.644"
+          viewBox="0 0 10.533 12.644"
         >
-          <g id="pencil" transform="translate(0 -0.518)">
-            <rect
-              id="Rectangle_110"
-              data-name="Rectangle 110"
-              width="4.651"
-              height="9.727"
-              transform="matrix(-0.707, -0.707, 0.707, -0.707, 3.763, 12.459)"
+          <g id="trashcan" transform="translate(-96.038 -64)">
+            <path
+              id="Path_23"
+              data-name="Path 23"
+              d="M106.494,66.285c-.079-.3-.132-.461-.132-.461-.086-.306-.3-.306-.625-.359l-1.748-.221c-.217-.036-.217-.036-.3-.224C103.4,64.375,103.311,64,103,64H99.608c-.313,0-.4.375-.685,1.024-.086.184-.086.184-.3.224l-1.751.221c-.319.053-.55.082-.635.388,0,0-.039.135-.122.428-.105.392-.148.349.214.349h9.954C106.643,66.637,106.6,66.676,106.494,66.285Z"
             />
             <path
-              id="Path_25"
-              data-name="Path 25"
-              d="M22.44,2.01,21.385.955a1.491,1.491,0,0,0-2.109,0l-.74.739,3.289,3.289.74-.739A1.653,1.653,0,0,0,22.44,2.01Z"
-              transform="translate(-10.587)"
-            />
-            <path
-              id="Path_26"
-              data-name="Path 26"
-              d="M0,25.591H3.04L0,22.28Z"
-              transform="translate(0 -12.429)"
+              id="Path_24"
+              data-name="Path 24"
+              d="M124.588,176h-8.124c-.546,0-.573.072-.54.484l.616,7.986c.053.4.092.487.576.487h6.821c.484,0,.523-.082.576-.487l.616-7.986C125.161,176.069,125.135,176,124.588,176Z"
+              transform="translate(-19.223 -108.313)"
             />
           </g>
         </svg>
-      </a>
-
-      <svg
-        (click)="confirmDelete(item.id || item.uid)"
-        class="admin-read-icon"
-        xmlns="http://www.w3.org/2000/svg"
-        width="10.533"
-        height="12.644"
-        viewBox="0 0 10.533 12.644"
-      >
-        <g id="trashcan" transform="translate(-96.038 -64)">
-          <path
-            id="Path_23"
-            data-name="Path 23"
-            d="M106.494,66.285c-.079-.3-.132-.461-.132-.461-.086-.306-.3-.306-.625-.359l-1.748-.221c-.217-.036-.217-.036-.3-.224C103.4,64.375,103.311,64,103,64H99.608c-.313,0-.4.375-.685,1.024-.086.184-.086.184-.3.224l-1.751.221c-.319.053-.55.082-.635.388,0,0-.039.135-.122.428-.105.392-.148.349.214.349h9.954C106.643,66.637,106.6,66.676,106.494,66.285Z"
-          />
-          <path
-            id="Path_24"
-            data-name="Path 24"
-            d="M124.588,176h-8.124c-.546,0-.573.072-.54.484l.616,7.986c.053.4.092.487.576.487h6.821c.484,0,.523-.082.576-.487l.616-7.986C125.161,176.069,125.135,176,124.588,176Z"
-            transform="translate(-19.223 -108.313)"
-          />
-        </g>
-      </svg>
-    </td>
-  </tr>
-</table>
+      </td>
+    </tr>
+  </table>
+</div>
 
 <div *ngIf="showConfirmPrompt" class="admin-confirm-delete">
   <h2>Are you sure you want to delete this?</h2>

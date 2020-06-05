@@ -110,7 +110,7 @@ export class EditImageComponent implements OnInit {
   @Input() key: string;
   @Input() name: string;
   @Input() model: string;
-  private file: File;
+  public file: File;
   public progress: number;
 
   constructor() {
