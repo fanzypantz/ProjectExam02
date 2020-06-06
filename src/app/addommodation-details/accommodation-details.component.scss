@@ -55,14 +55,13 @@ agm-map {
 .accommodation-details-booking {
   background-color: $main;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-  height: 300px;
   width: 100%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 40px;
+  padding: 40px;
 
   .btn {
     width: calc(((100% / 4) - 8px));
