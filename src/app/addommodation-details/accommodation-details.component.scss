@@ -20,6 +20,7 @@ agm-map {
 .accommodation-bottom {
   width: 100%;
   display: flex;
+  flex-direction: column;
   margin-top: 10px;
 }
 
@@ -45,22 +46,26 @@ agm-map {
 
 .accommodation-details {
   color: $white;
-  width: calc(50% - 5px);
-  margin: 0 5px 0 0;
+  min-height: 150px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 5px 0 15px 0;
 }
 
 .accommodation-details-booking {
   background-color: $main;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-  width: calc(50% - 5px);
-  margin-left: 5px;
+  height: 300px;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 0 40px;
 
   .btn {
-    width: 100%;
+    width: calc(((100% / 4) - 8px));
     height: 52px;
     line-height: 52px;
     display: block;
@@ -77,9 +82,72 @@ agm-map {
 }
 
 .accommodation-booking-details {
-  width: 130px;
+  height: 54px;
+  width: calc(((100% / 4) - 8px));
+  margin: 0 10px;
 }
 
 .accommodation-booking-price {
+  margin-left: auto;
+  margin-right: 10px;
   text-align: right;
+
+  h2 {
+    font-size: 2.7em;
+  }
+}
+
+.accommodation-booking-form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.accommodation-booking-form-bottom {
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+}
+
+.accommodation-booking-input-icon {
+  height: 54px;
+  width: 54px;
+  position: relative;
+  background-color: $secondary;
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    line {
+      stroke: $white;
+    }
+  }
+}
+
+.accommodation-booking-input-group {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc((100% / 4) - 8px);
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  label {
+    font-family: $font-family;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    color: $white;
+  }
+
+  .form-input {
+    height: 52px;
+    width: calc(100% - 64px);
+  }
 }

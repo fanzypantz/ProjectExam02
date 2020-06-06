@@ -4,6 +4,8 @@ import { Observable, Subscription } from 'rxjs';
 import { Establishment } from '../admin/shared/models/establisment.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { PageTransitionsService } from '../shared/page-transitions.service';
+import { FormControl, FormGroup } from '@angular/forms';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-accommodation-details',
@@ -20,6 +22,7 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
   private accommodation: Observable<Establishment>;
   public data: Establishment;
   public zoom = 12;
+  public bookingForm: FormGroup;
 
   constructor(
     private afs: AngularFirestore,
@@ -42,9 +45,25 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.bookingForm = new FormGroup({
+      bookingEnd: new FormControl(''),
+      bookingStart: new FormControl(''),
+      email: new FormControl(''),
+      name: new FormControl(''),
+    });
+  }
 
   ngOnDestroy(): void {
     this.paramSub.unsubscribe();
+    this.documentSubscription.unsubscribe();
+  }
+
+  onSubmit(data) {
+    console.log('data: ', data);
+    // // Save the document based on it's model and ID.
+    // this.isSaving = true;
+    // const documentRef = this.afs.doc(`${this.model}/${this.id}`);
+    // documentRef.set(data, { merge: true }).then((r) => (this.isSaving = false));
   }
 }

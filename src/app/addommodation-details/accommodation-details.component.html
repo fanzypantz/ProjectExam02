@@ -53,8 +53,288 @@
       <p class="accommodation-text">{{ data.description }}</p>
     </div>
 
-    <div class="accommodation-details-booking">
-      <div class="accommodation-booking-column">
+    <form
+      class="accommodation-details-booking"
+      [formGroup]="bookingForm"
+      (ngSubmit)="onSubmit(bookingForm.value)"
+    >
+      <div class="accommodation-booking-form">
+        <div class="accommodation-booking-input-group">
+          <label for="name">Your Name</label>
+
+          <div class="accommodation-booking-input-icon">
+            <svg viewBox="0 0 18 16">
+              <defs></defs>
+              <g id="Group_92_1_" transform="translate(-6.5 -8)">
+                <line
+                  id="Line_14_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="8.5"
+                  x2="24.5"
+                  y2="8.5"
+                />
+                <line
+                  id="Line_15_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="11.5"
+                  x2="24.5"
+                  y2="11.5"
+                />
+                <line
+                  id="Line_16_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="14.5"
+                  x2="24.5"
+                  y2="14.5"
+                />
+                <line
+                  id="Line_17_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="17.5"
+                  x2="24.5"
+                  y2="17.5"
+                />
+                <line
+                  id="Line_18_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="20.5"
+                  x2="24.5"
+                  y2="20.5"
+                />
+                <line
+                  id="Line_19_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="23.5"
+                  x2="24.5"
+                  y2="23.5"
+                />
+              </g>
+            </svg>
+          </div>
+
+          <input
+            id="name"
+            class="form-input"
+            formControlName="name"
+            placeholder="John Hancock"
+            type="text"
+            name="name"
+          />
+        </div>
+        <div class="accommodation-booking-input-group">
+          <label for="email">Your Email Address</label>
+
+          <div class="accommodation-booking-input-icon">
+            <svg viewBox="0 0 18 16">
+              <defs></defs>
+              <g id="Group_92_1_" transform="translate(-6.5 -8)">
+                <line
+                  id="Line_14_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="8.5"
+                  x2="24.5"
+                  y2="8.5"
+                />
+                <line
+                  id="Line_15_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="11.5"
+                  x2="24.5"
+                  y2="11.5"
+                />
+                <line
+                  id="Line_16_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="14.5"
+                  x2="24.5"
+                  y2="14.5"
+                />
+                <line
+                  id="Line_17_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="17.5"
+                  x2="24.5"
+                  y2="17.5"
+                />
+                <line
+                  id="Line_18_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="20.5"
+                  x2="24.5"
+                  y2="20.5"
+                />
+                <line
+                  id="Line_19_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="23.5"
+                  x2="24.5"
+                  y2="23.5"
+                />
+              </g>
+            </svg>
+          </div>
+
+          <input
+            id="email"
+            class="form-input"
+            formControlName="name"
+            placeholder="email@address.com"
+            type="email"
+            name="name"
+          />
+        </div>
+        <div class="accommodation-booking-input-group">
+          <label for="bookingStart">Check-in Date</label>
+
+          <div class="accommodation-booking-input-icon">
+            <svg viewBox="0 0 18 16">
+              <defs></defs>
+              <g id="Group_92_1_" transform="translate(-6.5 -8)">
+                <line
+                  id="Line_14_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="8.5"
+                  x2="24.5"
+                  y2="8.5"
+                />
+                <line
+                  id="Line_15_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="11.5"
+                  x2="24.5"
+                  y2="11.5"
+                />
+                <line
+                  id="Line_16_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="14.5"
+                  x2="24.5"
+                  y2="14.5"
+                />
+                <line
+                  id="Line_17_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="17.5"
+                  x2="24.5"
+                  y2="17.5"
+                />
+                <line
+                  id="Line_18_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="20.5"
+                  x2="24.5"
+                  y2="20.5"
+                />
+                <line
+                  id="Line_19_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="23.5"
+                  x2="24.5"
+                  y2="23.5"
+                />
+              </g>
+            </svg>
+          </div>
+
+          <input
+            id="bookingStart"
+            class="form-input form-date"
+            formControlName="bookingStart"
+            type="date"
+            name="bookingStart"
+          />
+        </div>
+        <div class="accommodation-booking-input-group">
+          <label for="bookingEnd">Check-out Date</label>
+
+          <div class="accommodation-booking-input-icon">
+            <svg viewBox="0 0 18 16">
+              <defs></defs>
+              <g id="Group_92_1_" transform="translate(-6.5 -8)">
+                <line
+                  id="Line_14_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="8.5"
+                  x2="24.5"
+                  y2="8.5"
+                />
+                <line
+                  id="Line_15_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="11.5"
+                  x2="24.5"
+                  y2="11.5"
+                />
+                <line
+                  id="Line_16_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="14.5"
+                  x2="24.5"
+                  y2="14.5"
+                />
+                <line
+                  id="Line_17_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="17.5"
+                  x2="24.5"
+                  y2="17.5"
+                />
+                <line
+                  id="Line_18_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="20.5"
+                  x2="24.5"
+                  y2="20.5"
+                />
+                <line
+                  id="Line_19_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="23.5"
+                  x2="24.5"
+                  y2="23.5"
+                />
+              </g>
+            </svg>
+          </div>
+
+          <input
+            id="bookingEnd"
+            class="form-input form-date"
+            formControlName="bookingStart"
+            type="date"
+            name="bookingEnd"
+          />
+        </div>
+      </div>
+
+      <div class="accommodation-booking-form-bottom">
+        <a class="btn mail" [href]="'mailto:' + data.establishmentEmail"
+          >CONTACT</a
+        >
         <div class="accommodation-booking-details">
           <div class="accommodation-booking-details-box">
             <p>Self Catering</p>
@@ -65,22 +345,14 @@
             <p class="square">{{ data.maxGuests }}</p>
           </div>
         </div>
-        <a class="btn mail" [href]="'mailto:' + data.establishmentEmail"
-          >CONTACT</a
-        >
-      </div>
 
-      <div class="accommodation-booking-column"></div>
-
-      <div class="accommodation-booking-column">
         <div class="accommodation-booking-price">
           <h2>${{ data.price }}</h2>
         </div>
 
-        <a class="btn">CHOOSE</a>
+        <button class="btn">BOOK NOW</button>
       </div>
-    </div>
+    </form>
   </div>
-
   <div class="bg-parallelogram bg-main"></div>
 </div>
