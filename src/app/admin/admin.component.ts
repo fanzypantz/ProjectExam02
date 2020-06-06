@@ -126,7 +126,8 @@ export class AdminComponent implements OnInit, OnDestroy {
     }
 
     this.createNewEntry(this.model, data).then((r) => {
-      this.pageTransition.navigate('/admin', {
+      // TODO: save confirmation instead of this
+      this.router.navigate(['/admin'], {
         queryParams: {
           model: this.model,
           mode: 'edit',

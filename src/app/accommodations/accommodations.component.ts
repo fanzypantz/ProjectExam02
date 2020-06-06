@@ -30,7 +30,7 @@ export class AccommodationsComponent implements OnInit, OnDestroy {
   constructor(
     private afs: AngularFirestore,
     private route: ActivatedRoute,
-    private pageTransition: PageTransitionsService
+    public pageTransition: PageTransitionsService
   ) {
     this.paramSub = route.queryParams.subscribe((p) => {
       // Get all data from the query string

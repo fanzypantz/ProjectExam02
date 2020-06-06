@@ -27,7 +27,7 @@ export class ReadComponent implements OnInit, OnDestroy {
   constructor(
     private afs: AngularFirestore,
     private route: ActivatedRoute,
-    private pageTransition: PageTransitionsService
+    public pageTransition: PageTransitionsService
   ) {
     // Subscribe to the queryParams so every time it changes this function is called
     // When the queryParam change, change the values and fetch the new data

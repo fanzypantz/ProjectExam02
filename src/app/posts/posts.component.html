@@ -1,1 +1,19 @@
-<p>posts works!</p>
+<div class="big-title">
+  <h1>Inspiration</h1>
+  <div class="big-title-border"></div>
+</div>
+
+<div class="posts-container">
+  <div class="bg-parallelogram"></div>
+
+  <a
+    (click)="pageTransition.navigate('/post', { id: item.id })"
+    *ngFor="let item of data"
+    class="posts-card"
+  >
+    <img class="posts-card-image" [src]="item.imageUrl" alt="" />
+    <div class="posts-title">
+      <h4>{{ item.title }}</h4>
+    </div>
+  </a>
+</div>

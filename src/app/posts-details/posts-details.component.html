@@ -1,1 +1,58 @@
-<p>posts works! {{ id }}</p>
+<div *ngIf="postData" class="big-title page-title">
+  <h1>{{ postData.title }}</h1>
+  <div class="big-title-border"></div>
+</div>
+
+<div *ngIf="postData" class="post-detail-container">
+  <div class="bg-parallelogram"></div>
+
+  <div class="post-detail-main">
+    <div class="post-detail-card">
+      <img class="post-detail-card-image" [src]="postData.imageUrl" alt="" />
+      <div class="post-detail-card-image-details">
+        <h4>Info about image</h4>
+      </div>
+    </div>
+
+    <div class="post-detail-text">
+      <div [froalaView]="postData.text"></div>
+    </div>
+
+    <div class="post-detail-info">
+      <div class="post-detail-info-updated">
+        <div class="post-detail-info-text">
+          <p>Last Updated:</p>
+        </div>
+        <div class="post-detail-info-text">
+          <p>{{ postData.updatedAt.toDate() | date: 'yyyy/MM/dd' }}</p>
+        </div>
+      </div>
+
+      <div class="post-detail-info-created">
+        <div class="post-detail-info-text">
+          <p>Created:</p>
+        </div>
+        <div class="post-detail-info-text">
+          <p>{{ postData.createdAt.toDate() | date: 'yyyy/MM/dd' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-detail-sub">
+    <div class="post-detail-recent-text">
+      <p>Recent Posts</p>
+    </div>
+
+    <div
+      *ngFor="let post of postsData"
+      (click)="pageTransition.navigate('/post', { id: post.id })"
+      class="post-detail-card post-detail-recent-card"
+    >
+      <img class="post-detail-card-image" [src]="post.imageUrl" alt="" />
+      <div class="post-detail-card-image-details">
+        <h4 [title]="post.title">{{ post.title }}</h4>
+      </div>
+    </div>
+  </div>
+</div>

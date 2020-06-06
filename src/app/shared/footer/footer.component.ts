@@ -19,6 +19,13 @@ export class FooterComponent implements OnInit {
     return this.location.path() === '/';
   }
 
+  isPost() {
+    return (
+      this.location.path().includes('post') &&
+      !this.location.path().includes('posts')
+    );
+  }
+
   isAccommodations() {
     return this.location.path().includes('accommodations');
   }

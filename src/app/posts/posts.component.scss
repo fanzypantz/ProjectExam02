@@ -1,0 +1,64 @@
+@import '../../variables';
+
+.posts-container {
+  margin: 0 auto;
+  width: $main-width;
+  max-width: $max-width;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.posts-card {
+  position: relative;
+  overflow: hidden;
+  width: calc((100% / 3) - 10px);
+  height: 720px;
+  margin-bottom: 40px;
+  margin-right: 15px;
+
+  &:nth-of-type(4n + 1) {
+    margin-right: 0;
+    height: 300px;
+    width: 100%;
+  }
+
+  &:nth-of-type(4n) {
+    margin-right: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .posts-card-image {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.posts-card-image {
+  z-index: -1;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: calc(100% - 40px);
+  transition: transform 500ms ease, filter 500ms ease;
+  transform-origin: center;
+}
+
+.posts-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10 !important;
+  width: 100%;
+  height: 40px;
+  background-color: $main;
+
+  h4 {
+    margin: 0 0 0 30px;
+    color: $main-shade2;
+    line-height: 40px;
+  }
+}

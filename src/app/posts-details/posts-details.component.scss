@@ -1,0 +1,139 @@
+@import '../../variables';
+
+.bg-parallelogram {
+  background-color: $secondary;
+}
+
+.page-title {
+  margin-bottom: 80px;
+}
+
+.post-detail-container {
+  display: flex;
+  margin: 0 auto;
+  width: $main-width;
+  max-width: $max-width;
+  min-height: calc(100vh - 350px);
+}
+
+.post-detail-main {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-detail-card {
+  width: 100%;
+  height: 260px;
+}
+
+.post-detail-card-image-details {
+  height: 40px;
+  width: 100%;
+  background-color: $main-shade2;
+
+  h4 {
+    white-space: nowrap;
+    overflow: hidden;
+    width: 70%;
+    text-overflow: ellipsis;
+    margin: 0 auto;
+    line-height: 40px;
+    text-align: center;
+    color: $main;
+  }
+}
+
+.post-detail-card-image {
+  display: block;
+  width: 100%;
+  height: calc(100% - 40px);
+  object-fit: cover;
+  object-position: center;
+}
+
+.post-detail-text {
+  margin: 15px 0;
+  width: calc(100% - 120px);
+  padding: 60px;
+  background-color: $main;
+  color: $white;
+}
+
+.post-detail-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.post-detail-info-updated,
+.post-detail-info-created {
+  display: flex;
+}
+
+.post-detail-info-text {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 28px;
+  height: 28px;
+  width: 135px;
+  color: $main;
+  background-color: $main-shade2;
+
+  &:last-child {
+    margin-left: 5px;
+    background-color: $main;
+    color: $white;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.post-detail-sub {
+  width: 25%;
+  margin-left: 15px;
+}
+
+.post-detail-recent-text {
+  width: 100%;
+  height: 40px;
+  background-color: $main-shade2;
+  margin-bottom: 15px;
+
+  p {
+    margin: 0;
+    line-height: 40px;
+    text-align: center;
+    color: #026774;
+  }
+}
+
+.post-detail-recent-card {
+  position: relative;
+  overflow: hidden;
+  height: 205px;
+  margin-bottom: 15px;
+
+  .post-detail-card-image {
+    z-index: -1;
+    transition: transform 500ms ease, filter 500ms ease;
+    transform-origin: center;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .post-detail-card-image {
+      transform: scale(1.2);
+    }
+  }
+
+  .post-detail-card-image-details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
