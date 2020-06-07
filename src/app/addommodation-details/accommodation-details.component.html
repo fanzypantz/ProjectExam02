@@ -303,9 +303,10 @@
           </div>
           <input
             #bookingStartElement
+            (change)="onDateChange($event, 'bookingStart')"
             id="bookingStart"
             class="form-input form-date"
-            formControlName="bookingStart"
+            [value]="formatDate(bookingStart.value.toDate())"
             type="date"
             required
             name="bookingStart"
@@ -389,9 +390,10 @@
 
           <input
             #bookingEndElement
+            (change)="onDateChange($event, 'bookingEnd')"
             id="bookingEnd"
             class="form-input form-date"
-            formControlName="bookingEnd"
+            [value]="formatDate(bookingEnd.value.toDate())"
             type="date"
             required
             name="bookingEnd"

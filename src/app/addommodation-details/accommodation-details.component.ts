@@ -60,8 +60,12 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.bookingForm = new FormGroup({
-      bookingEnd: new FormControl(''),
-      bookingStart: new FormControl(''),
+      bookingEnd: new FormControl(
+        firebase.firestore.Timestamp.fromDate(new Date())
+      ),
+      bookingStart: new FormControl(
+        firebase.firestore.Timestamp.fromDate(new Date())
+      ),
       email: new FormControl('', [
         Validators.required,
         Validators.pattern(
@@ -81,6 +85,14 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
 
   onNumberChange(e) {
     this.displayPrice = e.target.value * this.price;
+  }
+
+  onDateChange(e, key) {
+    // On date change, change the formGroup with a new firestore timestamp
+    const newDate = e.target.valueAsDate;
+    const dateObject = {};
+    dateObject[key] = firebase.firestore.Timestamp.fromDate(newDate);
+    this.bookingForm.patchValue(dateObject);
   }
 
   onSubmit(data) {
@@ -109,6 +121,13 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
         this.pageTransition.navigate('/');
       });
     }
+  }
+
+  formatDate(inputDate: Date): string {
+    const year = inputDate.getFullYear();
+    const month = (inputDate.getMonth() + 1).toString().padStart(2, '0');
+    const day = inputDate.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 
   private createNewEntry(data) {
