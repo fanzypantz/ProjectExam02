@@ -29,8 +29,13 @@ export class AdminResolverService implements Resolve<any> {
     const mode = route.queryParams.mode;
 
     if (mode === 'read') {
-      return new Promise((resolve) => {
-        return resolve(this.getCollection(model));
+      return new Promise((resolve, reject) => {
+        this.collections = this.getCollection(model);
+        if (this.collections) {
+          return resolve(this.collections);
+        } else {
+          return reject('Could not get collections');
+        }
       });
     } else {
       return undefined;
