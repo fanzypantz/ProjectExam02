@@ -296,14 +296,20 @@ export const defaultEnquiries = [
   {
     name: 'TestPerson Personson',
     email: 'testEmail@test.com',
+    rooms: 2,
+    persons: 3,
   },
   {
     name: 'Remi Gallardo',
     email: 'testEmail@test.com',
+    rooms: 1,
+    persons: 1,
   },
   {
     name: 'Fredrik Venestad',
     email: 'testEmail@test.com',
+    rooms: 4,
+    persons: 4,
   },
 ];
 

@@ -18,6 +18,7 @@ import {
 } from '@angular/fire/firestore';
 import { Observable, Subscription } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
+import { PageTransitionsService } from '../../../shared/page-transitions.service';
 
 @Component({
   selector: 'app-edit',
@@ -34,7 +35,10 @@ export class EditComponent implements OnInit, OnDestroy, OnChanges {
   public data: any;
   public isSaving: boolean;
 
-  constructor(private afs: AngularFirestore) {}
+  constructor(
+    private afs: AngularFirestore,
+    private pageTransition: PageTransitionsService
+  ) {}
 
   ngOnInit(): void {
     this.initEdit();
@@ -68,6 +72,7 @@ export class EditComponent implements OnInit, OnDestroy, OnChanges {
       });
 
       this.adminForm = new FormGroup(group);
+      this.pageTransition.toggleOpenClose(0);
     });
   }
 

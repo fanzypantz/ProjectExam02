@@ -11,6 +11,7 @@ import { Establishment } from '../admin/shared/models/establisment.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { PageTransitionsService } from '../shared/page-transitions.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-accommodation-details',
@@ -23,11 +24,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AccommodationDetailsComponent implements OnInit, OnDestroy {
   private paramSub: Subscription;
   private documentSubscription: Subscription;
-  id: string;
+  private id: string;
   private accommodation: Observable<Establishment>;
   public data: Establishment;
   public zoom = 12;
   public bookingForm: FormGroup;
+  private price: number;
+  public displayPrice: number;
 
   constructor(
     private afs: AngularFirestore,
@@ -46,6 +49,11 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
       this.documentSubscription = this.accommodation.subscribe((snapshot) => {
         this.pageTransition.toggleOpenClose(0);
         this.data = snapshot;
+        this.price = this.data.price;
+        // Lets assume the price in the DB is per person, default form has 2
+        // There could be more advanced calculations like price per room and
+        // Prices for different types of beds etc. But lets keep it simple
+        this.displayPrice = this.data.price * 2;
       });
     });
   }
@@ -61,12 +69,18 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
         ),
       ]),
       name: new FormControl(''),
+      rooms: new FormControl(1),
+      persons: new FormControl(2),
     });
   }
 
   ngOnDestroy(): void {
     this.paramSub.unsubscribe();
     this.documentSubscription.unsubscribe();
+  }
+
+  onNumberChange(e) {
+    this.displayPrice = e.target.value * this.price;
   }
 
   onSubmit(data) {
@@ -86,13 +100,29 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
     }
 
     if (this.bookingForm.valid) {
-      console.log('valid: ');
+      // Add in the required data before creating new document
+      // This is where you would add in payment logic like stripe or whatnot
+      data.establishmentId = this.id;
+      data.createdAt = firebase.firestore.Timestamp.fromDate(new Date());
+      data.updatedAt = firebase.firestore.Timestamp.fromDate(new Date());
+      this.createNewEntry(data).then((r) => {
+        this.pageTransition.navigate('/');
+      });
     }
+  }
 
-    // // Save the document based on it's model and ID.
-    // this.isSaving = true;
-    // const documentRef = this.afs.doc(`${this.model}/${this.id}`);
-    // documentRef.set(data, { merge: true }).then((r) => (this.isSaving = false));
+  private createNewEntry(data) {
+    return new Promise<any>((resolve, reject) => {
+      this.afs
+        .collection('enquiries')
+        .add(data)
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (err) => reject(err)
+        );
+    });
   }
 
   get bookingEnd() {
@@ -109,6 +139,14 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
 
   get name() {
     return this.bookingForm.get('name');
+  }
+
+  get rooms() {
+    return this.bookingForm.get('rooms');
+  }
+
+  get persons() {
+    return this.bookingForm.get('persons');
   }
 
   @ViewChild('bookingStartElement')

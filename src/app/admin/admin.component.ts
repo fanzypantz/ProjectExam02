@@ -229,6 +229,8 @@ export class AdminComponent implements OnInit, OnDestroy {
           establishmentId: establishments[i].id,
           name: item.name,
           email: item.email,
+          persons: item.persons,
+          rooms: item.rooms,
           createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
           updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
           bookingStart: firebase.firestore.Timestamp.fromDate(bookingStart),

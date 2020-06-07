@@ -31,6 +31,8 @@ export class BookingSearchComponent implements OnInit, OnDestroy {
   private data: Establishment[];
   public matchingAreas: Establishment[];
   public showSearch: boolean;
+  public checkInDateRender: string;
+  public checkOutDateRender: string;
 
   constructor(
     private afs: AngularFirestore,
@@ -43,25 +45,21 @@ export class BookingSearchComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // Does not look like default date on the default HTML input works
-    let checkInDate;
-    let checkOutDate;
-    let checkInDateRender = '';
-    let checkOutDateRender = '';
+    this.checkInDateRender = '';
+    this.checkOutDateRender = '';
 
     if (this.checkInInput) {
-      checkInDate = new Date(this.checkInInput);
-      checkInDateRender = `${checkInDate.getFullYear()}-${checkInDate.getMonth()}-${checkInDate.getDate()}`;
+      this.checkInDateRender = this.formatDate(new Date(this.checkInInput));
     }
 
     if (this.checkOutInput) {
-      checkOutDate = new Date(this.checkOutInput);
-      checkOutDateRender = `${checkOutDate.getFullYear()}-${checkOutDate.getMonth()}-${checkOutDate.getDate()}`;
+      this.checkOutDateRender = this.formatDate(new Date(this.checkOutInput));
     }
 
     this.bookingForm = this.formBuilder.group({
       area: this.areaInput || '',
-      checkIn: checkInDateRender,
-      checkOut: checkOutDateRender,
+      checkIn: this.checkInDateRender,
+      checkOut: this.checkOutDateRender,
       roomData: this.formBuilder.group({
         adults: parseInt(this.adultsInput, 10) || 2,
         rooms: parseInt(this.roomsInput, 10) || 1,
@@ -81,6 +79,13 @@ export class BookingSearchComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.documentSubscription.unsubscribe();
+  }
+
+  formatDate(inputDate): string {
+    const year = inputDate.getFullYear();
+    const month = (inputDate.getMonth() + 1).toString().padStart(2, '0');
+    const day = inputDate.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 
   searchByString(query: string) {

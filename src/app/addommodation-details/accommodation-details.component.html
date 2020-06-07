@@ -290,7 +290,11 @@
             "
             class="form-overbox form-error"
           >
-            <h3 *ngIf="bookingStart.errors.incorrect">
+            <h3
+              *ngIf="
+                bookingStart.errors.incorrect || bookingStart.errors.required
+              "
+            >
               Check-in date required!
             </h3>
             <h3 *ngIf="bookingStart.errors.startDate">
@@ -374,7 +378,11 @@
             "
             class="form-overbox form-error"
           >
-            <h3 *ngIf="bookingEnd.errors.incorrect">
+            <h3
+              *ngIf="
+                bookingEnd.errors.incorrect || bookingStart.errors.required
+              "
+            >
               Check-out date required!
             </h3>
           </div>
@@ -387,6 +395,174 @@
             type="date"
             required
             name="bookingEnd"
+          />
+        </div>
+      </div>
+
+      <div class="accommodation-booking-form">
+        <div class="accommodation-booking-input-group">
+          <label for="rooms">Rooms</label>
+
+          <div class="accommodation-booking-input-icon">
+            <svg viewBox="0 0 18 16">
+              <defs></defs>
+              <g id="Group_92_1_" transform="translate(-6.5 -8)">
+                <line
+                  id="Line_14_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="8.5"
+                  x2="24.5"
+                  y2="8.5"
+                />
+                <line
+                  id="Line_15_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="11.5"
+                  x2="24.5"
+                  y2="11.5"
+                />
+                <line
+                  id="Line_16_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="14.5"
+                  x2="24.5"
+                  y2="14.5"
+                />
+                <line
+                  id="Line_17_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="17.5"
+                  x2="24.5"
+                  y2="17.5"
+                />
+                <line
+                  id="Line_18_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="20.5"
+                  x2="24.5"
+                  y2="20.5"
+                />
+                <line
+                  id="Line_19_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="23.5"
+                  x2="24.5"
+                  y2="23.5"
+                />
+              </g>
+            </svg>
+          </div>
+
+          <div
+            *ngIf="
+              rooms.invalid && (name.dirty || rooms.touched || ngForm.submitted)
+            "
+            class="form-overbox form-error"
+          >
+            <h3 *ngIf="rooms.errors.required">Name required!</h3>
+            <h3 *ngIf="rooms.errors.minlength">
+              Name must be at least 3 characters long
+            </h3>
+          </div>
+
+          <input
+            id="rooms"
+            class="form-input"
+            formControlName="rooms"
+            type="number"
+            name="rooms"
+            required
+            min="1"
+            max="50"
+          />
+        </div>
+
+        <div class="accommodation-booking-input-group">
+          <label for="persons">Adults</label>
+
+          <div class="accommodation-booking-input-icon">
+            <svg viewBox="0 0 18 16">
+              <defs></defs>
+              <g id="Group_92_1_" transform="translate(-6.5 -8)">
+                <line
+                  id="Line_14_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="8.5"
+                  x2="24.5"
+                  y2="8.5"
+                />
+                <line
+                  id="Line_15_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="11.5"
+                  x2="24.5"
+                  y2="11.5"
+                />
+                <line
+                  id="Line_16_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="14.5"
+                  x2="24.5"
+                  y2="14.5"
+                />
+                <line
+                  id="Line_17_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="17.5"
+                  x2="24.5"
+                  y2="17.5"
+                />
+                <line
+                  id="Line_18_1_"
+                  class="st0"
+                  x1="6.5"
+                  y1="20.5"
+                  x2="24.5"
+                  y2="20.5"
+                />
+                <line
+                  id="Line_19_1_"
+                  class="st0"
+                  x1="10.8"
+                  y1="23.5"
+                  x2="24.5"
+                  y2="23.5"
+                />
+              </g>
+            </svg>
+          </div>
+
+          <div
+            *ngIf="
+              persons.invalid &&
+              (persons.dirty || persons.touched || ngForm.submitted)
+            "
+            class="form-overbox form-error"
+          >
+            <h3 *ngIf="persons.errors.required">Email required!</h3>
+            <h3 *ngIf="persons.errors.pattern">Not a valid email!</h3>
+          </div>
+
+          <input
+            (change)="onNumberChange($event)"
+            id="persons"
+            class="form-input"
+            formControlName="persons"
+            type="number"
+            required
+            name="persons"
+            min="1"
+            max="50"
           />
         </div>
       </div>
@@ -407,7 +583,7 @@
         </div>
 
         <div class="accommodation-booking-price">
-          <h2>${{ data.price }}</h2>
+          <h2>${{ displayPrice }}</h2>
         </div>
 
         <button type="submit" class="btn">BOOK NOW</button>

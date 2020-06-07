@@ -172,7 +172,7 @@
       type="date"
       name="check-in"
       formControlName="checkIn"
-      placeholder="Check-in"
+      [value]="checkInDateRender"
       required
     />
   </div>
@@ -191,6 +191,7 @@
       type="date"
       name="check-out"
       formControlName="checkOut"
+      [value]="checkOutDateRender"
       required
     />
 
