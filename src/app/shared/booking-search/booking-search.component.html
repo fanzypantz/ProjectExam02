@@ -33,14 +33,14 @@
       *ngIf="
         !(area.invalid && (area.dirty || area.touched || ngForm.submitted))
       "
-      class="form-overbox"
+      class="form-overbox form-overbox-left"
     >
       <h3>Areas in Bergen</h3>
     </div>
 
     <div
       *ngIf="area.invalid && (area.dirty || area.touched || ngForm.submitted)"
-      class="form-overbox form-error"
+      class="form-overbox form-overbox-left form-error"
     >
       <h3 *ngIf="area.errors.required">Area required!</h3>
       <h3 *ngIf="area.errors.minlength">
@@ -141,7 +141,7 @@
           (checkIn.dirty || checkIn.touched || ngForm.submitted)
         )
       "
-      class="form-overbox"
+      class="form-overbox form-overbox-left"
     >
       <h3>Check-in date</h3>
     </div>
@@ -151,12 +151,16 @@
         checkIn.invalid &&
         (checkIn.dirty || checkIn.touched || ngForm.submitted)
       "
-      class="form-overbox form-error"
+      class="form-overbox form-overbox-left form-error"
     >
-      <h3 *ngIf="checkIn.errors.required">Check-in date required!</h3>
+      <h3 *ngIf="checkIn.errors.incorrect">Check-in date required!</h3>
+      <h3 *ngIf="checkIn.errors.startDate">
+        Check-in can't be before Check-out
+      </h3>
     </div>
 
     <input
+      #bookingStartElement
       [ngClass]="{
         'form-input': true,
         'form-date': true,
@@ -175,6 +179,7 @@
 
   <div class="search-form-group">
     <input
+      #bookingEndElement
       [ngClass]="{
         'form-input': true,
         'form-date': true,
@@ -196,7 +201,7 @@
           (checkOut.dirty || checkOut.touched || ngForm.submitted)
         )
       "
-      class="form-overbox"
+      class="form-overbox form-overbox-right"
     >
       <h3>Check-out date</h3>
     </div>
@@ -206,9 +211,9 @@
         checkOut.invalid &&
         (checkOut.dirty || checkOut.touched || ngForm.submitted)
       "
-      class="form-overbox form-error"
+      class="form-overbox form-overbox-right form-error"
     >
-      <h3 *ngIf="checkOut.errors.required">Check-out date required!</h3>
+      <h3 *ngIf="checkOut.errors.incorrect">Check-out date required!</h3>
     </div>
 
     <label class="search-icon" for="check-in">

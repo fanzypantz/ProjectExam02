@@ -127,10 +127,16 @@ agm-map {
 }
 
 .accommodation-booking-input-group {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   width: calc((100% / 4) - 8px);
   margin-right: 10px;
+
+  .form-overbox {
+    transform: translateY(calc(-100% - -2px));
+    left: 0;
+  }
 
   &:last-child {
     margin-right: 0;

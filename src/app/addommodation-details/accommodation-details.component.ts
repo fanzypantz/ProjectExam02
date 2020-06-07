@@ -1,11 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Establishment } from '../admin/shared/models/establisment.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { PageTransitionsService } from '../shared/page-transitions.service';
-import { FormControl, FormGroup } from '@angular/forms';
-import * as firebase from 'firebase';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-accommodation-details',
@@ -49,7 +54,12 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
     this.bookingForm = new FormGroup({
       bookingEnd: new FormControl(''),
       bookingStart: new FormControl(''),
-      email: new FormControl(''),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.pattern(
+          /^[a-z0-9](?!.*?[^\na-z0-9]{2})[^\s@]+@[^\s@]+\.[^\s@]+[a-z0-9]$/
+        ),
+      ]),
       name: new FormControl(''),
     });
   }
@@ -60,10 +70,50 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(data) {
-    console.log('data: ', data);
+    const bookingStartDate = this.bookingStartElement.nativeElement.valueAsDate;
+    const bookingEndDate = this.bookingEndElement.nativeElement.valueAsDate;
+
+    if (bookingStartDate > bookingEndDate) {
+      this.bookingForm.controls.bookingStart.setErrors({ startDate: true });
+    }
+
+    if (this.bookingForm.get('bookingStart').value === '') {
+      this.bookingForm.controls.bookingStart.setErrors({ incorrect: true });
+    }
+
+    if (this.bookingForm.get('bookingEnd').value === '') {
+      this.bookingForm.controls.bookingEnd.setErrors({ incorrect: true });
+    }
+
+    if (this.bookingForm.valid) {
+      console.log('valid: ');
+    }
+
     // // Save the document based on it's model and ID.
     // this.isSaving = true;
     // const documentRef = this.afs.doc(`${this.model}/${this.id}`);
     // documentRef.set(data, { merge: true }).then((r) => (this.isSaving = false));
   }
+
+  get bookingEnd() {
+    return this.bookingForm.get('bookingEnd');
+  }
+
+  get bookingStart() {
+    return this.bookingForm.get('bookingStart');
+  }
+
+  get email() {
+    return this.bookingForm.get('email');
+  }
+
+  get name() {
+    return this.bookingForm.get('name');
+  }
+
+  @ViewChild('bookingStartElement')
+  bookingStartElement: ElementRef;
+
+  @ViewChild('bookingEndElement')
+  bookingEndElement: ElementRef;
 }

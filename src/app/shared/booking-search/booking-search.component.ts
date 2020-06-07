@@ -1,9 +1,17 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, SubscriptionLike } from 'rxjs';
 import { Establishment } from '../../admin/shared/models/establisment.model';
 import { Router } from '@angular/router';
+import { PageTransitionsService } from '../page-transitions.service';
 
 @Component({
   selector: 'app-booking-search',
@@ -27,23 +35,33 @@ export class BookingSearchComponent implements OnInit, OnDestroy {
   constructor(
     private afs: AngularFirestore,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private pageTransition: PageTransitionsService
   ) {
     this.showSearch = false;
   }
 
   ngOnInit(): void {
     // Does not look like default date on the default HTML input works
-    const checkInDate = new Date(this.checkInInput);
-    const checkOutDate = new Date(this.checkOutInput);
+    let checkInDate;
+    let checkOutDate;
+    let checkInDateRender = '';
+    let checkOutDateRender = '';
+
+    if (this.checkInInput) {
+      checkInDate = new Date(this.checkInInput);
+      checkInDateRender = `${checkInDate.getFullYear()}-${checkInDate.getMonth()}-${checkInDate.getDate()}`;
+    }
+
+    if (this.checkOutInput) {
+      checkOutDate = new Date(this.checkOutInput);
+      checkOutDateRender = `${checkOutDate.getFullYear()}-${checkOutDate.getMonth()}-${checkOutDate.getDate()}`;
+    }
+
     this.bookingForm = this.formBuilder.group({
       area: this.areaInput || '',
-      checkIn:
-        `${checkInDate.getFullYear()}-${checkInDate.getMonth()}-${checkInDate.getDate()}` ||
-        '',
-      checkOut:
-        `${checkOutDate.getFullYear()}-${checkOutDate.getMonth()}-${checkOutDate.getDate()}` ||
-        '',
+      checkIn: checkInDateRender,
+      checkOut: checkOutDateRender,
       roomData: this.formBuilder.group({
         adults: parseInt(this.adultsInput, 10) || 2,
         rooms: parseInt(this.roomsInput, 10) || 1,
@@ -99,8 +117,23 @@ export class BookingSearchComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(data) {
+    const bookingStartDate = this.bookingStartElement.nativeElement.valueAsDate;
+    const bookingEndDate = this.bookingEndElement.nativeElement.valueAsDate;
+
+    if (bookingStartDate > bookingEndDate) {
+      this.bookingForm.controls.checkIn.setErrors({ startDate: true });
+    }
+
+    if (this.bookingForm.get('checkIn').value === '') {
+      this.bookingForm.controls.checkIn.setErrors({ incorrect: true });
+    }
+
+    if (this.bookingForm.get('checkOut').value === '') {
+      this.bookingForm.controls.checkOut.setErrors({ incorrect: true });
+    }
+
     if (this.bookingForm.valid) {
-      this.router.navigate(['/accommodations'], {
+      this.pageTransition.navigate('/accommodations', {
         queryParams: {
           area: data.area,
           checkIn: data.checkIn,
@@ -113,7 +146,7 @@ export class BookingSearchComponent implements OnInit, OnDestroy {
   }
 
   onAreaClick(area: string) {
-    this.bookingForm.patchValue({ area: area });
+    this.bookingForm.patchValue({ area });
   }
 
   get area() {
@@ -127,4 +160,10 @@ export class BookingSearchComponent implements OnInit, OnDestroy {
   get checkOut() {
     return this.bookingForm.get('checkOut');
   }
+
+  @ViewChild('bookingStartElement')
+  bookingStartElement: ElementRef;
+
+  @ViewChild('bookingEndElement')
+  bookingEndElement: ElementRef;
 }

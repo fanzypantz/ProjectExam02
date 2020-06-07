@@ -57,6 +57,7 @@
       class="accommodation-details-booking"
       [formGroup]="bookingForm"
       (ngSubmit)="onSubmit(bookingForm.value)"
+      #ngForm="ngForm"
     >
       <div class="accommodation-booking-form">
         <div class="accommodation-booking-input-group">
@@ -118,6 +119,18 @@
             </svg>
           </div>
 
+          <div
+            *ngIf="
+              name.invalid && (name.dirty || name.touched || ngForm.submitted)
+            "
+            class="form-overbox form-error"
+          >
+            <h3 *ngIf="name.errors.required">Name required!</h3>
+            <h3 *ngIf="name.errors.minlength">
+              Name must be at least 3 characters long
+            </h3>
+          </div>
+
           <input
             id="name"
             class="form-input"
@@ -125,8 +138,11 @@
             placeholder="John Hancock"
             type="text"
             name="name"
+            required
+            minlength="3"
           />
         </div>
+
         <div class="accommodation-booking-input-group">
           <label for="email">Your Email Address</label>
 
@@ -186,15 +202,28 @@
             </svg>
           </div>
 
+          <div
+            *ngIf="
+              email.invalid &&
+              (email.dirty || email.touched || ngForm.submitted)
+            "
+            class="form-overbox form-error"
+          >
+            <h3 *ngIf="email.errors.required">Email required!</h3>
+            <h3 *ngIf="email.errors.pattern">Not a valid email!</h3>
+          </div>
+
           <input
             id="email"
             class="form-input"
-            formControlName="name"
+            formControlName="email"
             placeholder="email@address.com"
             type="email"
-            name="name"
+            required
+            name="email"
           />
         </div>
+
         <div class="accommodation-booking-input-group">
           <label for="bookingStart">Check-in Date</label>
 
@@ -254,14 +283,31 @@
             </svg>
           </div>
 
+          <div
+            *ngIf="
+              bookingStart.invalid &&
+              (bookingStart.dirty || bookingStart.touched || ngForm.submitted)
+            "
+            class="form-overbox form-error"
+          >
+            <h3 *ngIf="bookingStart.errors.incorrect">
+              Check-in date required!
+            </h3>
+            <h3 *ngIf="bookingStart.errors.startDate">
+              Check-in can't be before Check-out
+            </h3>
+          </div>
           <input
+            #bookingStartElement
             id="bookingStart"
             class="form-input form-date"
             formControlName="bookingStart"
             type="date"
+            required
             name="bookingStart"
           />
         </div>
+
         <div class="accommodation-booking-input-group">
           <label for="bookingEnd">Check-out Date</label>
 
@@ -321,11 +367,25 @@
             </svg>
           </div>
 
+          <div
+            *ngIf="
+              bookingEnd.invalid &&
+              (bookingEnd.dirty || bookingEnd.touched || ngForm.submitted)
+            "
+            class="form-overbox form-error"
+          >
+            <h3 *ngIf="bookingEnd.errors.incorrect">
+              Check-out date required!
+            </h3>
+          </div>
+
           <input
+            #bookingEndElement
             id="bookingEnd"
             class="form-input form-date"
-            formControlName="bookingStart"
+            formControlName="bookingEnd"
             type="date"
+            required
             name="bookingEnd"
           />
         </div>
@@ -350,7 +410,7 @@
           <h2>${{ data.price }}</h2>
         </div>
 
-        <button class="btn">BOOK NOW</button>
+        <button type="submit" class="btn">BOOK NOW</button>
       </div>
     </form>
   </div>

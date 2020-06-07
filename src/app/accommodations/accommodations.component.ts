@@ -6,6 +6,9 @@ import { Establishment } from '../admin/shared/models/establisment.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Enquiry } from '../admin/shared/models/enquiry.model';
 import { PageTransitionsService } from '../shared/page-transitions.service';
+import * as firebase from 'firebase';
+import 'firebase/firestore';
+import { log } from 'util';
 
 @Component({
   selector: 'app-accommodations',
@@ -63,31 +66,30 @@ export class AccommodationsComponent implements OnInit, OnDestroy {
     this.establishments = this.afs
       .collection<Establishment>('establishments')
       .valueChanges({ idField: 'id' });
-    this.establishmentSub = this.establishments.subscribe((snapshot) => {
-      this.establishmentsData = snapshot;
-      if (!this.checkIfQueryExists()) {
-        this.searchResults = this.establishmentsData;
+    this.establishmentSub = this.establishments.subscribe(
+      (establishmentsSnapshot) => {
+        this.establishmentsData = establishmentsSnapshot;
+        if (this.checkIfQueryExists()) {
+          // Get all enquiries
+          this.enquiries = this.afs
+            .collection<Enquiry>('enquiries')
+            .valueChanges({ idField: 'id' });
+          this.enquiriesSub = this.enquiries.subscribe((enquiriesSnapshot) => {
+            this.enquiriesData = enquiriesSnapshot;
+            // Filter the data and assign it to an array of Establishments that can be displayed
+            // First check if the user came to this page with an already filled in form
+            this.searchResults = this.filterData(
+              this.establishmentsData,
+              this.enquiriesData
+            );
+            this.pageTransition.toggleOpenClose(0);
+          });
+        } else {
+          this.pageTransition.toggleOpenClose(0);
+          this.searchResults = this.establishmentsData;
+        }
       }
-    });
-
-    // Get all enquiries
-    this.enquiries = this.afs
-      .collection<Enquiry>('enquiries')
-      .valueChanges({ idField: 'id' });
-    this.enquiriesSub = this.enquiries.subscribe((snapshot) => {
-      this.enquiriesData = snapshot;
-      // Filter the data and assign it to an array of Establishments that can be displayed
-      // First check if the user came to this page with an already filled in form
-      if (this.checkIfQueryExists()) {
-        this.searchResults = this.filterData(
-          this.establishmentsData,
-          this.enquiriesData
-        );
-      } else {
-        this.searchResults = this.establishmentsData;
-      }
-      this.pageTransition.toggleOpenClose(0);
-    });
+    );
   }
 
   ngOnDestroy(): void {
