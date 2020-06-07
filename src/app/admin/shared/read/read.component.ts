@@ -36,14 +36,15 @@ export class ReadComponent implements OnInit, OnDestroy {
         this.pageTransition.toggleOpenClose(0);
         this.model = p.model;
         this.readLayout = adminConfig[p.model].readLayout;
-        this.collections = this.getCollection();
+        this.collections = this.route.snapshot.data.collections;
       }
     });
   }
 
   ngOnInit(): void {
+    this.pageTransition.toggleOpenClose(0);
     this.readLayout = adminConfig[this.model].readLayout;
-    this.collections = this.getCollection();
+    this.collections = this.route.snapshot.data.collections;
   }
 
   ngOnDestroy(): void {
@@ -64,30 +65,5 @@ export class ReadComponent implements OnInit, OnDestroy {
     this.showConfirmPrompt = false;
     this.afs.collection(this.model).doc(this.deleteId).delete();
     this.deleteId = null;
-  }
-
-  getCollection() {
-    // Use the queryParam and Model to force type declaration in the document
-    // No invalid data can be displayed
-    switch (this.model) {
-      case 'enquiries':
-        return this.afs
-          .collection<Enquiry>(this.model)
-          .valueChanges({ idField: 'id' });
-      case 'messages':
-        return this.afs
-          .collection<Message>(this.model)
-          .valueChanges({ idField: 'id' });
-      case 'posts':
-        return this.afs
-          .collection<Post>(this.model)
-          .valueChanges({ idField: 'id' });
-      case 'users':
-        return this.afs.collection<User>(this.model).valueChanges();
-      default:
-        return this.afs
-          .collection<Establishment>(this.model)
-          .valueChanges({ idField: 'id' });
-    }
   }
 }

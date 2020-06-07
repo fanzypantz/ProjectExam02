@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AdminResolverService } from './admin/shared/admin-resolver.service';
 // Guards
 import { CanDeleteGuard } from './shared/auth/guards/can-delete.guard';
 import { CanReadGuard } from './shared/auth/guards/can-read.guard';
@@ -32,7 +33,13 @@ const routes: Routes = [
   },
   { path: 'contact', component: ContactComponent },
   { path: 'enquiries', component: EnquiriesComponent },
-  { path: 'admin', component: AdminComponent, canActivate: [CanDeleteGuard] },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [CanDeleteGuard],
+    resolve: { collections: AdminResolverService },
+    runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+  },
 ];
 
 @NgModule({
