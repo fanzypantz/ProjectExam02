@@ -65,7 +65,7 @@ export class GalleryComponent implements OnInit {
 
     if (this.images.length > 1) {
       this.interval = window.setInterval(() => {
-        if (this.position < this.images.length) {
+        if (this.position < this.images.length - 1) {
           this.goToImage(this.position + 1);
         } else {
           this.goToImage(0);
