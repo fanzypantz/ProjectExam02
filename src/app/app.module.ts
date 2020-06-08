@@ -51,6 +51,7 @@ import { EditTextComponent } from './admin/shared/edit/text/edit-text.component'
 import { EditLocationComponent } from './admin/shared/edit/location/edit-location.component';
 import { PageTransitionsService } from './shared/page-transitions.service';
 import { GalleryComponent } from './shared/gallery/gallery.component';
+import { AccommodationService } from './shared/accommodation.service';
 
 @NgModule({
   declarations: [
@@ -106,7 +107,7 @@ import { GalleryComponent } from './shared/gallery/gallery.component';
     AngularFireStorageModule,
     ReactiveFormsModule,
   ],
-  providers: [PageTransitionsService],
+  providers: [PageTransitionsService, AccommodationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -13,10 +13,6 @@ import * as firebase from 'firebase/app';
 
 import 'firebase/firestore';
 import { Establishment } from './shared/models/establisment.model';
-import { Enquiry } from './shared/models/enquiry.model';
-import { Message } from './shared/models/message.model';
-import { Post } from './shared/models/post.model';
-import { User } from './shared/models/user.model';
 import { PageTransitionsService } from '../shared/page-transitions.service';
 
 @Component({
@@ -178,14 +174,8 @@ export class AdminComponent implements OnInit, OnDestroy {
             this.getRandomInt(0, defaultEstablishments.length - 1)
           ].imageUrl,
         ],
-        price:
-          defaultEstablishments[
-            this.getRandomInt(0, defaultEstablishments.length - 1)
-          ].price,
-        maxGuests:
-          defaultEstablishments[
-            this.getRandomInt(0, defaultEstablishments.length - 1)
-          ].maxGuests,
+        price: this.getRandomInt(50, 300),
+        maxGuests: this.getRandomInt(1, 10),
         rating: this.getRandomInt(3, 5),
         location: new firebase.firestore.GeoPoint(
           defaultEstablishments[randomGeoIndex].googleLat,
