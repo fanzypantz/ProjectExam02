@@ -40,7 +40,11 @@ const routes: Routes = [
     component: PostsDetailsComponent,
   },
   { path: 'contact', component: ContactComponent },
-  { path: 'enquiries', component: EnquiriesComponent },
+  {
+    path: 'enquiries',
+    component: EnquiriesComponent,
+    canActivate: [CanReadGuard],
+  },
   {
     path: 'admin',
     component: AdminComponent,

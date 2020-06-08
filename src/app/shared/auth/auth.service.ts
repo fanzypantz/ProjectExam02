@@ -40,11 +40,16 @@ export class AuthService {
     );
   }
 
-  async googleSignIn() {
+  async googleSignIn(redirect?: string) {
     // Use google to sign in, shouldn't be hard to add more
     const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.signInWithPopup(provider);
-    return this.updateUserData(credential.user);
+    this.updateUserData(credential.user);
+    if (redirect) {
+      this.pageTransition.navigate(redirect);
+    } else {
+      this.pageTransition.navigate('/');
+    }
   }
 
   async signOut() {
