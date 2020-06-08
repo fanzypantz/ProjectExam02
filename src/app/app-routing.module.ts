@@ -15,10 +15,17 @@ import { ContactComponent } from './contact/contact.component';
 import { EnquiriesComponent } from './enquiries/enquiries.component';
 import { PostsDetailsComponent } from './posts-details/posts-details.component';
 import { PostsComponent } from './posts/posts.component';
+import { PostResolverService } from './shared/post-resolver.service';
+import { AccommodationResolverService } from './shared/accommodation-resolver.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'accommodations', component: AccommodationsComponent },
+  {
+    path: 'accommodations',
+    component: AccommodationsComponent,
+    resolve: { collections: AccommodationResolverService },
+    runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+  },
   {
     path: 'accommodation-details/:id',
     component: AccommodationDetailsComponent,
@@ -26,6 +33,7 @@ const routes: Routes = [
   {
     path: 'posts',
     component: PostsComponent,
+    resolve: { collections: PostResolverService },
   },
   {
     path: 'post/:id',
