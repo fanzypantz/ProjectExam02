@@ -140,6 +140,7 @@ export class BookingSearchComponent implements OnInit, OnDestroy {
     if (this.bookingForm.valid) {
       this.pageTransition.navigate('/accommodations', {
         queryParams: {
+          page: 1,
           area: data.area,
           checkIn: data.checkIn,
           checkOut: data.checkOut,

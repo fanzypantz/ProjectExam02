@@ -18,15 +18,20 @@ export class AccommodationsComponent implements OnInit, OnDestroy {
   public checkOut: number;
   public adults: string;
   public rooms: string;
-  public searchResults: Establishment[];
+  private page: number;
+  private readonly pageOffset: number;
+  private searchResults: Establishment[];
+  public renderResult: Establishment[];
 
   constructor(
     private afs: AngularFirestore,
     private route: ActivatedRoute,
     public pageTransition: PageTransitionsService
   ) {
+    this.pageOffset = 10;
     this.paramSub = route.queryParams.subscribe((p) => {
       // Get all data from the query string
+      this.page = p.page ? parseInt(p.page, 10) : 1;
       this.area = p.area;
       this.checkIn = Date.parse(p.checkIn);
       this.checkOut = Date.parse(p.checkOut);
@@ -36,11 +41,61 @@ export class AccommodationsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.searchResults = this.route.snapshot.data.collections;
+    this.searchResults = this.sortAlphabetically(
+      this.route.snapshot.data.collections
+    );
+
+    this.renderResult = this.paginate(
+      this.searchResults,
+      this.page,
+      this.pageOffset
+    );
     this.pageTransition.toggleOpenClose(0);
   }
 
   ngOnDestroy(): void {
     this.paramSub.unsubscribe();
+  }
+
+  sortAlphabetically(array): Establishment[] {
+    return array.sort((a, b) => {
+      return a.establishmentName < b.establishmentName ? -1 : 1;
+    });
+  }
+
+  // Source: https://stackoverflow.com/a/42761393/6422461
+  paginate(
+    array: Establishment[],
+    pageSize: number,
+    pageNumber: number
+  ): Establishment[] {
+    // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
+    return array.slice((pageSize - 1) * pageSize, pageNumber * pageSize);
+  }
+
+  nextPage() {
+    if (this.page * this.pageOffset < this.searchResults.length) {
+      this.page = this.page + 1;
+      this.renderResult = this.paginate(
+        this.searchResults,
+        this.page,
+        this.pageOffset
+      );
+    }
+  }
+
+  previousPage() {
+    if (this.page > 1) {
+      this.page = this.page - 1;
+      this.renderResult = this.paginate(
+        this.searchResults,
+        this.page,
+        this.pageOffset
+      );
+    }
+  }
+
+  get searchResultLength() {
+    return this.searchResults.length;
   }
 }

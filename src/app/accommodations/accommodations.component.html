@@ -11,12 +11,25 @@
   [roomsInput]="rooms"
 ></app-booking-search>
 
+<div *ngIf="searchResultLength > 10" class="accommodation-pagination">
+  <button class="btn" (click)="previousPage()">Previous Page</button>
+  <div class="accommodation-pagination-spacer"></div>
+  <button class="btn" (click)="nextPage()">Next Page</button>
+</div>
+
 <div class="accommodations-container">
-  <div class="accommodations-card" *ngFor="let item of searchResults">
-    <img class="accommodations-img" [src]="item.imageUrl" alt="" />
+  <div class="accommodations-card" *ngFor="let item of renderResult">
+    <img
+      class="accommodations-img"
+      (click)="
+        pageTransition.navigate('/accommodation-details', { id: item.id })
+      "
+      [src]="item.imageUrl"
+      alt=""
+    />
     <div class="accommodation-details">
       <div class="accommodation-title">
-        <h2>{{ item.establishmentName }}</h2>
+        <h2 [title]="item.establishmentName">{{ item.establishmentName }}</h2>
         <div class="accommodation-rating">
           <svg
             *ngFor="let item of [].constructor(item.rating); let i = index"

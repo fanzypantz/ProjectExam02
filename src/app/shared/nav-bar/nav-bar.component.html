@@ -11,7 +11,12 @@ c-0.9,0-1.6,0.7-1.6,1.6v14.7H8.7V15.4L25,3.5l16.3,11.9L41.3,37.5L41.3,37.5z"
 
     <h3>Home</h3>
   </a>
-  <a class="nav-item" (click)="pageTransition.navigate('/accommodations')">
+  <a
+    class="nav-item"
+    (click)="
+      pageTransition.navigate('/accommodations', { queryParams: { page: 1 } })
+    "
+  >
     <svg class="nav-icon" viewBox="0 0 50 40.6">
       <path
         d="M42.9,40.6c0.9,0,1.6-0.7,1.6-1.6V17.6l3.1,2.2c0.3,0.2,0.6,0.3,0.9,0.3c0.5,0,1-0.2,1.3-0.6c0.5-0.7,0.4-1.7-0.3-2.2

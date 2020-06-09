@@ -17,15 +17,19 @@
 }
 
 .accommodations-img {
-  width: 25%;
+  width: calc(30% - 5px);
   height: 100%;
   object-fit: cover;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .accommodation-details {
   background-color: $secondary;
-  width: 50%;
+  width: calc(40% - 90px);
   margin: 0 10px;
   display: flex;
   justify-content: center;
@@ -39,6 +43,10 @@
   justify-content: space-between;
 
   h2 {
+    overflow: hidden;
+    width: 70%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     font-size: 2em;
     font-weight: 100;
     text-transform: uppercase;
@@ -51,13 +59,16 @@
 }
 
 .accommodation-text {
+  max-height: 43px;
+  overflow: hidden;
   margin: 0;
   font-weight: 100;
 }
 
 .accommodation-booking {
+  box-sizing: border-box;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  width: 25%;
+  width: calc(30% - 5px);
   background-color: $main;
   padding: 0 30px;
   display: flex;
@@ -142,4 +153,27 @@
     height: 46px;
     width: 47%;
   }
+}
+
+.accommodation-pagination {
+  width: $main-width;
+  max-width: $max-width;
+  display: flex;
+  margin: 20px auto;
+  justify-content: space-between;
+
+  .btn {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    height: 40px;
+    line-height: 40px;
+    width: 30%;
+  }
+}
+
+.accommodation-pagination-spacer {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  width: 40%;
+  background-color: $secondary;
+  height: 40px;
+  margin: 0 10px;
 }
