@@ -55,7 +55,7 @@ export class PageTransitionsService {
         } else {
           this.router.navigate([route]);
         }
-      }, 500);
+      }, 250);
     }
   }
 }

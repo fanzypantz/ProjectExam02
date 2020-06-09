@@ -10,6 +10,6 @@ export class HomeComponent implements OnInit {
   constructor(private pageTransition: PageTransitionsService) {}
 
   ngOnInit(): void {
-    this.pageTransition.toggleOpenClose(500);
+    this.pageTransition.toggleOpenClose(250);
   }
 }
