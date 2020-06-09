@@ -1,7 +1,12 @@
-<div class="admin-read">
+<div *ngIf="data" class="admin-read">
   <div class="bg-parallelogram"></div>
 
-  <table class="admin-table">
+  <div *ngIf="searchResultLength > 10" class="admin-pagination">
+    <button class="btn" (click)="previousPage()">Previous Page</button>
+    <button class="btn" (click)="nextPage()">Next Page</button>
+  </div>
+
+  <table *ngIf="renderData" class="admin-table">
     <tr>
       <th>
         <input type="checkbox" />
@@ -10,7 +15,7 @@
       <th></th>
     </tr>
 
-    <tr *ngFor="let item of collections | async">
+    <tr *ngFor="let item of renderData">
       <td><input type="checkbox" /></td>
       <td *ngFor="let layoutInfo of readLayout">
         <!--Switch the display mode based on the layout type-->
@@ -19,6 +24,11 @@
             *ngSwitchCase="'string'"
             [text]="item[layoutInfo.key]"
           ></app-read-string>
+
+          <app-read-boolean
+            *ngSwitchCase="'boolean'"
+            [bool]="item[layoutInfo.key]"
+          ></app-read-boolean>
 
           <app-read-date
             *ngSwitchCase="'date'"

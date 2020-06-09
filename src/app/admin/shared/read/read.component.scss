@@ -64,7 +64,7 @@ app-images {
 .admin-table {
   width: $main-width;
   max-width: $max-width;
-  margin: 50px auto;
+  margin: 0 auto;
   border-collapse: separate;
   border-spacing: 0 5px;
 
@@ -93,5 +93,28 @@ app-images {
   th {
     text-align: left;
     padding-left: 20px;
+  }
+}
+
+.admin-pagination {
+  width: $main-width;
+  max-width: $max-width;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+
+  .btn {
+    background-color: $main-shade2;
+    border-bottom: 2px solid $main;
+    color: $main;
+    width: calc((100% / 5) - 10px);
+    height: 40px;
+    line-height: 40px;
+
+    &:hover {
+      background-color: $main;
+      border-bottom: 2px solid $main-shade2;
+      color: $white;
+    }
   }
 }

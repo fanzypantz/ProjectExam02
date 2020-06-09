@@ -48,19 +48,23 @@ export class AdminResolverService implements Resolve<any> {
     switch (model) {
       case 'enquiries':
         return this.afs
-          .collection<Enquiry>(model)
+          .collection<Enquiry>(model, (ref) => ref.orderBy('updatedAt'))
           .valueChanges({ idField: 'id' });
       case 'messages':
         return this.afs
-          .collection<Message>(model)
+          .collection<Message>(model, (ref) => ref.orderBy('updatedAt'))
           .valueChanges({ idField: 'id' });
       case 'posts':
-        return this.afs.collection<Post>(model).valueChanges({ idField: 'id' });
+        return this.afs
+          .collection<Post>(model, (ref) => ref.orderBy('updatedAt'))
+          .valueChanges({ idField: 'id' });
       case 'users':
-        return this.afs.collection<User>(model).valueChanges();
+        return this.afs
+          .collection<User>(model, (ref) => ref.orderBy('updatedAt'))
+          .valueChanges();
       default:
         return this.afs
-          .collection<Establishment>(model)
+          .collection<Establishment>(model, (ref) => ref.orderBy('updatedAt'))
           .valueChanges({ idField: 'id' });
     }
   }

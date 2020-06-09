@@ -52,7 +52,7 @@ import { EditLocationComponent } from './admin/shared/edit/location/edit-locatio
 import { PageTransitionsService } from './shared/page-transitions.service';
 import { GalleryComponent } from './shared/gallery/gallery.component';
 import { AccommodationService } from './shared/accommodation.service';
-
+import { BooleanComponent } from './admin/shared/read/boolean/boolean.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,6 +91,7 @@ import { AccommodationService } from './shared/accommodation.service';
     EditTextComponent,
     EditLocationComponent,
     GalleryComponent,
+    BooleanComponent,
   ],
   imports: [
     BrowserModule,

@@ -47,8 +47,8 @@ export class AccommodationsComponent implements OnInit, OnDestroy {
 
     this.renderResult = this.paginate(
       this.searchResults,
-      this.page,
-      this.pageOffset
+      this.pageOffset,
+      this.page
     );
     this.pageTransition.toggleOpenClose(0);
   }
@@ -70,7 +70,7 @@ export class AccommodationsComponent implements OnInit, OnDestroy {
     pageNumber: number
   ): Establishment[] {
     // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
-    return array.slice((pageSize - 1) * pageSize, pageNumber * pageSize);
+    return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
   }
 
   nextPage() {
@@ -78,8 +78,8 @@ export class AccommodationsComponent implements OnInit, OnDestroy {
       this.page = this.page + 1;
       this.renderResult = this.paginate(
         this.searchResults,
-        this.page,
-        this.pageOffset
+        this.pageOffset,
+        this.page
       );
     }
   }
@@ -89,8 +89,8 @@ export class AccommodationsComponent implements OnInit, OnDestroy {
       this.page = this.page - 1;
       this.renderResult = this.paginate(
         this.searchResults,
-        this.page,
-        this.pageOffset
+        this.pageOffset,
+        this.page
       );
     }
   }
