@@ -5,9 +5,11 @@ import 'firebase/firestore';
 @Component({
   selector: 'app-read-booking-date',
   template: `
-    {{ dateStart.toDate() | date: 'yyyy/MM/dd' }}-{{
-      dateEnd.toDate() | date: 'yyyy/MM/dd'
-    }}
+    <div *ngIf="dateEnd && dateStart">
+      {{ dateStart.toDate() | date: 'yyyy/MM/dd' }}-{{
+        dateEnd.toDate() | date: 'yyyy/MM/dd'
+      }}
+    </div>
   `,
   styles: [],
 })

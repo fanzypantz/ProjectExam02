@@ -9,9 +9,11 @@ interface Roles {
 @Component({
   selector: 'app-read-roles',
   template: `
-    <p *ngIf="roles.admin">Admin</p>
-    <p *ngIf="roles.editor">Editor</p>
-    <p *ngIf="roles.customer">Customer</p>
+    <div *ngIf="roles">
+      <p *ngIf="roles.admin">Admin</p>
+      <p *ngIf="roles.editor">Editor</p>
+      <p *ngIf="roles.customer">Customer</p>
+    </div>
   `,
   styleUrls: ['./roles.component.scss'],
 })

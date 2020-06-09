@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 interface OptionsInterface {
-  queryParams?: object;
+  queryParams?: {
+    model?: string;
+    mode?: string;
+  };
   id?: string;
 }
 
@@ -41,7 +44,10 @@ export class PageTransitionsService {
   }
 
   public navigate(route: string, options?: OptionsInterface): void {
-    if (this.router.url !== route) {
+    if (
+      this.router.url !== route &&
+      !this.router.url.includes(options.queryParams.model)
+    ) {
       this.toggleOpenClose(0);
       setTimeout(() => {
         if (options) {
