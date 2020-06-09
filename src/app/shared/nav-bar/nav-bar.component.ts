@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { PageTransitionsService } from '../page-transitions.service';
 
@@ -8,10 +8,34 @@ import { PageTransitionsService } from '../page-transitions.service';
   styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent implements OnInit {
+  @Input() isMobile: boolean;
+  private isAnimating: boolean;
+  public hideMenu: boolean;
+
   constructor(
     public auth: AuthService,
     public pageTransition: PageTransitionsService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.isMobile) {
+      this.hideMenu = true;
+    }
+  }
+
+  toggleMenu() {
+    if (!this.isAnimating) {
+      this.isAnimating = true;
+      this.hideMenu = !this.hideMenu;
+      setTimeout(() => {
+        this.isAnimating = false;
+      }, 250);
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    // this.hideMenu = !(window.innerWidth <= 768);
+    console.log('this.hideMenu: ', this.hideMenu);
+  }
 }

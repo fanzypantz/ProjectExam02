@@ -86,3 +86,15 @@
   height: 755px;
   clip-path: polygon(0 0, 100% 70%, 100% 100%, 0% 100%);
 }
+
+@media (max-width: $breakpoint-big-1) {
+  .footer-container {
+    width: $breakpoint-big-1-width;
+  }
+}
+
+@media (max-width: $breakpoint-big-2) {
+  .footer-container {
+    width: $breakpoint-big-2-width;
+  }
+}

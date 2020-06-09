@@ -3,6 +3,13 @@ import { Router } from '@angular/router';
 
 interface OptionsInterface {
   queryParams?: {
+    id?: string;
+    page?: number;
+    area?: string;
+    checkIn?: string;
+    checkOut?: string;
+    adults?: number;
+    rooms?: number;
     model?: string;
     mode?: string;
   };
@@ -44,16 +51,16 @@ export class PageTransitionsService {
   }
 
   public navigate(route: string, options?: OptionsInterface): void {
-    if (
-      this.router.url !== route &&
-      !this.router.url.includes(options.queryParams.model)
-    ) {
+    if (this.router.url !== route) {
       this.toggleOpenClose(0);
       setTimeout(() => {
         if (options) {
           if (options.id) {
             this.router.navigate([route, options.id]);
-          } else if (options.queryParams) {
+          } else if (
+            options.queryParams &&
+            !this.router.url.includes(options.queryParams.model)
+          ) {
             this.router.navigate([route], {
               queryParams: options.queryParams,
             });

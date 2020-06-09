@@ -1,4 +1,8 @@
-<app-nav-bar id="nav"></app-nav-bar>
+<app-nav-bar
+  id="nav"
+  [ngClass]="{ 'nav-mobile-container': isMobile }"
+  [isMobile]="isMobile"
+></app-nav-bar>
 
 <div
   *ngIf="pageTransition.isDisplayable$"

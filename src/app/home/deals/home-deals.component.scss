@@ -3,7 +3,7 @@
 .home-deals-container {
   position: relative;
   margin: 0 auto 200px auto;
-  width: 60%;
+  width: $main-width;
   max-width: $max-width;
   display: flex;
   justify-content: space-between;
@@ -80,4 +80,84 @@
 
 .home-deals-button {
   margin-top: auto;
+}
+
+@media (max-width: $breakpoint-big-1) {
+  .home-deals-container {
+    width: $breakpoint-big-1-width;
+  }
+}
+
+@media (max-width: $breakpoint-big-2) {
+  .home-deals-container {
+    width: $breakpoint-big-2-width;
+  }
+}
+
+@media (max-width: 1270px) {
+  .home-deals-card {
+    width: 300px;
+  }
+
+  .home-deals-inner {
+    margin: auto 20px 25px 20px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .home-deals-card {
+    width: 270px;
+  }
+}
+
+@media (max-width: $breakpoint-laptop) {
+  .home-deals-card {
+    width: 245px;
+  }
+
+  .home-deals-inner {
+    height: 245px;
+    margin: 0;
+  }
+
+  .home-deals-bg {
+    height: calc(100% - 295px);
+  }
+}
+
+@media (max-width: 960px) {
+  .home-deals-card {
+    width: 230px;
+  }
+}
+
+@media (max-width: 880px) {
+  .home-deals-card {
+    width: 205px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-deals-container {
+    flex-direction: column;
+  }
+
+  .home-deals-card {
+    width: 100%;
+    height: 500px;
+    margin: 20px auto;
+  }
+
+  .home-deals-inner {
+    height: 170px;
+  }
+
+  .home-deals-bg {
+    height: calc(100% - 220px);
+  }
+
+  .home-deals-btn {
+    height: 40px;
+    line-height: 40px;
+  }
 }

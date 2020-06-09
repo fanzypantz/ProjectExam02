@@ -469,3 +469,15 @@ app-booking-search {
 .second-toolbar {
   border-radius: 0 !important;
 }
+
+@media (max-width: $breakpoint-big-1) {
+  app-booking-search {
+    width: $breakpoint-big-1-width;
+  }
+}
+
+@media (max-width: $breakpoint-big-2) {
+  app-booking-search {
+    width: $breakpoint-big-2-width;
+  }
+}

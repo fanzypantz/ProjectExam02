@@ -111,4 +111,8 @@ export class ReadComponent implements OnInit, OnDestroy {
   get searchResultLength() {
     return this.data.length;
   }
+
+  get dataArray() {
+    return this.data;
+  }
 }

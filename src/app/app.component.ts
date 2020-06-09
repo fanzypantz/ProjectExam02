@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { PageTransitionsService } from './shared/page-transitions.service';
 
 @Component({
@@ -7,6 +7,18 @@ import { PageTransitionsService } from './shared/page-transitions.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  public isMobile: boolean;
+  private innerWidth: number;
+
   title = 'Visit Bergen';
-  constructor(public pageTransition: PageTransitionsService) {}
+  constructor(public pageTransition: PageTransitionsService) {
+    this.innerWidth = window.innerWidth;
+    this.isMobile = this.innerWidth <= 768;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.innerWidth = window.innerWidth;
+    this.isMobile = this.innerWidth <= 768;
+  }
 }

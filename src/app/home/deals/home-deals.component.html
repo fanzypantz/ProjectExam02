@@ -1,4 +1,6 @@
 <div class="home-deals-container">
+  <div class="bg-parallelogram"></div>
+
   <div
     (click)="pageTransition.navigate('/accommodation-details', { id: item.id })"
     class="home-deals-card"
@@ -14,6 +16,4 @@
     </div>
     <img class="home-deals-bg" src="{{ item.imageUrl }}" alt="" />
   </div>
-
-  <div class="bg-parallelogram"></div>
 </div>
