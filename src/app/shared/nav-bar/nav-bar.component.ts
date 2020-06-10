@@ -18,9 +18,7 @@ export class NavBarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.isMobile) {
-      this.hideMenu = true;
-    }
+    this.hideMenu = this.isMobile;
   }
 
   toggleMenu() {
@@ -35,7 +33,6 @@ export class NavBarComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize() {
-    // this.hideMenu = !(window.innerWidth <= 768);
-    console.log('this.hideMenu: ', this.hideMenu);
+    this.hideMenu = window.innerWidth < 768;
   }
 }
