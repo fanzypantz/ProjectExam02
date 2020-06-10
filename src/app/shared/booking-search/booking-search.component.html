@@ -153,7 +153,9 @@
       "
       class="form-overbox form-overbox-left form-error"
     >
-      <h3 *ngIf="checkIn.errors.incorrect">Check-in date required!</h3>
+      <h3 *ngIf="checkIn.errors.incorrect || checkIn.errors.required">
+        Check-in date required!
+      </h3>
       <h3 *ngIf="checkIn.errors.startDate">
         Check-in can't be before Check-out
       </h3>
@@ -214,7 +216,9 @@
       "
       class="form-overbox form-overbox-right form-error"
     >
-      <h3 *ngIf="checkOut.errors.incorrect">Check-out date required!</h3>
+      <h3 *ngIf="checkOut.errors.incorrect || checkIn.errors.required">
+        Check-out date required!
+      </h3>
     </div>
 
     <label class="search-icon" for="check-in">

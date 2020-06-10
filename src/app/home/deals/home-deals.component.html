@@ -1,11 +1,16 @@
 <div class="home-deals-container">
-  <div class="bg-parallelogram"></div>
+  <div *ngIf="!isMobile" class="bg-parallelogram"></div>
 
   <div
     (click)="pageTransition.navigate('/accommodation-details', { id: item.id })"
     class="home-deals-card"
     *ngFor="let item of data"
   >
+    <div
+      *ngIf="isMobile"
+      class="bg-parallelogram bg-parallelogram-mobile"
+    ></div>
+
     <div class="home-deals-inner">
       <h3 class="home-deals-main" [title]="item.establishmentName">
         {{ item.establishmentName }}

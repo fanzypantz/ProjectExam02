@@ -102,6 +102,11 @@ app-booking-search {
   }
 }
 
+.bg-parallelogram-mobile {
+  height: 60vw;
+  clip-path: polygon(10% 38%, 100% 0, 90% 62%, 0 100%);
+}
+
 .bg-trapezoid {
   position: absolute;
   top: -35%;

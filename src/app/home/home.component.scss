@@ -58,3 +58,131 @@
     margin: 0;
   }
 }
+@media (max-width: $breakpoint-laptopL) {
+  .home-explore-title-container {
+    right: -16%;
+  }
+
+  .bg-trapezoid {
+    height: 50vw;
+  }
+}
+
+@media (max-width: 1270px) {
+  .home-explore-img {
+    width: 670px;
+  }
+
+  .bg-trapezoid {
+    height: 60vw;
+  }
+}
+
+@media (max-width: $breakpoint-laptop) {
+  app-booking-search {
+    height: auto;
+    position: unset;
+    width: $breakpoint-big-2-width;
+    margin: 50px auto;
+    transform: unset;
+    background-color: transparent;
+  }
+
+  .home-explore-img {
+    width: 55vw;
+    height: 33vw;
+  }
+
+  .home-explore-blob {
+    height: 59vw;
+  }
+
+  .home-explore-title-container {
+    width: 375px;
+    height: 150px;
+
+    .big-title {
+      width: 80%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+
+      h1 {
+        font-size: 2.5em;
+      }
+    }
+  }
+}
+
+@media (max-width: 928px) {
+  .home-explore-blob {
+    height: 65vw;
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .home-explore-img {
+    width: 100%;
+    height: 230px;
+    margin-top: 20px;
+  }
+
+  .home-explore-title-container {
+    position: relative;
+    right: unset;
+    left: unset;
+
+    transform: unset;
+    width: 100%;
+  }
+  .home-explore-blob {
+    height: auto;
+    width: calc(100% - 80px);
+    top: calc(100% + 20px);
+  }
+
+  .bg-trapezoid {
+    top: 0;
+    height: 85vw;
+    width: 65vw;
+  }
+}
+
+@media (max-width: 590px) {
+  .home-explore-title-container {
+    height: 100px;
+
+    .big-title {
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    .big-title-border {
+      height: 50%;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobileL) {
+  .big-title {
+    h1 {
+      font-size: 3.5em;
+    }
+  }
+
+  .home-explore {
+    width: $breakpoint-big-2-width;
+  }
+}
+
+@media (max-width: $breakpoint-mobileM) {
+  .big-title {
+    width: 280px;
+
+    h1 {
+      font-size: 3em;
+    }
+  }
+}

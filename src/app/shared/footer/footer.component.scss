@@ -98,3 +98,36 @@
     width: $breakpoint-big-2-width;
   }
 }
+
+@media (max-width: $breakpoint-tablet) {
+  .footer-container {
+    width: $breakpoint-big-2-width;
+  }
+
+  .bg-slope {
+    clip-path: polygon(0 0, 100% 24%, 100% 100%, 0% 100%);
+  }
+
+  .footer-nav {
+    left: 8%;
+  }
+
+  .footer-credits {
+    left: 8%;
+  }
+
+  .footer-arrow {
+    right: 7%;
+  }
+
+  .footer-social {
+    bottom: 37%;
+    right: 8%;
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .footer-container {
+    width: 100%;
+  }
+}

@@ -40,3 +40,14 @@
 .home-gallery-control-line-active {
   stroke: $secondary;
 }
+
+@media (max-width: $breakpoint-tablet) {
+  .home-gallery-control {
+    width: $breakpoint-big-2-width;
+    margin: 0 auto;
+  }
+
+  .home-gallery-control-line {
+    width: calc(100% / 4);
+  }
+}

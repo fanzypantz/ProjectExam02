@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ export class HomeDealsComponent implements OnInit, OnDestroy {
   private documentSubscription: Subscription;
   private document: Observable<Array<Establishment>>;
   public data: Array<Establishment>;
+  public isMobile: boolean;
 
   constructor(
     private afs: AngularFirestore,
@@ -22,6 +23,8 @@ export class HomeDealsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.isMobile = window.innerWidth <= 768;
+
     this.document = this.afs
       .collection<Establishment>('establishments', (ref) =>
         ref.where('highlight', '==', true).limit(3)
@@ -34,5 +37,10 @@ export class HomeDealsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.documentSubscription.unsubscribe();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.isMobile = window.innerWidth <= 768;
   }
 }

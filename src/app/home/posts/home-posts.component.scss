@@ -186,4 +186,14 @@
   .home-posts-tall ~ .home-posts-tall {
     margin: 20px 0;
   }
+
+  .home-posts-inspire .big-title {
+    .big-title-border {
+      width: 65%;
+    }
+
+    h1 {
+      font-size: 3em !important;
+    }
+  }
 }
