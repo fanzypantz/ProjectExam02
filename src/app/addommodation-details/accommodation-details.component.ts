@@ -115,6 +115,7 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
       // Add in the required data before creating new document
       // This is where you would add in payment logic like stripe or whatnot
       data.establishmentId = this.id;
+      data.establishmentName = this.data.establishmentName;
       data.createdAt = firebase.firestore.Timestamp.fromDate(new Date());
       data.updatedAt = firebase.firestore.Timestamp.fromDate(new Date());
       this.createNewEntry(data).then((r) => {

@@ -4,6 +4,7 @@ import 'firebase/firestore';
 export interface Enquiry {
   id: string;
   establishmentId: string;
+  establishmentName: string;
   name: string;
   email: string;
   rooms: number;

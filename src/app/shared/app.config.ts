@@ -311,6 +311,12 @@ export const defaultEnquiries = [
     rooms: 4,
     persons: 4,
   },
+  {
+    name: 'Andreas Tollånes',
+    email: 'andreas@tollanes.com',
+    rooms: 1,
+    persons: 2,
+  },
 ];
 
 export const defaultPosts = [

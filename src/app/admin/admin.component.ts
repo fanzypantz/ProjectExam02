@@ -203,7 +203,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   seedEnquiries() {
     // Re-fetch the new establishments to use in enquiries
     const establishment = this.afs
-      .collection<Establishment>(this.model)
+      .collection<Establishment>('establishments')
       .valueChanges({ idField: 'id' });
 
     establishment.subscribe((establishments) => {
@@ -213,10 +213,10 @@ export class AdminComponent implements OnInit, OnDestroy {
       const bookingEnd = new Date(
         new Date().getTime() + 60 * 60 * this.getRandomInt(24, 200) * 1000
       );
-
       for (const [i, item] of defaultEnquiries.entries()) {
         const data = {
           establishmentId: establishments[i].id,
+          establishmentName: establishments[i].establishmentName,
           name: item.name,
           email: item.email,
           persons: item.persons,
