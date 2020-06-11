@@ -238,6 +238,14 @@
   }
 }
 
+@media (max-width: $breakpoint-laptop) {
+  .accommodation-pagination {
+    .btn {
+      width: 48%;
+    }
+  }
+}
+
 @media (max-width: 590px) {
   .accommodations-img {
     height: 80vw;
