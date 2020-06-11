@@ -1,4 +1,8 @@
-<div *ngIf="isMobile" class="hamburger-container">
+<div
+  *ngIf="isMobile"
+  class="hamburger-container"
+  [ngClass]="{ 'nav-open-hamburger': !hideMenu }"
+>
   <div class="nav-item" (click)="toggleMenu()">
     <svg class="nav-icon hamburger-icon" viewBox="0 0 35.8 22.8">
       <style type="text/css">
