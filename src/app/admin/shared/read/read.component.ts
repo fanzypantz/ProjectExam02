@@ -42,6 +42,7 @@ export class ReadComponent implements OnInit, OnDestroy {
     // When the queryParam change, change the values and fetch the new data
     this.paramSub = route.queryParams.subscribe((p) => {
       if (p.mode === 'read') {
+        this.page = 1;
         this.model = p.model;
         this.readLayout = adminConfig[p.model].readLayout;
         this.setData();

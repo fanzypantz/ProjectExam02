@@ -19,6 +19,7 @@ import {
 import { Observable, Subscription } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PageTransitionsService } from '../../../shared/page-transitions.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit',
@@ -28,6 +29,7 @@ import { PageTransitionsService } from '../../../shared/page-transitions.service
 export class EditComponent implements OnInit, OnDestroy, OnChanges {
   @Input() model: string;
   @Input() id: string;
+  private paramSub: Subscription;
   private documentSubscription: Subscription;
   public adminForm: FormGroup;
   public writeLayout: WriteInterface[];
@@ -37,11 +39,18 @@ export class EditComponent implements OnInit, OnDestroy, OnChanges {
 
   constructor(
     private afs: AngularFirestore,
+    private route: ActivatedRoute,
     private pageTransition: PageTransitionsService
   ) {}
 
   ngOnInit(): void {
-    this.initEdit();
+    this.paramSub = this.route.queryParams.subscribe((p) => {
+      if (p.mode === 'edit') {
+        this.isSaving = true;
+        this.data = null;
+        this.initEdit();
+      }
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -50,6 +59,7 @@ export class EditComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnDestroy(): void {
     this.documentSubscription.unsubscribe();
+    this.paramSub.unsubscribe();
   }
 
   initEdit(): void {
@@ -73,6 +83,7 @@ export class EditComponent implements OnInit, OnDestroy, OnChanges {
 
       this.adminForm = new FormGroup(group);
       this.pageTransition.toggleOpenClose(0);
+      this.isSaving = false;
     });
   }
 

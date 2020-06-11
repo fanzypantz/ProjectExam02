@@ -3,7 +3,7 @@
 <form
   class="admin-edit-container"
   [formGroup]="adminForm"
-  *ngIf="data"
+  *ngIf="data !== null"
   (ngSubmit)="onSubmit(adminForm.value)"
 >
   <div *ngIf="isSaving" class="admin-spinner lds-spinner">
