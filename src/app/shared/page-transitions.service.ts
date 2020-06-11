@@ -65,7 +65,8 @@ export class PageTransitionsService {
           } else if (
             options.queryParams &&
             (this.model !== options.queryParams.model ||
-              this.mode !== options.queryParams.mode)
+              this.mode !== options.queryParams.mode ||
+              options.queryParams)
           ) {
             this.router.navigate([route], {
               queryParams: options.queryParams,
