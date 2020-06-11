@@ -170,10 +170,121 @@
   }
 }
 
-.accommodation-pagination-spacer {
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  width: 40%;
-  background-color: $secondary;
-  height: 40px;
-  margin: 0 10px;
+@media (max-width: $breakpoint-big-1) {
+  .accommodations-container,
+  .accommodation-pagination {
+    width: $breakpoint-big-1-width;
+  }
+}
+
+@media (max-width: $breakpoint-big-2) {
+  .accommodations-container,
+  .accommodation-pagination {
+    width: $breakpoint-big-2-width;
+  }
+}
+
+@media (max-width: 1270px) {
+  .accommodations-img {
+    width: calc(25% - 5px);
+  }
+
+  .accommodation-details {
+    width: calc(37% - 90px);
+  }
+
+  .accommodation-booking {
+    width: calc(38% - 5px);
+  }
+}
+
+@media (max-width: $breakpoint-laptop) {
+  .big-title {
+    margin: 90px auto;
+  }
+
+  app-booking-search {
+    height: auto;
+    position: unset;
+    width: $breakpoint-big-2-width;
+    margin: 50px auto;
+    transform: unset;
+    background-color: transparent;
+  }
+
+  .accommodations-card {
+    flex-wrap: wrap;
+    height: auto;
+    margin-bottom: 50px;
+  }
+
+  .accommodations-img {
+    width: 100%;
+    margin: 0;
+    height: 400px;
+  }
+
+  .accommodation-details {
+    box-sizing: border-box;
+    width: 100%;
+    height: 200px;
+    margin: 15px 0;
+  }
+
+  .accommodation-booking {
+    width: 100%;
+    margin: 0;
+    height: 200px;
+  }
+}
+
+@media (max-width: 590px) {
+  .accommodations-img {
+    height: 80vw;
+  }
+
+  .accommodation-text {
+    max-height: unset;
+  }
+
+  .accommodation-details {
+    height: auto;
+  }
+
+  .accommodation-title {
+    flex-direction: column;
+  }
+
+  .accommodation-title h2 {
+    overflow: auto;
+    white-space: unset;
+    text-overflow: unset;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: $breakpoint-mobileL) {
+  .accommodation-booking {
+    padding: 30px;
+    height: auto;
+  }
+
+  .accommodation-booking-container {
+    flex-direction: column;
+    height: auto;
+
+    .btn {
+      margin: 5px auto;
+      width: 100%;
+    }
+  }
+
+  .accommodation-booking-details {
+    width: 100%;
+    margin: 5px auto;
+  }
+
+  .accommodation-booking-price {
+    margin: 5px auto;
+  }
 }
