@@ -127,8 +127,8 @@
   }
 
   .nav-item {
-    width: calc((80vw / 3) - 14px);
-    height: calc((80vw / 3) - 14px);
+    width: calc((80vw / 3) - 18px);
+    height: calc((80vw / 3) - 18px);
     margin: 0 20px 20px 0;
 
     &:nth-of-type(3n) {
@@ -149,8 +149,8 @@
 @media (max-width: $breakpoint-mobileL) {
   .nav-mobile-container {
     .nav-item {
-      width: calc((80vw / 2) - 10px);
-      height: calc((80vw / 2) - 10px);
+      width: calc((80vw / 2) - 16px);
+      height: calc((80vw / 2) - 16px);
       margin: 0 20px 20px 0 !important;
 
       &:nth-of-type(2n) {
