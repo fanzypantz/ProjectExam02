@@ -62,3 +62,23 @@
     line-height: 40px;
   }
 }
+
+@media (max-width: $breakpoint-big-1) {
+  .posts-container {
+    width: $breakpoint-big-1-width;
+  }
+}
+
+@media (max-width: $breakpoint-big-2) {
+  .posts-container {
+    width: $breakpoint-big-2-width;
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .posts-card {
+    height: 300px !important;
+    width: 100% !important;
+    margin-right: 0 !important;
+  }
+}

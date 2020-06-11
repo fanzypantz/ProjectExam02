@@ -5,6 +5,7 @@
 }
 
 .page-title {
+  height: auto;
   margin-bottom: 80px;
 }
 
@@ -53,8 +54,9 @@
 }
 
 .post-detail-text {
+  box-sizing: border-box;
   margin: 15px 0;
-  width: calc(100% - 120px);
+  width: 100%;
   padding: 60px;
   background-color: $main;
   color: $white;
@@ -135,5 +137,71 @@
     position: absolute;
     bottom: 0;
     left: 0;
+  }
+}
+
+@media (max-width: $breakpoint-big-1) {
+  .post-detail-container {
+    width: $breakpoint-big-1-width;
+  }
+}
+
+@media (max-width: $breakpoint-big-2) {
+  .post-detail-container {
+    width: $breakpoint-big-2-width;
+  }
+}
+
+@media (max-width: $breakpoint-laptop) {
+  .post-detail-container {
+    flex-direction: column;
+  }
+
+  .post-detail-main {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .post-detail-sub {
+    width: 100%;
+    margin-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .post-detail-recent-card {
+    width: calc((100% / 3) - 10px);
+    margin-right: 15px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-laptop) {
+  .post-detail-info {
+    flex-wrap: wrap;
+  }
+
+  .post-detail-info-updated,
+  .post-detail-info-created {
+    width: 100%;
+  }
+
+  .post-detail-info-text {
+    width: 50%;
+  }
+
+  .post-detail-recent-card {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: $breakpoint-mobileL) {
+  .post-detail-text {
+    padding: 30px;
   }
 }
