@@ -23,29 +23,21 @@ export class PageTransitionsService {
   isOpen$: boolean;
   isDisplayable$: boolean;
   isAnimating$: boolean;
+  delay: number;
 
   constructor(private router: Router) {
-    this.isOpen$ = true;
-    this.isDisplayable$ = true;
+    this.isOpen$ = false;
+    this.isDisplayable$ = false;
     this.isAnimating$ = false;
+    this.delay = 0;
   }
 
   public toggleOpenClose(delay) {
-    if (!this.isAnimating$) {
+    if (!this.isAnimating$ && this.isDisplayable$) {
       this.isAnimating$ = true;
       setTimeout(() => {
         this.isAnimating$ = false;
         this.isOpen$ = !this.isOpen$;
-      }, delay);
-    }
-  }
-
-  public toggleDisplayable(delay) {
-    if (!this.isAnimating$) {
-      this.isAnimating$ = true;
-      setTimeout(() => {
-        this.isAnimating$ = false;
-        this.isDisplayable$ = !this.isDisplayable$;
       }, delay);
     }
   }
@@ -68,7 +60,7 @@ export class PageTransitionsService {
         } else {
           this.router.navigate([route]);
         }
-      }, 250);
+      }, this.delay);
     }
   }
 }
