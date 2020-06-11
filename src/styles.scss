@@ -81,6 +81,10 @@ app-booking-search {
     background-color: $secondary;
     border-bottom-color: $secondary-shade;
   }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .bg-parallelogram {
