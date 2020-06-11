@@ -20,6 +20,7 @@
   position: relative;
   width: $main-width;
   max-width: $max-width;
+  min-width: 1030px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -47,9 +48,29 @@
 }
 
 .admin-create-btn {
-  position: fixed;
-  top: 327px;
-  right: calc(20% - 220px);
-  width: 200px;
+  position: absolute;
+  right: 50%;
+  bottom: calc(-100% - 18px);
+  transform: translateX(50%);
+  width: calc((100% / 5) - 8px);
   height: 40px;
+}
+
+@media (max-width: $breakpoint-admin) {
+  .admin-menu {
+    min-width: unset;
+    width: 80%;
+    flex-wrap: wrap;
+
+    .admin-create-btn {
+      position: unset;
+      transform: unset;
+    }
+
+    .btn {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
 }

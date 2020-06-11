@@ -6,6 +6,7 @@
   flex-wrap: wrap;
   width: $main-width;
   max-width: $max-width;
+  min-width: $breakpoint-admin;
   margin: 50px auto;
 }
 
@@ -199,5 +200,38 @@
   height: auto;
   img {
     border-radius: 0;
+  }
+}
+
+@media (max-width: $breakpoint-admin) {
+  .admin-edit-container {
+    min-width: unset;
+    width: 80%;
+  }
+
+  .admin-edit-submit {
+    position: unset;
+    transform: unset;
+    width: 100%;
+  }
+
+  .admin-edit-card {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .admin-images-row {
+    flex-direction: column;
+  }
+
+  .admin-images-upload {
+    width: 100%;
+  }
+
+  .admin-images-container {
+    width: 100%;
   }
 }
