@@ -236,9 +236,18 @@ export class MailComponent implements OnInit {
 
   onSubmit(data) {
     if (this.mailForm.valid) {
-      this.createNewEntry(data, this.contactType).then(() => {
-        this.closeContactForm.emit();
-      });
+      console.log('this.contactType: ', this.contactType);
+      // If it is an enquiry store it for now, this should all be email logic
+      if (this.contactType === 'enquiries') {
+        // This should also probably send out an email to the user that we have gotten it
+        // Secondly it should send the message to the actual owner of the place as an email
+        // instead of saving it
+        this.createNewEntry(data, this.contactType).then(() => {
+          this.closeContactForm.emit();
+        });
+      } else if (this.contactType === 'messages') {
+        this.createNewEntry(data, this.contactType);
+      }
     }
   }
 
