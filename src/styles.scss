@@ -423,7 +423,8 @@ app-booking-search {
 }
 
 .contact-form-container {
-  background-color: $main;
+  background-color: $white;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   z-index: 200;
   position: absolute;
   top: 0;
@@ -441,6 +442,42 @@ app-booking-search {
 .contact-form-display {
   opacity: 1;
   pointer-events: all;
+}
+
+.main-table {
+  width: $main-width;
+  max-width: $max-width;
+  min-width: 1030px;
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 0 5px;
+
+  tr {
+    width: 100%;
+    height: 55px;
+    color: $main;
+    background-color: $main-shade2;
+    margin-bottom: 5px;
+
+    svg {
+      fill: $main;
+    }
+
+    &:nth-of-type(even) {
+      background-color: $main;
+      color: $white;
+
+      svg {
+        fill: $white;
+      }
+    }
+  }
+
+  td,
+  th {
+    text-align: left;
+    padding-left: 20px;
+  }
 }
 
 .lds-spinner {

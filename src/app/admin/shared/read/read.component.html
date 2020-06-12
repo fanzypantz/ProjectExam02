@@ -3,8 +3,11 @@
     <button class="btn" (click)="previousPage()">Previous Page</button>
     <button class="btn" (click)="nextPage()">Next Page</button>
   </div>
-
-  <table *ngIf="renderData" class="admin-table">
+  <table
+    *ngIf="renderData"
+    class="main-table"
+    [ngClass]="{ 'margin-top': searchResultLength <= 10 }"
+  >
     <tr>
       <th>
         <input type="checkbox" />

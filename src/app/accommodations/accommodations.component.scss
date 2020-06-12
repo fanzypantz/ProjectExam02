@@ -8,6 +8,17 @@
   flex-direction: column;
 }
 
+.bg-accommodations {
+  position: absolute;
+  top: 100vh;
+  right: 0;
+
+  .bg-trapezoid {
+    width: 70vw;
+    height: 60vw;
+  }
+}
+
 .accommodations-card {
   width: 100%;
   height: 160px;

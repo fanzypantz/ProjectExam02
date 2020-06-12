@@ -36,7 +36,6 @@ export class ReservationsComponent implements OnInit {
         .valueChanges({ idField: 'id' });
 
       this.reservationsSubscription = this.collections.subscribe((snapshot) => {
-        console.log('snapshot: ', snapshot);
         this.data = snapshot;
         this.pageTransition.toggleOpenClose(0);
       });
