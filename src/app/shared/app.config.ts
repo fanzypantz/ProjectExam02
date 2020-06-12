@@ -84,7 +84,7 @@ export const defaultEstablishments = [
   },
   {
     establishmentName: 'Tree Tops',
-    establishmentEmail: 'enquiries@treetops.com',
+    establishmentEmail: 'reservations@treetops.com',
     area: 'Bryggen',
     imageUrl:
       'https://images.unsplash.com/photo-1550355191-aa8a80b41353?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
@@ -100,7 +100,7 @@ export const defaultEstablishments = [
   },
   {
     establishmentName: 'Coast to Coast',
-    establishmentEmail: 'enquiries@coasttocoast.com',
+    establishmentEmail: 'reservations@coasttocoast.com',
     area: 'Laksevåg',
     imageUrl:
       'https://images.unsplash.com/photo-1544085701-4d54e9f41c45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80',
@@ -164,7 +164,7 @@ export const defaultEstablishments = [
   },
   {
     establishmentName: 'Glede Mountain Lodge',
-    establishmentEmail: 'enquiries@gledemountain.no',
+    establishmentEmail: 'reservations@gledemountain.no',
     area: 'Bryggen',
     imageUrl:
       'https://images.unsplash.com/photo-1517320964276-a002fa203177?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=375&q=80',
@@ -212,7 +212,7 @@ export const defaultEstablishments = [
   },
   {
     establishmentName: 'The Shed',
-    establishmentEmail: 'enquiries@theshedaccomodation.no',
+    establishmentEmail: 'reservations@theshedaccomodation.no',
     area: 'Askøy',
     imageUrl:
       'https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
@@ -228,7 +228,7 @@ export const defaultEstablishments = [
   },
   {
     establishmentName: 'Innsjø Hus',
-    establishmentEmail: 'enquiries@innsjøhus.no',
+    establishmentEmail: 'reservations@innsjøhus.no',
     area: 'Troldhaugen',
     imageUrl:
       'https://images.unsplash.com/photo-1469394576569-858815b13427?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=849&q=80',
@@ -244,7 +244,7 @@ export const defaultEstablishments = [
   },
   {
     establishmentName: 'Peace and Quiet',
-    establishmentEmail: 'enquiries@peaceandquiet.no',
+    establishmentEmail: 'reservations@peaceandquiet.no',
     area: 'Ytrebygda',
     imageUrl:
       'https://images.unsplash.com/photo-1479123142480-cbdc7b84de24?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=678&q=80',
@@ -260,7 +260,7 @@ export const defaultEstablishments = [
   },
   {
     establishmentName: "Adam's Place",
-    establishmentEmail: 'enquiries@adamsplace.no',
+    establishmentEmail: 'reservations@adamsplace.no',
     area: 'Litlesotra',
     imageUrl:
       'https://images.unsplash.com/photo-1507038772120-7fff76f79d79?ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80',
@@ -292,7 +292,7 @@ export const defaultEstablishments = [
   },
 ];
 
-export const defaultEnquiries = [
+export const defaultReservations = [
   {
     name: 'TestPerson Personson',
     email: 'testEmail@test.com',

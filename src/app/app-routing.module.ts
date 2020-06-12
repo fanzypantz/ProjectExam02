@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { AccommodationsComponent } from './accommodations/accommodations.component';
 import { AccommodationDetailsComponent } from './addommodation-details/accommodation-details.component';
 import { ContactComponent } from './contact/contact.component';
-import { EnquiriesComponent } from './enquiries/enquiries.component';
+import { ReservationsComponent } from './reservations/reservations.component';
 import { PostsDetailsComponent } from './posts-details/posts-details.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostResolverService } from './shared/post-resolver.service';
@@ -41,8 +41,8 @@ const routes: Routes = [
   },
   { path: 'contact', component: ContactComponent },
   {
-    path: 'enquiries',
-    component: EnquiriesComponent,
+    path: 'reservations',
+    component: ReservationsComponent,
     canActivate: [CanReadGuard],
   },
   {

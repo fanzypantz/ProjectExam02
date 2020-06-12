@@ -6,7 +6,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { Enquiry } from '../models/enquiry.model';
+import { Reservation } from '../models/reservation.model';
 import { Message } from '../models/message.model';
 import { Post } from '../models/post.model';
 import { User } from '../models/user.model';
@@ -91,9 +91,9 @@ export class EditComponent implements OnInit, OnDestroy, OnChanges {
     // Use the queryParam and Model to force type declaration in the document
     // No invalid data can be displayed
     switch (this.model) {
-      case 'enquiries':
+      case 'reservations':
         return this.afs
-          .collection<Enquiry>(this.model)
+          .collection<Reservation>(this.model)
           .doc(this.id)
           .valueChanges();
       case 'messages':

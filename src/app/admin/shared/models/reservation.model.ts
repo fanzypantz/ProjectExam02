@@ -1,7 +1,7 @@
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 
-export interface Enquiry {
+export interface Reservation {
   id: string;
   establishmentId: string;
   establishmentName: string;

@@ -3,20 +3,20 @@ import { PageTransitionsService } from '../shared/page-transitions.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from '../shared/auth/auth.service';
-import { Enquiry } from '../admin/shared/models/enquiry.model';
+import { Reservation } from '../admin/shared/models/reservation.model';
 import { User } from '../admin/shared/models/user.model';
 import { Establishment } from '../admin/shared/models/establisment.model';
 
 @Component({
-  selector: 'app-enquiries',
-  templateUrl: './enquiries.component.html',
-  styleUrls: ['./enquiries.component.scss'],
+  selector: 'app-reservations',
+  templateUrl: './reservations.component.html',
+  styleUrls: ['./reservations.component.scss'],
 })
-export class EnquiriesComponent implements OnInit {
+export class ReservationsComponent implements OnInit {
   private userSubscription: Subscription;
-  private enquiriesSubscription: Subscription;
-  private collections: Observable<Enquiry[]>;
-  public data: Enquiry[];
+  private reservationsSubscription: Subscription;
+  private collections: Observable<Reservation[]>;
+  public data: Reservation[];
   private user: User;
 
   constructor(
@@ -30,12 +30,12 @@ export class EnquiriesComponent implements OnInit {
       this.user = userSnapshot;
 
       this.collections = this.afs
-        .collection<Enquiry>('enquiries', (ref) =>
+        .collection<Reservation>('reservations', (ref) =>
           ref.where('email', '==', this.user.email)
         )
         .valueChanges({ idField: 'id' });
 
-      this.enquiriesSubscription = this.collections.subscribe((snapshot) => {
+      this.reservationsSubscription = this.collections.subscribe((snapshot) => {
         console.log('snapshot: ', snapshot);
         this.data = snapshot;
         this.pageTransition.toggleOpenClose(0);

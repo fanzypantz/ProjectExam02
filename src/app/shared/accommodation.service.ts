@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Establishment } from '../admin/shared/models/establisment.model';
-import { Enquiry } from '../admin/shared/models/enquiry.model';
+import { Reservation } from '../admin/shared/models/reservation.model';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 
@@ -9,9 +9,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class AccommodationService {
   private establishments: Observable<Establishment[]>;
-  private enquiries: Observable<Enquiry[]>;
+  private reservations: Observable<Reservation[]>;
   private establishmentsData: Establishment[];
-  private enquiriesData: Enquiry[];
+  private reservationsData: Reservation[];
 
   constructor(private afs: AngularFirestore) {}
 
@@ -26,18 +26,18 @@ export class AccommodationService {
       this.establishments.subscribe((establishmentsSnapshot) => {
         this.establishmentsData = establishmentsSnapshot;
         if (this.checkIfQueryExists(params)) {
-          // Get all enquiries
-          this.enquiries = this.afs
-            .collection<Enquiry>('enquiries')
+          // Get all reservations
+          this.reservations = this.afs
+            .collection<Reservation>('reservations')
             .valueChanges({ idField: 'id' });
-          this.enquiries.subscribe((enquiriesSnapshot) => {
-            this.enquiriesData = enquiriesSnapshot;
+          this.reservations.subscribe((reservationsSnapshot) => {
+            this.reservationsData = reservationsSnapshot;
             // Filter the data and assign it to an array of Establishments that can be displayed
             // First check if the user came to this page with an already filled in form
             return resolve(
               this.filterData(
                 this.establishmentsData,
-                this.enquiriesData,
+                this.reservationsData,
                 params
               )
             );
@@ -49,12 +49,16 @@ export class AccommodationService {
     });
   }
 
-  filterData(establishments: Establishment[], enquiries: Enquiry[], params) {
-    if (establishments && enquiries) {
+  filterData(
+    establishments: Establishment[],
+    reservations: Reservation[],
+    params
+  ) {
+    if (establishments && reservations) {
       const filtered = establishments.filter((el) => {
         return (
           el.area.toLowerCase() === params.area.toLowerCase() &&
-          this.checkBooking(el, enquiries, params)
+          this.checkBooking(el, reservations, params)
         );
       });
 
@@ -67,14 +71,14 @@ export class AccommodationService {
     }
   }
 
-  checkBooking(el: Establishment, enquiries: Enquiry[], params) {
-    const enquiryFilter = enquiries.filter((enquiry) => {
-      return el.id === enquiry.establishmentId;
+  checkBooking(el: Establishment, reservations: Reservation[], params) {
+    const reservationFilter = reservations.filter((reservation) => {
+      return el.id === reservation.establishmentId;
     });
 
-    if (enquiryFilter.length > 0) {
-      const bookingStart = enquiryFilter[0].bookingStart.toMillis();
-      const bookingEnd = enquiryFilter[0].bookingEnd.toMillis();
+    if (reservationFilter.length > 0) {
+      const bookingStart = reservationFilter[0].bookingStart.toMillis();
+      const bookingEnd = reservationFilter[0].bookingEnd.toMillis();
 
       // If the checkOut date is within the range of the already booked time frame return false
       if (params.checkOut > bookingStart && params.checkOut < bookingEnd) {

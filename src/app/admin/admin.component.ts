@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import {
-  defaultEnquiries,
+  defaultReservations,
   defaultEstablishments,
   defaultMessages,
   defaultPosts,
@@ -57,7 +57,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     let data;
 
     switch (this.model) {
-      case 'enquiries':
+      case 'reservations':
         data = {
           establishmentId: '',
           name: '',
@@ -200,8 +200,8 @@ export class AdminComponent implements OnInit, OnDestroy {
     }
   }
 
-  seedEnquiries() {
-    // Re-fetch the new establishments to use in enquiries
+  seedReservations() {
+    // Re-fetch the new establishments to use in reservations
     const establishment = this.afs
       .collection<Establishment>('establishments')
       .valueChanges({ idField: 'id' });
@@ -213,7 +213,7 @@ export class AdminComponent implements OnInit, OnDestroy {
       const bookingEnd = new Date(
         new Date().getTime() + 60 * 60 * this.getRandomInt(24, 200) * 1000
       );
-      for (const [i, item] of defaultEnquiries.entries()) {
+      for (const [i, item] of defaultReservations.entries()) {
         const data = {
           establishmentId: establishments[i].id,
           establishmentName: establishments[i].establishmentName,
@@ -226,7 +226,7 @@ export class AdminComponent implements OnInit, OnDestroy {
           bookingStart: firebase.firestore.Timestamp.fromDate(bookingStart),
           bookingEnd: firebase.firestore.Timestamp.fromDate(bookingEnd),
         };
-        this.createNewEntry('enquiries', data).then((r) => {});
+        this.createNewEntry('reservations', data).then((r) => {});
       }
     });
   }

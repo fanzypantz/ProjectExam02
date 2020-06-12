@@ -5,7 +5,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Enquiry } from './models/enquiry.model';
+import { Reservation } from './models/reservation.model';
 import { Message } from './models/message.model';
 import { Post } from './models/post.model';
 import { User } from './models/user.model';
@@ -17,7 +17,7 @@ import { Observable } from 'rxjs';
 })
 export class AdminResolverService implements Resolve<any> {
   private collections:
-    | Observable<Enquiry[]>
+    | Observable<Reservation[]>
     | Observable<Message[]>
     | Observable<Post[]>
     | Observable<User[]>
@@ -46,9 +46,9 @@ export class AdminResolverService implements Resolve<any> {
     // Use the queryParam and Model to force type declaration in the document
     // No invalid data can be displayed
     switch (model) {
-      case 'enquiries':
+      case 'reservations':
         return this.afs
-          .collection<Enquiry>(model, (ref) => ref.orderBy('updatedAt'))
+          .collection<Reservation>(model, (ref) => ref.orderBy('updatedAt'))
           .valueChanges({ idField: 'id' });
       case 'messages':
         return this.afs

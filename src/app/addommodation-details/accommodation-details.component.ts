@@ -134,7 +134,7 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
   private createNewEntry(data) {
     return new Promise<any>((resolve, reject) => {
       this.afs
-        .collection('enquiries')
+        .collection('reservations')
         .add(data)
         .then(
           (res) => {

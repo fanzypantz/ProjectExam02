@@ -133,8 +133,8 @@ c-0.2-1-0.7-1.7-1.5-2.3C5.8,28.2,3,23.6,3,18.9C3,10.1,12.1,3,23.3,3z"
     </a>
     <a
       class="nav-item"
-      *ngIf="auth.user$ | async as user; else enquiriesLogin"
-      (click)="pageTransition.navigate('/enquiries')"
+      *ngIf="auth.user$ | async as user; else reservationsLogin"
+      (click)="pageTransition.navigate('/reservations')"
     >
       <svg class="nav-icon" viewBox="0 0 42.1 39.5">
         <path
@@ -147,11 +147,11 @@ z"
         />
       </svg>
 
-      <h3>Enquiries</h3>
+      <h3>Yours</h3>
     </a>
 
-    <ng-template #enquiriesLogin>
-      <a class="nav-item" (click)="auth.googleSignIn('/enquiries')">
+    <ng-template #reservationsLogin>
+      <a class="nav-item" (click)="auth.googleSignIn('/reservations')">
         <svg class="nav-icon" viewBox="0 0 42.1 39.5">
           <path
             class="st0"
@@ -163,7 +163,7 @@ z"
           />
         </svg>
 
-        <h3>Enquiries</h3>
+        <h3>reservations</h3>
       </a>
     </ng-template>
   </div>

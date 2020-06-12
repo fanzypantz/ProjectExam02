@@ -109,7 +109,7 @@ export const adminConfig = {
       },
     ],
   },
-  enquiries: {
+  reservations: {
     readLayout: [
       { name: 'id', type: 'string', key: 'id' },
       { name: 'establishmentId', type: 'string', key: 'establishmentId' },

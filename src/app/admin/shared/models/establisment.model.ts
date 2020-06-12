@@ -17,7 +17,7 @@ export interface Establishment {
   createdAt: firebase.firestore.Timestamp;
   updatedAt: firebase.firestore.Timestamp;
   booking?: {
-    // enquiryId: string;
+    // reservationId: string;
     bookingStart: firebase.firestore.Timestamp;
     bookingEnd: firebase.firestore.Timestamp;
   }[];

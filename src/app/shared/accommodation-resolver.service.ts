@@ -7,7 +7,7 @@ import {
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Establishment } from '../admin/shared/models/establisment.model';
-import { Enquiry } from '../admin/shared/models/enquiry.model';
+import { Reservation } from '../admin/shared/models/reservation.model';
 import { AccommodationService } from './accommodation.service';
 
 @Injectable({

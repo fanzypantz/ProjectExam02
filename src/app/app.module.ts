@@ -28,7 +28,7 @@ import { RolesComponent } from './admin/shared/read/roles/roles.component';
 import { StringComponent } from './admin/shared/read/string/string.component';
 import { AccommodationsComponent } from './accommodations/accommodations.component';
 import { ContactComponent } from './contact/contact.component';
-import { EnquiriesComponent } from './enquiries/enquiries.component';
+import { ReservationsComponent } from './reservations/reservations.component';
 import { HomeGalleryComponent } from './home/gallery/home-gallery.component';
 import { BookingSearchComponent } from './shared/booking-search/booking-search.component';
 import { HomeDealsComponent } from './home/deals/home-deals.component';
@@ -70,7 +70,7 @@ import { BooleanComponent } from './admin/shared/read/boolean/boolean.component'
     AccommodationsComponent,
     AccommodationDetailsComponent,
     ContactComponent,
-    EnquiriesComponent,
+    ReservationsComponent,
     BookingSearchComponent,
     HomeGalleryComponent,
     HomeDealsComponent,

@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, Subscription } from 'rxjs';
 import { Establishment } from '../models/establisment.model';
 import { User } from '../models/user.model';
-import { Enquiry } from '../models/enquiry.model';
+import { Reservation } from '../models/reservation.model';
 import { Message } from '../models/message.model';
 import { Post } from '../models/post.model';
 
@@ -22,14 +22,19 @@ export class ReadComponent implements OnInit, OnDestroy {
   private paramSub: Subscription;
   readLayout: ReadInterface[];
   collections: Observable<
-    Establishment[] | Enquiry[] | Post[] | User[] | Message[]
+    Establishment[] | Reservation[] | Post[] | User[] | Message[]
   >;
   showConfirmPrompt = false;
   deleteId: string;
   private page: any;
   private readonly pageOffset: any;
-  private data: Establishment[] | Enquiry[] | Post[] | User[] | Message[];
-  public renderData: Establishment[] | Enquiry[] | Post[] | User[] | Message[];
+  private data: Establishment[] | Reservation[] | Post[] | User[] | Message[];
+  public renderData:
+    | Establishment[]
+    | Reservation[]
+    | Post[]
+    | User[]
+    | Message[];
 
   constructor(
     private afs: AngularFirestore,
@@ -87,10 +92,10 @@ export class ReadComponent implements OnInit, OnDestroy {
 
   // Source: https://stackoverflow.com/a/42761393/6422461
   paginate(
-    array: Establishment[] | Enquiry[] | Post[] | User[] | Message[],
+    array: Establishment[] | Reservation[] | Post[] | User[] | Message[],
     pageSize: number,
     pageNumber: number
-  ): Establishment[] | Enquiry[] | Post[] | User[] | Message[] {
+  ): Establishment[] | Reservation[] | Post[] | User[] | Message[] {
     // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
     return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
   }

@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Enquiry } from '../../models/enquiry.model';
+import { Reservation } from '../../models/reservation.model';
 import { Observable, Subscription } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 
@@ -15,7 +15,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
             class="admin-booking-date-text"
             [routerLink]="'/admin'"
             [queryParams]="{
-              model: 'enquiries',
+              model: 'reservations',
               mode: 'edit',
               id: item.id
             }"
@@ -287,32 +287,32 @@ export class EditBookingDateComponent implements OnInit, OnDestroy {
   @Input() key: string;
   @Input() name: string;
   @Input() id: string;
-  private enquirySubscription: Subscription;
-  private enquiries: Observable<Enquiry[]>;
-  public data: Enquiry[];
+  private reservationSubscription: Subscription;
+  private reservations: Observable<Reservation[]>;
+  public data: Reservation[];
 
   constructor(private afs: AngularFirestore) {}
 
   ngOnInit(): void {
-    this.enquiries = this.afs
-      .collection<Enquiry>('enquiries', (ref) =>
+    this.reservations = this.afs
+      .collection<Reservation>('reservations', (ref) =>
         ref.where('establishmentId', '==', this.id)
       )
       .valueChanges({ idField: 'id' });
 
-    this.enquirySubscription = this.enquiries.subscribe((snapshot) => {
+    this.reservationSubscription = this.reservations.subscribe((snapshot) => {
       this.data = snapshot;
     });
   }
 
   ngOnDestroy(): void {
-    this.enquirySubscription.unsubscribe();
+    this.reservationSubscription.unsubscribe();
   }
 
-  formatDate(enquiryDate: Date) {
-    const year = enquiryDate.getFullYear();
-    const month = (enquiryDate.getMonth() + 1).toString().padStart(2, '0');
-    const day = enquiryDate.getDate().toString().padStart(2, '0');
+  formatDate(reservationDate: Date) {
+    const year = reservationDate.getFullYear();
+    const month = (reservationDate.getMonth() + 1).toString().padStart(2, '0');
+    const day = reservationDate.getDate().toString().padStart(2, '0');
     return `${year}-${month}-${day}`;
   }
 }

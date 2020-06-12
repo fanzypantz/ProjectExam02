@@ -1,6 +1,6 @@
 <div class="admin-debug" [ngStyle]="{ 'z-index': 200 }">
   <button (click)="seedEstablishments()">Seed Establishments</button>
-  <button (click)="seedEnquiries()">Seed Enquiries</button>
+  <button (click)="seedReservations()">Seed Reservations</button>
   <button (click)="seedMessages()">Seed Messages</button>
   <input type="file" (change)="seedPosts($event.target.files)" multiple />
 </div>
@@ -32,10 +32,10 @@
     class="btn"
     (click)="
       pageTransition.navigate('/admin', {
-        queryParams: { model: 'enquiries', mode: 'read' }
+        queryParams: { model: 'reservations', mode: 'read' }
       })
     "
-    >Enquiries</a
+    >Reservations</a
   >
   <a
     class="btn"
