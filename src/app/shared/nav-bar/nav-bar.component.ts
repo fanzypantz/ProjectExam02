@@ -29,7 +29,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.paramSub = this.router.events.subscribe((p) => {
-      this.hideMenu = true;
+      if (this.isMobile) {
+        this.hideMenu = true;
+      }
     });
   }
 
