@@ -40,6 +40,7 @@ export class PostsDetailsComponent implements OnInit, OnDestroy {
         .valueChanges({ idField: 'id' });
 
       this.postSubscription = this.post.subscribe((snapshot) => {
+        this.goUp();
         this.pageTransition.toggleOpenClose(0);
         this.postData = snapshot;
       });
@@ -54,5 +55,12 @@ export class PostsDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.paramSub.unsubscribe();
+  }
+
+  goUp() {
+    const element = document.querySelector('#nav');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }
