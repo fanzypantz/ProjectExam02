@@ -1,6 +1,7 @@
 @import '../../variables';
 
 .reservations-container {
+  position: relative;
   width: $main-width;
   max-width: $max-width;
   margin: 0 auto 590px auto;
