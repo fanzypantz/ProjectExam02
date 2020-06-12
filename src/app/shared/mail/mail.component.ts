@@ -206,6 +206,14 @@ import { AngularFirestore } from '@angular/fire/firestore';
       </div>
 
       <button type="submit" class="btn">Send {{ displayName }}</button>
+      <button
+        *ngIf="contactType === 'enquiries'"
+        (click)="closeContactForm.emit()"
+        type="button"
+        class="btn btn-close"
+      >
+        Close Menu
+      </button>
     </form>
   `,
   styleUrls: ['./mail.component.scss'],

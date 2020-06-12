@@ -2,7 +2,11 @@
 @import './variables.scss';
 
 app-root {
+  position: relative;
   overflow-y: auto;
+  overflow-x: hidden;
+  display: block;
+  min-height: 100vh;
 }
 
 html {
@@ -21,9 +25,11 @@ body {
 
 app-footer {
   display: block;
-  position: relative;
+  position: absolute;
   margin-top: 300px;
   height: 260px;
+  bottom: 0;
+  width: 100%;
 }
 
 h1,

@@ -1,7 +1,18 @@
+@import '../../variables';
+
 .reservations-container {
-  min-height: calc(100vh - 400px);
+  width: $main-width;
+  max-width: $max-width;
+  margin: 0 auto 590px auto;
 }
 
 .page-title {
   margin: 80px auto;
+}
+
+.reservation-row {
+  display: flex;
+  background-color: $main;
+  justify-content: space-between;
+  color: $white;
 }

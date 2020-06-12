@@ -1,0 +1,35 @@
+@import '../../variables';
+
+.page-title {
+  margin-bottom: 80px;
+}
+
+app-mail {
+  box-sizing: border-box;
+  position: unset;
+  opacity: 1;
+  pointer-events: all;
+  background-color: transparent;
+}
+
+.bg-parallelogram {
+  background-color: $main;
+}
+
+.contact-container {
+  margin: 0 auto 590px auto;
+  width: $main-width;
+  max-width: $max-width;
+}
+
+@media (max-width: $breakpoint-big-1) {
+  .contact-container {
+    width: $breakpoint-big-1-width;
+  }
+}
+
+@media (max-width: $breakpoint-big-2) {
+  .contact-container {
+    width: $breakpoint-big-2-width;
+  }
+}

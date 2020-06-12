@@ -54,9 +54,10 @@ app-images {
 }
 
 .admin-read {
-  overflow-x: scroll;
+  overflow-x: auto;
   width: 100vw;
   min-height: 500px;
+  margin-bottom: 590px;
 
   .bg-parallelogram {
     background-color: $secondary;

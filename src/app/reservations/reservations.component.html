@@ -4,9 +4,17 @@
 </div>
 
 <div class="reservations-container">
-  <div *ngFor="let item of data">
-    <h3>{{ item.establishmentName }}</h3>
-    <h3>{{ formatDate(item.bookingStart.toDate()) }}</h3>
-    <h3>{{ formatDate(item.bookingEnd.toDate()) }}</h3>
+  <div class="bg-parallelogram"></div>
+
+  <div class="reservation-row" *ngFor="let item of data">
+    <h3>
+      Establishment Name: <span>{{ item.establishmentName }}</span>
+    </h3>
+    <h3>
+      Check-in Date: <span>{{ formatDate(item.bookingStart.toDate()) }}</span>
+    </h3>
+    <h3>
+      Check-out Date: <span>{{ formatDate(item.bookingEnd.toDate()) }}</span>
+    </h3>
   </div>
 </div>

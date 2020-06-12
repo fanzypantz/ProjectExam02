@@ -16,7 +16,7 @@
 .contact-form-title {
   width: 100%;
   text-align: center;
-  color: $white;
+  color: $tertiary;
 }
 
 .contact-form-input-group {
@@ -30,7 +30,7 @@
   }
 
   label {
-    color: $white;
+    color: $tertiary;
     width: 100%;
     margin-bottom: 5px;
     font-size: 1.2em;
@@ -57,5 +57,15 @@
     line {
       stroke: $white;
     }
+  }
+}
+
+.btn-close {
+  margin-top: 15px;
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .contact-form {
+    width: 90%;
   }
 }
