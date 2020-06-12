@@ -31,6 +31,7 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
   public bookingForm: FormGroup;
   private price: number;
   public displayPrice: number;
+  public displayEnquiry: boolean;
 
   constructor(
     private afs: AngularFirestore,
@@ -39,6 +40,7 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
   ) {
     this.paramSub = route.params.subscribe((p) => {
       this.id = p.id;
+      this.displayEnquiry = false;
 
       // @ts-ignore
       this.accommodation = this.afs
@@ -81,6 +83,10 @@ export class AccommodationDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.paramSub.unsubscribe();
     this.documentSubscription.unsubscribe();
+  }
+
+  toggleContactForm() {
+    this.displayEnquiry = !this.displayEnquiry;
   }
 
   onNumberChange(e) {

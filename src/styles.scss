@@ -214,6 +214,27 @@ app-booking-search {
   }
 }
 
+.form-input-text {
+  width: 100%;
+  background-color: $main-shade2;
+  color: $main;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  height: 150px;
+  max-height: 150px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &::placeholder {
+    color: $main;
+  }
+}
+
 .form-input-label {
   font-family: $font-family;
   display: block;
@@ -393,6 +414,27 @@ app-booking-search {
       color: $main;
     }
   }
+}
+
+.contact-form-container {
+  background-color: $main;
+  z-index: 200;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-form-display {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .lds-spinner {

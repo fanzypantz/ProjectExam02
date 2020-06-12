@@ -1,0 +1,61 @@
+@import '../../../variables';
+
+.contact-form {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  flex-direction: column;
+
+  .btn {
+    height: 40px;
+  }
+}
+
+.contact-form-title {
+  width: 100%;
+  text-align: center;
+  color: $white;
+}
+
+.contact-form-input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+
+  .form-overbox {
+    left: 0;
+  }
+
+  label {
+    color: $white;
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+  }
+
+  .form-input {
+    width: calc(100% - 66px);
+    height: 52px;
+  }
+}
+
+.contact-form-input-icon {
+  height: 54px;
+  width: 54px;
+  position: relative;
+  background-color: $secondary;
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    line {
+      stroke: $white;
+    }
+  }
+}

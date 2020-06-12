@@ -4,6 +4,13 @@
 </div>
 
 <div *ngIf="data" class="accommodation-container">
+  <app-mail
+    [contactType]="'enquiries'"
+    [displayName]="'Enquiry'"
+    [ngClass]="{ 'contact-form-display': displayEnquiry }"
+    (closeContactForm)="toggleContactForm()"
+  ></app-mail>
+
   <div class="accommodation-top">
     <div class="accommodation-img">
       <app-gallery [images]="data.imageUrl"></app-gallery>
@@ -570,9 +577,9 @@
       </div>
 
       <div class="accommodation-booking-form-bottom">
-        <a class="btn mail" [href]="'mailto:' + data.establishmentEmail"
-          >CONTACT</a
-        >
+        <button type="button" class="btn mail" (click)="toggleContactForm()">
+          CONTACT
+        </button>
         <div class="accommodation-booking-details">
           <div class="accommodation-booking-details-box">
             <p>Self Catering</p>
