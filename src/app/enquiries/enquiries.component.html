@@ -1,1 +1,12 @@
-<p>enquiries works!</p>
+<div class="big-title page-title">
+  <h1>Your Enquiries</h1>
+  <div class="big-title-border"></div>
+</div>
+
+<div class="enquiries-container">
+  <div *ngFor="let item of data">
+    <h3>{{ item.establishmentName }}</h3>
+    <h3>{{ formatDate(item.bookingStart.toDate()) }}</h3>
+    <h3>{{ formatDate(item.bookingEnd.toDate()) }}</h3>
+  </div>
+</div>
