@@ -34,6 +34,14 @@ export class FooterComponent implements OnInit {
     return this.location.path().includes('accommodation-details');
   }
 
+  isContact() {
+    return this.location.path().includes('contact');
+  }
+
+  isReservations() {
+    return this.location.path().includes('reservations');
+  }
+
   isAdmin() {
     return this.location.path().includes('admin');
   }

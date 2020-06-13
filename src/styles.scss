@@ -95,7 +95,7 @@ app-booking-search {
 
 .bg-parallelogram {
   position: absolute;
-  top: 50vh;
+  top: 530px;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -10;
@@ -568,10 +568,30 @@ app-booking-search {
   app-booking-search {
     width: $breakpoint-big-1-width;
   }
+
+  .bg-parallelogram {
+    top: 500px;
+  }
 }
 
 @media (max-width: $breakpoint-big-2) {
   app-booking-search {
     width: $breakpoint-big-2-width;
+  }
+
+  .bg-parallelogram {
+    top: 430px;
+  }
+}
+
+@media (max-width: $breakpoint-laptop) {
+  .bg-parallelogram {
+    top: 330px;
+  }
+}
+@media (max-width: $breakpoint-tablet) {
+  .bg-parallelogram {
+    width: 130vw;
+    height: 50vw;
   }
 }

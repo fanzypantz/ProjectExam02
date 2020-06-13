@@ -13,7 +13,7 @@ app-mail {
 }
 
 .bg-parallelogram {
-  background-color: $main;
+  background-color: $main-shade1;
 }
 
 .contact-container {
@@ -22,6 +22,11 @@ app-mail {
   margin: 0 auto 590px auto;
   width: $main-width;
   max-width: $max-width;
+}
+
+.contact-form-container {
+  background-color: transparent;
+  box-shadow: none;
 }
 
 @media (max-width: $breakpoint-big-1) {
