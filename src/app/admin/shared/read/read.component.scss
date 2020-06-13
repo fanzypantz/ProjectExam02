@@ -54,10 +54,10 @@ app-images {
 }
 
 .admin-read {
-  overflow-x: auto;
-  width: 100vw;
+  width: 60%;
+  min-width: 1030px;
   min-height: 500px;
-  margin-bottom: 590px;
+  margin: 0 auto 590px auto;
 
   .bg-parallelogram {
     background-color: $secondary;
@@ -65,7 +65,7 @@ app-images {
 }
 
 .admin-pagination {
-  width: $main-width;
+  width: 100%;
   max-width: $max-width;
   min-width: 1030px;
 
@@ -94,17 +94,17 @@ app-images {
 }
 
 @media (max-width: $breakpoint-admin) {
-  .admin-pagination {
-    width: 80%;
-    min-width: unset;
-
-    .btn {
-      width: 50%;
-      margin-right: 10px;
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
+  //.admin-pagination {
+  //  width: 80%;
+  //  min-width: unset;
+  //
+  //  .btn {
+  //    width: 50%;
+  //    margin-right: 10px;
+  //
+  //    &:last-child {
+  //      margin-right: 0;
+  //    }
+  //  }
+  //}
 }

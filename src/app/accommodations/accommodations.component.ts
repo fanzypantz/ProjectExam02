@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Establishment } from '../admin/shared/models/establisment.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { PageTransitionsService } from '../shared/page-transitions.service';
@@ -26,6 +26,7 @@ export class AccommodationsComponent implements OnInit, OnDestroy {
   constructor(
     private afs: AngularFirestore,
     private route: ActivatedRoute,
+    private router: Router,
     public pageTransition: PageTransitionsService
   ) {
     this.pageOffset = 10;
@@ -81,6 +82,7 @@ export class AccommodationsComponent implements OnInit, OnDestroy {
         this.pageOffset,
         this.page
       );
+      this.changeQueryParam(this.page);
     }
   }
 
@@ -92,7 +94,18 @@ export class AccommodationsComponent implements OnInit, OnDestroy {
         this.pageOffset,
         this.page
       );
+      this.changeQueryParam(this.page);
     }
+  }
+
+  changeQueryParam(page) {
+    const urlTree = this.router.createUrlTree([], {
+      queryParams: { page },
+      queryParamsHandling: 'merge',
+      preserveFragment: true,
+    });
+
+    this.router.navigateByUrl(urlTree);
   }
 
   get searchResultLength() {

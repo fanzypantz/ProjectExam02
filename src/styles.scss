@@ -445,10 +445,10 @@ app-booking-search {
 }
 
 .main-table {
-  width: $main-width;
+  width: 100%;
   max-width: $max-width;
   min-width: 1030px;
-  margin: 0 auto;
+  margin: 0;
   border-collapse: separate;
   border-spacing: 0 5px;
 

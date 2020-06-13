@@ -1,5 +1,10 @@
 @import '../../variables';
 
+app-read {
+  display: block;
+  overflow-x: auto;
+}
+
 .admin-debug {
   position: absolute;
   top: 0;

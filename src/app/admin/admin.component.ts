@@ -156,6 +156,16 @@ export class AdminComponent implements OnInit, OnDestroy {
         defaultEstablishments.length - 1
       );
 
+      const imageUrls = [];
+
+      for (let j = 0; j < this.getRandomInt(2, 4); j++) {
+        imageUrls.push(
+          defaultEstablishments[
+            this.getRandomInt(0, defaultEstablishments.length - 1)
+          ].imageUrl
+        );
+      }
+
       const data = {
         establishmentName:
           defaultEstablishments[
@@ -169,11 +179,7 @@ export class AdminComponent implements OnInit, OnDestroy {
           defaultEstablishments[
             this.getRandomInt(0, defaultEstablishments.length - 1)
           ].area,
-        imageUrl: [
-          defaultEstablishments[
-            this.getRandomInt(0, defaultEstablishments.length - 1)
-          ].imageUrl,
-        ],
+        imageUrl: imageUrls,
         price: this.getRandomInt(50, 300),
         maxGuests: this.getRandomInt(1, 10),
         rating: this.getRandomInt(3, 5),
