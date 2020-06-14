@@ -60,7 +60,7 @@ export class AdminResolverService implements Resolve<any> {
           .valueChanges({ idField: 'id' });
       case 'users':
         return this.afs
-          .collection<User>(model, (ref) => ref.orderBy('updatedAt'))
+          .collection<User>(model, (ref) => ref.orderBy('displayName'))
           .valueChanges();
       default:
         return this.afs
