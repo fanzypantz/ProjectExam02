@@ -1,8 +1,9 @@
 @import '../../variables';
 
 app-read {
+  position: relative;
   display: block;
-  overflow-x: auto;
+  //overflow-x: auto;
 }
 
 .admin-debug {

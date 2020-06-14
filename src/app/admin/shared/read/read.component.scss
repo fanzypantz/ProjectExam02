@@ -94,17 +94,9 @@ app-images {
 }
 
 @media (max-width: $breakpoint-admin) {
-  //.admin-pagination {
-  //  width: 80%;
-  //  min-width: unset;
-  //
-  //  .btn {
-  //    width: 50%;
-  //    margin-right: 10px;
-  //
-  //    &:last-child {
-  //      margin-right: 0;
-  //    }
-  //  }
-  //}
+  .admin-read {
+    overflow-x: auto;
+    width: 100vw;
+    min-width: unset;
+  }
 }

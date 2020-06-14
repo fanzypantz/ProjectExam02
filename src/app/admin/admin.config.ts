@@ -267,6 +267,14 @@ export const adminConfig = {
         layout: 'left',
       },
       {
+        name: 'Image details',
+        type: 'string',
+        key: 'imageDetails',
+        editAble: true,
+        size: 'half',
+        layout: 'right',
+      },
+      {
         name: 'Main image',
         type: 'image',
         key: 'imageUrl',

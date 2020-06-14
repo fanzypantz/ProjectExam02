@@ -20,12 +20,12 @@ export class ReadComponent implements OnInit, OnDestroy {
   @Input() model: string;
   private collectionsSubscription: Subscription;
   private paramSub: Subscription;
-  readLayout: ReadInterface[];
-  collections: Observable<
+  public readLayout: ReadInterface[];
+  private collections: Observable<
     Establishment[] | Reservation[] | Post[] | User[] | Message[]
   >;
-  showConfirmPrompt = false;
-  deleteId: string;
+  public showConfirmPrompt = false;
+  public deleteId: string;
   private page: any;
   private readonly pageOffset: any;
   private data: Establishment[] | Reservation[] | Post[] | User[] | Message[];
@@ -35,12 +35,15 @@ export class ReadComponent implements OnInit, OnDestroy {
     | Post[]
     | User[]
     | Message[];
+  private checkedItems: string[];
 
   constructor(
     private afs: AngularFirestore,
     private route: ActivatedRoute,
     public pageTransition: PageTransitionsService
   ) {
+    this.deleteId = null;
+    this.checkedItems = [];
     this.page = 1;
     this.pageOffset = 10;
     // Subscribe to the queryParams so every time it changes this function is called
@@ -74,6 +77,25 @@ export class ReadComponent implements OnInit, OnDestroy {
     });
   }
 
+  // checkAll() {
+  //   for (const item of this.renderData) {
+  //     this.checkedItems.push(item.id);
+  //   }
+  // }
+
+  checkItem(id: string) {
+    if (this.checkedItems.some((v) => id.includes(v))) {
+      this.checkedItems = this.checkedItems.filter((v) => v !== id);
+    } else {
+      this.checkedItems.push(id);
+    }
+    console.log('this.checkedItems: ', this.checkedItems);
+  }
+
+  deleteItems() {
+    this.showConfirmPrompt = true;
+  }
+
   confirmDelete(id) {
     this.showConfirmPrompt = true;
     this.deleteId = id;
@@ -86,8 +108,14 @@ export class ReadComponent implements OnInit, OnDestroy {
 
   deleteEntry() {
     this.showConfirmPrompt = false;
-    this.afs.collection(this.model).doc(this.deleteId).delete();
-    this.deleteId = null;
+    if (this.deleteId === null) {
+      for (const item of this.checkedItems) {
+        this.afs.collection(this.model).doc(item).delete();
+      }
+    } else {
+      this.afs.collection(this.model).doc(this.deleteId).delete();
+      this.deleteId = null;
+    }
   }
 
   // Source: https://stackoverflow.com/a/42761393/6422461

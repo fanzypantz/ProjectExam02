@@ -25,6 +25,7 @@ export class HomeDealsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.isMobile = window.innerWidth <= 768;
 
+    // Was not able to order this by date even with an index in firebase
     this.document = this.afs
       .collection<Establishment>('establishments', (ref) =>
         ref.where('highlight', '==', true).limit(3)

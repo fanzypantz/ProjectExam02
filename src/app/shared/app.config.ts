@@ -322,19 +322,23 @@ export const defaultReservations = [
 export const defaultPosts = [
   {
     title: 'This is a cool place to visit',
+    imageDetails: 'The beautiful fjords of Bergen',
     text: lorem,
   },
   {
     title: 'Visit the past of Bergen',
+    imageDetails: 'Something about the nature',
     text: lorem,
   },
   {
     title: 'Bergen has some cool buildings',
+    imageDetails: 'Picture by Bob Dylan',
     text: lorem,
   },
 
   {
     title: 'Visit the aquarium in downtown Bergen',
+    imageDetails: 'Picture by Bob Ross',
     text: lorem,
   },
 ];

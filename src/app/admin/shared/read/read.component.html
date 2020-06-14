@@ -10,14 +10,37 @@
   >
     <tr>
       <th>
-        <input type="checkbox" />
+        <svg
+          (click)="deleteItems()"
+          class="admin-read-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="10.533"
+          height="12.644"
+          viewBox="0 0 10.533 12.644"
+        >
+          <g id="trashcan" transform="translate(-96.038 -64)">
+            <path
+              id="Path_23"
+              data-name="Path 23"
+              d="M106.494,66.285c-.079-.3-.132-.461-.132-.461-.086-.306-.3-.306-.625-.359l-1.748-.221c-.217-.036-.217-.036-.3-.224C103.4,64.375,103.311,64,103,64H99.608c-.313,0-.4.375-.685,1.024-.086.184-.086.184-.3.224l-1.751.221c-.319.053-.55.082-.635.388,0,0-.039.135-.122.428-.105.392-.148.349.214.349h9.954C106.643,66.637,106.6,66.676,106.494,66.285Z"
+            />
+            <path
+              id="Path_24"
+              data-name="Path 24"
+              d="M124.588,176h-8.124c-.546,0-.573.072-.54.484l.616,7.986c.053.4.092.487.576.487h6.821c.484,0,.523-.082.576-.487l.616-7.986C125.161,176.069,125.135,176,124.588,176Z"
+              transform="translate(-19.223 -108.313)"
+            />
+          </g>
+        </svg>
       </th>
       <th *ngFor="let titleHead of readLayout">{{ titleHead.name }}</th>
       <th></th>
     </tr>
 
     <tr *ngFor="let item of renderData">
-      <td><input type="checkbox" /></td>
+      <td>
+        <input type="checkbox" (change)="checkItem(item.id || item.uid)" />
+      </td>
       <td *ngFor="let layoutInfo of readLayout">
         <!--Switch the display mode based on the layout type-->
         <div [ngSwitch]="layoutInfo.type">
