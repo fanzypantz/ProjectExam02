@@ -1,3 +1,9 @@
+.admin-form-img-small-container {
+  display: flex;
+  max-width: 130px;
+  overflow-x: auto;
+}
+
 .admin-form-img-small {
   width: 45px;
   height: 45px;
@@ -6,6 +12,6 @@
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 
   &:nth-child(n + 2) {
-    transform: translateX(-40%);
+    margin-left: -20px;
   }
 }
