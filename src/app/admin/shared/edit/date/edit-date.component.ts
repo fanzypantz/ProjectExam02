@@ -11,12 +11,7 @@ import { FormGroup } from '@angular/forms';
 
       <div class="admin-input-group">
         <div class="admin-input-icon">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="44.2"
-            height="44.1"
-            viewBox="0 0 44.2 44.1"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44.2 44.1">
             <g id="calendar" transform="translate(-10 -9.9)">
               <g id="Icon-Calendar" transform="translate(30 478)">
                 <path
