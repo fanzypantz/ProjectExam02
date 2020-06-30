@@ -1,6 +1,6 @@
-# Client
+# My final exam at Noroff frontend. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.5.
+This project was my first attemt at using Angular for a project. The site is a fictive accommodation booking site for Bergen city. 
 
 ## Development server
 
