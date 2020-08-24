@@ -2,7 +2,7 @@
 
 This project was my first attemt at using Angular for a project. The site is a fictive accommodation booking site for Bergen city. 
 
-![Image of Yaktocat](https://andreas-tollanes.com/uploads/c5a9e81f2190474fa4df8b7841516c21.jpg) 
+![Image of Website](https://andreas-tollanes.com/uploads/c5a9e81f2190474fa4df8b7841516c21.jpg) 
 
 ## Development server
 
